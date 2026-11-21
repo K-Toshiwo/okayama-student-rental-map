@@ -65,7 +65,7 @@ for(const f of facilityRows){
 }
 for(const p of plotted){const q=locate(p);if(q.x<0||q.y<0||q.x>map.clientWidth||q.y>map.clientHeight)continue;
  const el=document.createElement("div");el.className="pin icon-pin "+p.cls;el.style.left=q.x+"px";el.style.top=q.y+"px";el.textContent=p.icon;el.title=p.name;el.setAttribute("aria-label",p.name);pins.appendChild(el)}
-Promise.all(jobs).then(()=>{ready=failed===0;if(ready){status.textContent="背景地図：全"+total+"枚、施設台帳："+facilityRows.length+"件（うちピン："+facilityRows.filter(f=>f.latitude&&f.longitude).length+"件）。印刷可能です。";button.disabled=false;button.textContent="A3横のPDFを作成"}else{status.textContent="地図画像の読み込みに失敗："+failed+"/"+total+"枚。再読み込みしてください。";document.getElementById("warning").textContent="地図画像未取得あり";button.textContent="画像が不足しています";}});
+Promise.all(jobs).then(()=>{ready=total>0&&failed===0&&loaded===total;if(ready){status.textContent="背景地図：全"+total+"枚、施設台帳："+facilityRows.length+"件（うちピン："+facilityRows.filter(f=>f.latitude&&f.longitude).length+"件）。印刷可能です。";button.disabled=false;button.textContent="A3横のPDFを作成"}else{status.textContent=total===0?"背景地図を取得できませんでした（0枚）。PDF化せず画面を再読み込みしてください。":"地図画像の読み込みに失敗："+failed+"/"+total+"枚。再読み込みしてください。";document.getElementById("warning").textContent="地図画像未取得あり";button.textContent="画像が不足しています";}});
 }
 button.onclick=()=>{if(!ready)return;window.print()};
 initialize();
