@@ -72,7 +72,7 @@ jobs.push(new Promise(resolve=>{img.onload=()=>{loaded++;status.textContent="背
 overlay.setAttribute("viewBox","0 0 "+mapWidth()+" "+mapHeight());
 let path=document.createElementNS("http://www.w3.org/2000/svg","path");
 let d=Array.from({length:121},(_,i)=>{let p=locate(dest(i*3));return(i?"L":"M")+p.x.toFixed(2)+","+p.y.toFixed(2)}).join(" ")+"Z";
-path.setAttribute("d",d);path.setAttribute("fill","#4fa57d16");path.setAttribute("stroke","#148258");path.setAttribute("stroke-width","2.5");path.setAttribute("stroke-dasharray","8 6");
+path.setAttribute("d",d);path.setAttribute("fill","#4fa57d16");path.setAttribute("stroke","#087e43");path.setAttribute("stroke-width","4");path.setAttribute("stroke-dasharray","10 6");
 for(const a of areas){
  const middle=locate(a),east=locate({lat:a.lat,lon:a.lon+a.rx}),north=locate({lat:a.lat+a.ry,lon:a.lon});
  const ellipse=document.createElementNS("http://www.w3.org/2000/svg","ellipse");
@@ -82,8 +82,10 @@ for(const a of areas){
  ellipse.setAttribute("stroke",a.color);ellipse.setAttribute("stroke-width","2.5");ellipse.setAttribute("stroke-dasharray","6 4");
  overlay.appendChild(ellipse);areaElements.push(ellipse);
 }
+// White halo improves visibility of the exact 2km circle over detailed map tiles.
+const halo=path.cloneNode(true);halo.setAttribute("stroke","#ffffff");halo.setAttribute("stroke-width","7");halo.setAttribute("stroke-dasharray","10 6");
 // Keep the 2km boundary above the advisory colored areas and below the facility icons.
-overlay.appendChild(path);
+overlay.appendChild(halo);overlay.appendChild(path);
 const areaSwitch=document.getElementById("show-areas");
 const areaLegend=document.querySelector(".area-legend");
 areaSwitch.addEventListener("change",()=>{for(const el of areaElements)el.style.display=areaSwitch.checked?"":"none";areaLegend.style.display=areaSwitch.checked?"":"none";});
