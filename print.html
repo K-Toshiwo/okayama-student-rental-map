@@ -4,12 +4,68 @@
 <style>
 *{box-sizing:border-box}body{margin:0;background:#fff7e9;color:#253c48;font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",Meiryo,sans-serif}.toolbar{padding:12px 16px;background:#124c36;color:#fff;display:flex;gap:14px;align-items:center;flex-wrap:wrap}.toolbar strong{font-size:15px}.toolbar button{background:#fff;color:#184c36;border:0;border-radius:7px;padding:10px 15px;font-weight:700;cursor:pointer}.toolbar button:disabled{opacity:.6;cursor:wait}.toolbar span{font-size:12px}.page{width:400mm;min-height:272mm;margin:12px auto;background:white;padding:3mm 5mm;box-shadow:0 2px 18px #263b2e24}.heading{height:20mm;display:flex;justify-content:space-between;align-items:center;border-bottom:1.2mm solid #ffb74b;margin-bottom:1mm}.heading h1{font-size:19pt;letter-spacing:.25pt;margin:0 0 1.5mm;color:#116a76}.heading p{font-size:9pt;margin:0;color:#506471}.heading .eyebrow{font-size:8pt;letter-spacing:1.1pt;color:#ec7e36;font-weight:bold}.heading .stamp{font-size:10pt;line-height:1.4;background:#e4f7f3;border:1px solid #8cd0c2;border-radius:20px;padding:2mm 5mm;color:#136c73;font-weight:800}.map{position:relative;width:390mm;height:216mm;border:.25mm solid #899f91;overflow:hidden;background:#ebefe8}.tiles{position:absolute;inset:0}.tile{position:absolute;width:256px;height:256px;max-width:none;pointer-events:none}.overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.area-legend{display:flex;gap:2mm;flex-wrap:wrap;font-size:7pt;margin-top:1mm;align-items:center} .area-legend b{color:#285965}.area-legend span{display:inline-flex;align-items:center;gap:1mm;border-radius:9px;padding:.6mm 2mm;background:#fff}.area-legend i{width:3mm;height:3mm;border-radius:50%;display:inline-block}.toolbar label{font-size:12px;display:flex;align-items:center;gap:5px}.pin{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;background:white;border:1px solid #a9c4b4;border-radius:11px;padding:3px 6px;font-size:11px;font-weight:700;box-shadow:0 1px 3px #0002;pointer-events:none}.pin.gate{background:#195c44;color:white}.pin.station{background:#2264a4;color:white}.pin.conv{background:#fff0d6;border-color:#e9a84e;color:#86541f}.pin.post{background:#fff0ee;border-color:#d59391;color:#a04d48}.pin.pharm{background:#f3eaff;border-color:#bd9de1;color:#694a87}.pin.medical{background:#ffe7e7;border-color:#e9a2a2;color:#a44b4b}.pin.bank{background:#e9efff;border-color:#a2b9e6;color:#334e89}.pin.shop{background:#e4f7e8;border-color:#78c69f;color:#205a3e}.pin.icon-pin{width:29px;height:29px;padding:0;display:flex;align-items:center;justify-content:center;font-size:17px;border-radius:50%;line-height:1;box-shadow:0 1px 4px #263b2e50}.pin.icon-pin.gate{width:35px;height:35px;font-size:21px;border:2px solid white}.pin.icon-pin.station{border:2px solid white}.pin.icon-pin.mixed{width:44px;height:32px;padding:2px;border:2px solid #fff;background:#fff6d4;color:#314c4a;border-radius:18px;font-size:14px;letter-spacing:-3px}.pin.icon-pin.mixed small{font-size:9px;letter-spacing:0;margin-left:2px;color:#234c52}.facility-item{min-width:0}.mapnote{position:absolute;top:7px;left:7px;background:#fff7d8ef;color:#805421;border:1px solid #eed18a;padding:5px 8px;font-size:11px;border-radius:9px;font-weight:bold}.north{position:absolute;right:8px;top:8px;background:#ffffffe9;padding:5px;font-weight:700}.footer{font-size:8pt;padding-top:2mm;line-height:1.5;display:flex;flex-wrap:wrap;gap:1.5mm 5mm}.footer span{background:#f1f9f9;border:1px solid #d6e9e9;border-radius:12px;padding:1mm 3mm;color:#2a5361;font-weight:700}.facility-guide{margin-top:1mm;border-radius:3mm;border:.3mm solid #d5e7df;padding:2mm 3mm;background:#f8fcfa;min-height:16mm}.facility-guide-title{font-size:8.3pt;color:#176778;font-weight:800;margin-bottom:1.5mm}.facility-items{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2mm}.facility-item{border-left:.8mm solid #67bbaa;padding-left:2mm;font-size:7pt;color:#3c5057;line-height:1.3;min-width:0}.facility-item b{display:block;color:#1b5963;font-size:7.5pt}.facility-item span{font-size:6.3pt;color:#6b7473}.footnote{font-size:7pt;color:#53695b;margin-top:1mm}#warning{color:#9b3b24;font-weight:700}
 @page{size:A3 landscape;margin:10mm}@media print{body{background:white}.toolbar{display:none!important}.page{margin:0;padding:0;box-shadow:none;width:390mm;min-height:0}.map{width:390mm;height:216mm}.heading{height:20mm}.tile,.pin,.mapnote{print-color-adjust:exact;-webkit-print-color-adjust:exact}.heading,.footer span,.facility-guide{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+/* POP DESIGN: the map is always rendered from unmodified GSI tiles */
+:root{--navy:#19466e;--pink:#f16d93;--mint:#67cbb1;--sky:#58afea;--lemon:#ffe7a0}
+body{background:#fef6ea;color:#283d49}
+.page{width:390mm;height:277mm;min-height:0;padding:0;margin:12px auto;overflow:hidden;border:2mm solid #d3edce;border-radius:5mm;background:#fffefa}
+.heading{height:33mm;padding:2mm 5mm;margin:0;border-bottom:1.2mm solid #faad58;background:linear-gradient(105deg,#e3f7ff,#fff2f2 57%,#ecfbdc)}
+.heading .eyebrow{font-size:8.5pt;color:#448e83;letter-spacing:.6pt}
+.heading h1{font-size:25pt;line-height:1.08;white-space:nowrap;margin:0;color:#283e53;letter-spacing:0}
+.heading h1 em{font-style:normal;color:#e95785}.heading h1 strong{color:#1988ae;font-size:24pt}
+.heading p{font-weight:700;font-size:9pt;color:#6a5960;margin-top:1.8mm}
+.heading .stamp{font-size:9pt;text-align:center;background:#fff;border:1mm solid #9ddacf;color:#16695e;border-radius:8mm;min-width:42mm;padding:2.5mm}
+.body-grid{height:183mm;display:grid;grid-template-columns:67mm 254mm 64mm;gap:1mm;padding:2mm 1.5mm}
+.advice-panel,.key-panel{background:white;border:0.5mm solid #d8e7c9;border-radius:5mm;overflow:hidden;padding:3mm}
+.panel-title{color:#2a5964;font-weight:900;font-size:12pt;line-height:1.22;margin-bottom:3mm;text-align:center}
+.advice-card{border-radius:4mm;padding:2.5mm 3mm;margin-bottom:2.5mm;line-height:1.45}
+.advice-card b{display:block;font-size:9pt;color:#254c61}.advice-card p{font-size:8.5pt;font-weight:700;margin:1.8mm 0}.advice-card small{display:block;font-size:7.1pt;color:#5e6d74}
+.advice-pink{background:#ffecf1;border-left:1.5mm solid #ed89a4}
+.advice-orange{background:#fff1df;border-left:1.5mm solid #f5b457}
+.advice-purple{background:#f3edff;border-left:1.5mm solid #b2a0e5}
+.advice-note,.key-note{font-size:6.7pt;color:#657078;line-height:1.5;margin-top:2mm}
+.map-shell{min-width:0;background:#fff;border:0.5mm solid #acd7d0;border-radius:3mm;overflow:hidden}
+.map-banner{height:9mm;display:flex;align-items:center;justify-content:space-between;background:#e1f7ed;padding:0 3mm;font-weight:900;font-size:10pt;color:#206554}
+.map-banner span{font-size:8pt;color:#486b60}.map-banner b{color:#ea7a24;font-size:12pt}
+.map{width:253mm;height:172mm;max-height:none;border:0;background:#e8f0e8}
+.key-panel{background:#fbfdff}.key-row{display:flex;gap:3mm;align-items:center;border-bottom:.3mm dashed #c4d9e4;padding:2mm 0;font-size:9pt}
+.key-row span{font-size:16pt;min-width:9mm;text-align:center}.key-row b{font-size:8.8pt}
+.key-note{margin-top:4mm;background:#fff3df;border-radius:3mm;padding:2mm}
+.mapnote{background:#fff7d8fa;border:1px solid #e9c16a;border-radius:4mm;font-size:9px;color:#715027}
+.pin.icon-pin{width:27px;height:27px;font-size:16px;z-index:2}
+.pin.icon-pin.gate{width:34px;height:34px;font-size:20px}
+.facility-guide{height:43mm;min-height:0;margin:1mm 2mm;padding:2.5mm 4mm;overflow:hidden;border-radius:4mm;background:#f1faf3;border-color:#cdeacb}
+.facility-guide-title{font-size:11pt;color:#287469;margin-bottom:1.5mm}
+.facility-guide-title span{font-weight:400;font-size:7pt;color:#61787b}
+.facility-items{grid-template-columns:repeat(6,minmax(0,1fr));gap:1mm 2mm}
+.facility-item{font-size:6pt;padding-left:1mm;line-height:1.2;border-color:#97cabb}
+.facility-item b{font-size:7.2pt}.facility-item span{font-size:6.2pt}
+.area-legend{margin:0 3mm;min-height:6mm;font-size:7pt}
+.footer{margin:0 3mm;padding:0;min-height:6mm;font-size:7pt}
+.footer span{padding:.5mm 2mm}
+.footnote{margin:0 3mm;padding:0;font-size:6.7pt;line-height:1.3;color:#637782}
+@media print{.page{margin:0;width:390mm;height:277mm;min-height:0;border:1mm solid #d3edce;border-radius:0;padding:0;box-shadow:none;overflow:hidden}.heading{height:33mm}.body-grid{height:183mm}.map{width:253mm;height:172mm}.facility-guide{height:43mm}.area-legend{min-height:6mm}.footer{min-height:6mm}.page,.heading,.advice-card,.key-panel,.facility-guide,.area-legend{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 </style></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3印刷専用プレビュー</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
-<div class="heading"><div><div class="eyebrow">OKAYAMA UNIVERSITY · STUDENT LIFE GUIDE</div><h1>岡山大学 おへや探し生活MAP</h1><p>津島キャンパス正門から半径2km ＋ 岡山駅周辺　｜　後楽不動産・配布前確認版</p></div><div class="stamp">はじめての街を<br>楽しくチェック！</div></div>
-<div id="map" class="map"><div id="tiles" class="tiles"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">緑破線：岡山大学正門から直線2km</div><div class="north">↑ 北</div></div>
-<div class="facility-guide"><div class="facility-guide-title">街の便利スポット　<span style="font-weight:400;font-size:7pt">施設の所在地にアイコンを表示。同じ商業施設内の店舗は1つの複合アイコンにまとめています</span></div><div id="facility-items" class="facility-items"></div></div><div class="area-legend"><b>住まい探しのエリア目安：</b><span><i style="background:#4dc3bf"></i>津島周辺</span><span><i style="background:#ffb45d"></i>北方・法界院周辺</span><span><i style="background:#ac95e8"></i>岡山駅北側</span><span>※範囲は説明用の概略。賃貸物件の分布・家賃・行政区域を示すものではありません。</span></div>
+<div class="heading"><div class="heading-copy"><div class="eyebrow">🌸 OKAYAMA UNIVERSITY · STUDENT LIFE GUIDE</div><h1><span>岡山大学</span> <em>おへや探し生活</em><strong>MAP</strong></h1><p>はじめての一人暮らしを、楽しく・わかりやすく！　津島キャンパス周辺の住まい探しガイド</p></div><div class="stamp">🎓 新入生向け<br>津島キャンパス周辺</div></div>
+<div class="body-grid">
+<aside class="advice-panel"><div class="panel-title">🏡 エリアの<br>おすすめポイント</div>
+<div class="advice-card advice-pink"><b>🌸 津島周辺</b><p>大学の近くを中心に<br>お部屋探し！</p><small>通学ルートや買い物施設をチェック</small></div>
+<div class="advice-card advice-orange"><b>🚲 北方・法界院周辺</b><p>駅の利用も考えて<br>エリアを比較！</p><small>大学までの道のりも確認</small></div>
+<div class="advice-card advice-purple"><b>🚉 岡山駅北側</b><p>岡山駅へのアクセスも<br>あわせて検討！</p><small>通学手段・所要時間を確認</small></div>
+<div class="advice-note">※エリアの特徴は一般的な案内です。個別物件の条件とは異なります。</div></aside>
+<div class="map-shell"><div class="map-banner">🗺️ 津島キャンパス周辺　<span>大学の正門から <b>直線2km</b> の目安</span></div>
+<div id="map" class="map"><div id="tiles" class="tiles"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km</div><div class="north">↑ 北</div></div></div>
+<aside class="key-panel"><div class="panel-title">✨ 生活施設の<br>アイコン凡例</div>
+<div class="key-row"><span>🛒</span><b>スーパー</b></div>
+<div class="key-row"><span>🏪</span><b>コンビニ</b></div>
+<div class="key-row"><span>📮</span><b>郵便局</b></div>
+<div class="key-row"><span>💊</span><b>ドラッグストア</b></div>
+<div class="key-row"><span>🛍️</span><b>100円ショップ</b></div>
+<div class="key-row"><span>🚉</span><b>駅</b></div>
+<div class="key-note">同じ場所に複数店舗がある場合は複合アイコンで表示</div></aside>
+</div>
+<div class="facility-guide"><div class="facility-guide-title">🛍️ 暮らしに役立つ！周辺の生活施設 <span>※店舗名・所在地は下記一覧で確認できます</span></div><div id="facility-items" class="facility-items"></div></div><div class="area-legend"><b>住まい探しのエリア目安：</b><span><i style="background:#4dc3bf"></i>津島周辺</span><span><i style="background:#ffb45d"></i>北方・法界院周辺</span><span><i style="background:#ac95e8"></i>岡山駅北側</span><span>※範囲は説明用の概略。賃貸物件の分布・家賃・行政区域を示すものではありません。</span></div>
 <div class="footer" id="legend"><span>🎓 岡山大学正門</span><span>🚉 法界院駅・岡山駅</span><span>地図：国土地理院「淡色地図」</span></div>
 <div class="footnote">※現在は配布前の確認用原版です。色分けは住まい探しの説明用で、物件の分布・家賃・行政上の境界ではありません。施設の位置・掲載条件は配布前に再確認してください。 <span id="warning"></span></div>
 </article>
