@@ -41,34 +41,29 @@ async function loadFacilities(){
 }
 const rad=Math.PI/180,earth=6378137,map=document.getElementById("map"),tiles=document.getElementById("tiles"),overlay=document.getElementById("overlay"),pins=document.getElementById("pins"),button=document.getElementById("print"),status=document.getElementById("status");
 let zoom=14,center={lat:34.68,lon:133.92},ready=false;
+// A3 physical CSS dimensions (390mm × 216mm at 96 CSS px/in). Avoid viewport-dependent layout on print preview.
+const PRINT_W=390*96/25.4,PRINT_H=216*96/25.4;
+const mapWidth=()=>map.clientWidth||PRINT_W,mapHeight=()=>map.clientHeight||PRINT_H;
 function proj(p,z){const n=256*2**z;return{x:(p.lon+180)/360*n,y:(1-Math.log(Math.tan(Math.PI/4+p.lat*rad/2))/Math.PI)*n/2}}
 function inv(q,z){const n=256*2**z;return{lat:Math.atan(Math.sinh(Math.PI*(1-2*q.y/n)))/rad,lon:q.x/n*360-180}}
 function dest(deg){let a=deg*rad,d=2000/earth,p=gate.lat*rad,l=gate.lon*rad,q=Math.asin(Math.sin(p)*Math.cos(d)+Math.cos(p)*Math.sin(d)*Math.cos(a)),s=l+Math.atan2(Math.sin(a)*Math.sin(d)*Math.cos(p),Math.cos(d)-Math.sin(p)*Math.sin(q));return{lat:q/rad,lon:s/rad}}
-function locate(p){const q=proj(p,zoom),c=proj(center,zoom);return{x:map.clientWidth/2+q.x-c.x,y:map.clientHeight/2+q.y-c.y}}
+function locate(p){const q=proj(p,zoom),c=proj(center,zoom);return{x:mapWidth()/2+q.x-c.x,y:mapHeight()/2+q.y-c.y}}
 async function initialize(){
 try{await loadFacilities()}catch(err){status.textContent="施設台帳の読み込みに失敗："+err.message;document.getElementById("warning").textContent="施設台帳未取得";return}
-for(let attempt=0;attempt<12&&(map.clientWidth<300||map.clientHeight<300);attempt++){
- status.textContent="A3地図の描画領域を準備中（"+(attempt+1)+"/12）";
- await new Promise(resolve=>setTimeout(resolve,150));
-}
-if(map.clientWidth<300||map.clientHeight<300){
- status.textContent="A3地図の表示領域を取得できません。PDF保存せず再読み込みしてください。";
- document.getElementById("warning").textContent="地図の表示寸法が未確定";
- return;
-}
+// The map has fixed A3 CSS dimensions; browser viewport dimensions are not used for tile layout.
 
 const all=Array.from({length:72},(_,i)=>dest(i*5));all.push(station);
 const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(x=>x.y),x0=Math.min(...xx),x1=Math.max(...xx),y0=Math.min(...yy),y1=Math.max(...yy);
-zoom=Math.log2(Math.min((map.clientWidth-90)/(x1-x0),(map.clientHeight-70)/(y1-y0)));
+zoom=Math.log2(Math.min((mapWidth()-90)/(x1-x0),(mapHeight()-70)/(y1-y0)));
 const mid=inv({x:(x0+x1)/2,y:(y0+y1)/2},0);center=mid;
-const z=Math.max(10,Math.min(17,Math.floor(zoom))),scale=2**(zoom-z),c=proj(center,zoom),l=c.x-map.clientWidth/2,t=c.y-map.clientHeight/2,lz=l/scale,tz=t/scale;
+const z=Math.max(10,Math.min(17,Math.floor(zoom))),scale=2**(zoom-z),c=proj(center,zoom),l=c.x-mapWidth()/2,t=c.y-mapHeight()/2,lz=l/scale,tz=t/scale;
 const jobs=[];let total=0,loaded=0,failed=0;
-for(let x=Math.floor(lz/256);x<=Math.floor((lz+map.clientWidth/scale)/256);x++)for(let y=Math.floor(tz/256);y<=Math.floor((tz+map.clientHeight/scale)/256);y++){
+for(let x=Math.floor(lz/256);x<=Math.floor((lz+mapWidth()/scale)/256);x++)for(let y=Math.floor(tz/256);y<=Math.floor((tz+mapHeight()/scale)/256);y++){
 if(x<0||y<0||x>=2**z||y>=2**z)continue;
 let img=new Image();img.className="tile";img.alt="";img.style.width=256*scale+"px";img.style.height=256*scale+"px";img.style.left=(x*256-lz)*scale+"px";img.style.top=(y*256-tz)*scale+"px";tiles.appendChild(img);total++;
 jobs.push(new Promise(resolve=>{img.onload=()=>{loaded++;status.textContent="背景地図："+loaded+"/"+total+"枚";resolve(true)};img.onerror=()=>{failed++;resolve(false)};img.src="https://cyberjapandata.gsi.go.jp/xyz/pale/"+z+"/"+x+"/"+y+".png"}));
 }
-overlay.setAttribute("viewBox","0 0 "+map.clientWidth+" "+map.clientHeight);
+overlay.setAttribute("viewBox","0 0 "+mapWidth()+" "+mapHeight());
 let path=document.createElementNS("http://www.w3.org/2000/svg","path");
 let d=Array.from({length:121},(_,i)=>{let p=locate(dest(i*3));return(i?"L":"M")+p.x.toFixed(2)+","+p.y.toFixed(2)}).join(" ")+"Z";
 path.setAttribute("d",d);path.setAttribute("fill","#4fa57d16");path.setAttribute("stroke","#148258");path.setAttribute("stroke-width","2.5");path.setAttribute("stroke-dasharray","8 6");overlay.appendChild(path);
@@ -83,7 +78,7 @@ for(const f of facilityRows){
 const groups=[];
 for(const p of plotted){
  const q=locate(p);
- if(q.x<0||q.y<0||q.x>map.clientWidth||q.y>map.clientHeight)continue;
+ if(q.x<0||q.y<0||q.x>mapWidth()||q.y>mapHeight())continue;
  if(p.cls==="gate"||p.cls==="station"){groups.push({x:q.x,y:q.y,places:[p],landmark:true});continue;}
  const existing=groups.find(g=>!g.landmark&&Math.hypot(g.x-q.x,g.y-q.y)<30);
  if(existing){existing.places.push(p)}else{groups.push({x:q.x,y:q.y,places:[p],landmark:false})}
