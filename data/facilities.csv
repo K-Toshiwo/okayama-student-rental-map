@@ -1,7 +1,7 @@
 id,name,category,address,latitude,longitude,pin_status,source_url
 happys-tsushima,天満屋ハピーズ津島店,スーパー,岡山県岡山市北区津島桑の木町5-1,34.687052,133.9117795,provisional_coordinate,
-fresta-tsushima,フレスタ津島店,スーパー,岡山県岡山市北区津島南1丁目2-7,,,address_verified,https://www.fresta.co.jp/shop/3919
-family-okadai,ファミリーマート岡大前店,コンビニ,岡山県岡山市北区津島新野1丁目6-32,,,address_verified,https://store.family.co.jp/points/37554
-seven-okadai,セブン-イレブン岡山大学前店,コンビニ,岡山県岡山市北区津島新野1丁目6-40,,,address_verified,https://tabelog.com/okayama/A3301/A330101/33015409/
-post-tsushima,岡山津島郵便局,郵便局,岡山県岡山市北区津島新野1丁目1-31,,,address_verified,https://map.japanpost.jp/smt/search/inf/300154157000/
+fresta-tsushima,フレスタ津島店,スーパー,岡山県岡山市北区津島南1丁目2-7,34.68237031,133.91192121,mapped_coordinates,https://www.fresta.co.jp/shop/3919
+family-okadai,ファミリーマート岡大前店,コンビニ,岡山県岡山市北区津島新野1丁目6-32,34.6838709,133.9195778,mapped_coordinates,https://store.family.co.jp/points/37554
+seven-okadai,セブン-イレブン岡山大学前店,コンビニ,岡山県岡山市北区津島新野1丁目6-40,34.68318958,133.919579,mapped_coordinates,https://tabelog.com/okayama/A3301/A330101/33015409/
+post-tsushima,岡山津島郵便局,郵便局,岡山県岡山市北区津島新野1丁目1-31,34.68224496,133.9196925,mapped_coordinates,https://map.japanpost.jp/smt/search/inf/300154157000/
 kanamitsu-tsushima,金光薬局津島店,調剤薬局,岡山県岡山市北区津島福居1丁目2-17,,,address_verified,https://www.iryou.teikyouseido.mhlw.go.jp/znk-web/juminkanja/S2430/initialize?kikanCd=5330006770&kikanKbn=5&prefCd=33
