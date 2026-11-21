@@ -47,6 +47,16 @@ function dest(deg){let a=deg*rad,d=2000/earth,p=gate.lat*rad,l=gate.lon*rad,q=Ma
 function locate(p){const q=proj(p,zoom),c=proj(center,zoom);return{x:map.clientWidth/2+q.x-c.x,y:map.clientHeight/2+q.y-c.y}}
 async function initialize(){
 try{await loadFacilities()}catch(err){status.textContent="施設台帳の読み込みに失敗："+err.message;document.getElementById("warning").textContent="施設台帳未取得";return}
+for(let attempt=0;attempt<12&&(map.clientWidth<300||map.clientHeight<300);attempt++){
+ status.textContent="A3地図の描画領域を準備中（"+(attempt+1)+"/12）";
+ await new Promise(resolve=>setTimeout(resolve,150));
+}
+if(map.clientWidth<300||map.clientHeight<300){
+ status.textContent="A3地図の表示領域を取得できません。PDF保存せず再読み込みしてください。";
+ document.getElementById("warning").textContent="地図の表示寸法が未確定";
+ return;
+}
+
 const all=Array.from({length:72},(_,i)=>dest(i*5));all.push(station);
 const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(x=>x.y),x0=Math.min(...xx),x1=Math.max(...xx),y0=Math.min(...yy),y1=Math.max(...yy);
 zoom=Math.log2(Math.min((map.clientWidth-90)/(x1-x0),(map.clientHeight-70)/(y1-y0)));
