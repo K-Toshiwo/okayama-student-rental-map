@@ -86,7 +86,38 @@ linear-gradient(105deg,#dff5ff 0%,#fff6f7 53%,#e9fbef 100%)}
 .area-legend span{border:1px solid #e3ebe4;background:#fffdf7}
 .footnote{color:#728087}
 @media print{.page{margin:0;width:390mm;height:277mm;min-height:0;border:1mm solid #d3edce;border-radius:0;padding:0;box-shadow:none;overflow:hidden}.heading{height:33mm}.body-grid{height:183mm}.map{width:253mm;height:172mm}.facility-guide{height:43mm}.area-legend{min-height:6mm}.footer{min-height:6mm}.page,.heading,.advice-card,.key-panel,.facility-guide,.area-legend{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
-.osm-credit{position:absolute;bottom:2px;right:4px;z-index:4;background:#ffffffeb;color:#485e67;font-size:9px;padding:2px 5px;border-radius:3px;pointer-events:none}.map .tile{image-rendering:auto}</style></head><body>
+.osm-credit{position:absolute;bottom:2px;right:4px;z-index:4;background:#ffffffeb;color:#485e67;font-size:9px;padding:2px 5px;border-radius:3px;pointer-events:none}.map .tile{image-rendering:auto}
+/* A3 MAP-FIRST: every descriptive panel floats over one full-bleed OSM basemap.
+   The actual map projection, tile URLs, coordinates, 2km radius and CSV markers are unchanged. */
+.page{position:relative;width:390mm;height:277mm;border:0;border-radius:0;overflow:hidden;background:#f5f9f6;isolation:isolate}
+.body-grid{display:contents}
+.map-shell{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;box-shadow:none;background:#eef5f0;z-index:0;overflow:hidden}
+.map{width:390mm;height:277mm;border:0;overflow:hidden}
+.map-banner{position:absolute;left:111mm;top:34mm;z-index:7;height:10mm;border:1px solid #afe3c9;box-shadow:0 1mm 2mm #294b4030;border-radius:5mm}
+.heading{position:absolute;top:0;left:0;right:0;height:34mm;z-index:12;box-shadow:0 1mm 3mm #375c6240;background:linear-gradient(105deg,#e2f6fffa,#fff4f4f9 55%,#ebf9e3f9)}
+.advice-panel{position:absolute;top:48mm;left:4mm;width:67mm;max-height:166mm;z-index:8;
+background:#fffefaed;box-shadow:0 1mm 3mm #193b412b;overflow:hidden}
+.key-panel{position:absolute;top:54mm;right:4mm;width:63mm;max-height:152mm;z-index:8;
+background:#fbfefff0;box-shadow:0 1mm 3mm #193b412a;overflow:hidden}
+.facility-guide{position:absolute;left:3mm;right:3mm;bottom:15mm;height:42mm;z-index:10;margin:0;
+background:#f8fffaef;box-shadow:0 1mm 3mm #193b4134;overflow:hidden}
+.area-legend{position:absolute;left:4mm;right:4mm;bottom:8mm;z-index:10;min-height:5mm;margin:0;
+background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;display:flex;align-items:center;gap:1.5mm}
+.footer{position:absolute;left:4mm;bottom:3mm;right:4mm;z-index:10;margin:0;padding:0;min-height:4mm;align-items:center}
+.footnote{position:absolute;bottom:0;left:4mm;right:4mm;z-index:10;margin:0;font-size:6pt;background:#ffffffe0}
+.mapnote{top:35mm;left:4mm;z-index:4;background:#fff8daf0}
+.north{top:auto;bottom:60mm;right:7mm;z-index:4;border-radius:3mm;border:1px solid #adcbd0;background:#fffffff1}
+.osm-credit{right:4mm;bottom:2mm;z-index:11;opacity:.95;font-size:8px}
+.map .pin{z-index:3}
+@media print{
+.page{width:390mm;height:277mm;position:relative;border:0;box-shadow:none;overflow:hidden}
+.body-grid{display:contents}
+.map-shell{position:absolute;inset:0;width:100%;height:100%;border:0;overflow:hidden}
+.map{width:390mm;height:277mm}
+.heading{height:34mm;position:absolute}
+.advice-panel,.key-panel,.facility-guide,.area-legend,.footer,.footnote,.map-banner{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+</style></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜道路地図版（比較用）</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
 <div class="heading"><div class="heading-copy"><div class="eyebrow">🌸 OKAYAMA UNIVERSITY · STUDENT LIFE GUIDE</div><h1><span>岡山大学</span> <em>おへや探し生活</em><strong>MAP</strong></h1><p>はじめての一人暮らしを、楽しく・わかりやすく！　津島キャンパス周辺の住まい探しガイド</p></div><div class="student-art" aria-hidden="true"><svg viewBox="0 0 170 100" xmlns="http://www.w3.org/2000/svg">
