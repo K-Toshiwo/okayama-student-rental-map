@@ -86,7 +86,7 @@ linear-gradient(105deg,#dff5ff 0%,#fff6f7 53%,#e9fbef 100%)}
 .area-legend span{border:1px solid #e3ebe4;background:#fffdf7}
 .footnote{color:#728087}
 @media print{.page{margin:0;width:390mm;height:277mm;min-height:0;border:1mm solid #d3edce;border-radius:0;padding:0;box-shadow:none;overflow:hidden}.heading{height:33mm}.body-grid{height:183mm}.map{width:253mm;height:172mm}.facility-guide{height:43mm}.area-legend{min-height:6mm}.footer{min-height:6mm}.page,.heading,.advice-card,.key-panel,.facility-guide,.area-legend{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
-.osm-credit{position:absolute;bottom:2px;right:4px;z-index:4;background:#ffffffeb;color:#485e67;font-size:9px;padding:2px 5px;border-radius:3px;pointer-events:none}.map .tile{image-rendering:auto}
+.osm-credit{position:absolute;bottom:2px;right:4px;z-index:4;background:#ffffffeb;color:#485e67;font-size:9px;padding:2px 5px;border-radius:3px;pointer-events:none}.map .tile{image-rendering:auto;transform:translateZ(0);backface-visibility:hidden}
 /* A3 MAP-FIRST: every descriptive panel floats over one full-bleed OSM basemap.
    The actual map projection, tile URLs, coordinates, 2km radius and CSV markers are unchanged. */
 .page{position:relative;width:390mm;height:277mm;border:0;border-radius:0;overflow:hidden;background:#f5f9f6;isolation:isolate}
@@ -264,7 +264,10 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
  const targetX=(safeLeft+safeRight)/2,targetY=(safeTop+safeBottom)/2;
  center=inv({x:(x0+x1)/2-(targetX-mapWidth()/2)/2**zoom,
              y:(y0+y1)/2-(targetY-mapHeight()/2)/2**zoom},0);
-const z=Math.max(10,Math.min(17,Math.floor(zoom))),scale=2**(zoom-z),c=proj(center,zoom),l=c.x-mapWidth()/2,t=c.y-mapHeight()/2,lz=l/scale,tz=t/scale;
+// Use a tile zoom that is at least as detailed as the actual map zoom.
+ // The previous Math.floor(zoom) enlarged each 256px tile and softened street/rail lines.
+ // Math.ceil(zoom) instead downsamples source pixels, without touching geo coordinates.
+ const z=Math.max(10,Math.min(17,Math.ceil(zoom))),scale=2**(zoom-z),c=proj(center,zoom),l=c.x-mapWidth()/2,t=c.y-mapHeight()/2,lz=l/scale,tz=t/scale;
 const jobs=[];let total=0,loaded=0,failed=0;
 for(let x=Math.floor(lz/256);x<=Math.floor((lz+mapWidth()/scale)/256);x++)for(let y=Math.floor(tz/256);y<=Math.floor((tz+mapHeight()/scale)/256);y++){
 if(x<0||y<0||x>=2**z||y>=2**z)continue;
@@ -323,7 +326,7 @@ for(const group of groups){
  }
  const names=group.places.map(k=>k.name).join("／");el.title=names;el.setAttribute("aria-label",names);pins.appendChild(el);
 }
-Promise.all(jobs).then(()=>{ready=total>0&&failed===0&&loaded===total;if(ready){status.textContent="背景地図：全"+total+"枚、施設台帳："+facilityRows.length+"件（位置座標あり："+facilityRows.filter(f=>f.latitude&&f.longitude).length+"件）。印刷可能です。";button.disabled=false;button.textContent="A3縦のPDFを作成"}else{status.textContent=total===0?"背景地図を取得できませんでした（0枚）。PDF化せず画面を再読み込みしてください。":"地図画像の読み込みに失敗："+failed+"/"+total+"枚。再読み込みしてください。";document.getElementById("warning").textContent="地図画像未取得あり";button.textContent="画像が不足しています";}});
+Promise.all(jobs).then(()=>{ready=total>0&&failed===0&&loaded===total;if(ready){status.textContent="高精細地図：ズーム"+z+"・全"+total+"枚、施設台帳："+facilityRows.length+"件（位置座標あり："+facilityRows.filter(f=>f.latitude&&f.longitude).length+"件）。印刷可能です。";button.disabled=false;button.textContent="A3縦のPDFを作成"}else{status.textContent=total===0?"背景地図を取得できませんでした（0枚）。PDF化せず画面を再読み込みしてください。":"地図画像の読み込みに失敗："+failed+"/"+total+"枚。再読み込みしてください。";document.getElementById("warning").textContent="地図画像未取得あり";button.textContent="画像が不足しています";}});
 }
 button.onclick=()=>{if(!ready)return;window.print()};
 initialize();
