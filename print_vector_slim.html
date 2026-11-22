@@ -343,6 +343,7 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
    // proximity to another railway. If the service is offline, keep the
    // original vector map rather than draw an inaccurate substitute.
    const railQuery='[out:json][timeout:18];(way["railway"="rail"]["highspeed"="yes"](34.635,133.865,34.735,134.015);way["railway"="rail"]["name"~"新幹線"](34.635,133.865,34.735,134.015););out geom;';
+   document.body.dataset.shinkansenOsmWays="loading";
    const railController=new AbortController();
    const railTimeout=setTimeout(()=>railController.abort(),12000);
    fetch("https://overpass.kumi.systems/api/interpreter?data="+encodeURIComponent(railQuery),
@@ -377,9 +378,11 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
            paint:{"line-color":"#ffffff","line-width":1.05,
              "line-dasharray":[5,5]}},firstSymbol);
          document.body.dataset.shinkansenOsmWays=String(features.length);
+         if(ready)status.textContent="ベクター地図・新幹線線路データ描画完了。施設台帳："+facilityRows.length+"件。A3縦で印刷可能です。";
        }
      }).catch(err=>{
        document.body.dataset.shinkansenOsmWays="unavailable";
+       if(ready)status.textContent="在来線を表示中。新幹線の専用線路データは取得できませんでした（再読込で再試行可能）。";
        console.warn("OSM Shinkansen geometry unavailable; retaining vector railway",err);
      }).finally(()=>clearTimeout(railTimeout));
   });
@@ -445,7 +448,11 @@ for(const group of groups){
 }
 vectorMap.once("idle",()=>{
  ready=vectorMap.areTilesLoaded();
- if(ready){status.textContent="ベクター地図の描画完了。施設台帳："+facilityRows.length+"件。A3縦で印刷可能です。";
+ if(ready){status.textContent=document.body.dataset.shinkansenOsmWays==="loading"
+   ?"背景地図の描画完了。新幹線の線路データを確認中…"
+   :document.body.dataset.shinkansenOsmWays==="unavailable"
+   ?"在来線を表示中。新幹線の専用線路データは取得できませんでした。"
+   :"ベクター地図の描画完了。施設台帳："+facilityRows.length+"件。A3縦で印刷可能です。";
    button.disabled=false;button.textContent="A3縦のPDFを作成";
  }else{status.textContent="ベクター地図の取得が完了していません。";document.getElementById("warning").textContent="未取得地図あり";}
 });
