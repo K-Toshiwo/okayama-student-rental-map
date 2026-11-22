@@ -193,7 +193,7 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 <div class="advice-card advice-purple"><b>🚉 岡山駅北側</b><p>岡山駅へのアクセスも<br>あわせて検討！</p><small>通学手段・所要時間を確認</small></div>
 <div class="advice-note">📌 エリアは比較のための目安です。実際のお部屋探しでは通学経路を確認しましょう。</div><div class="side-houses" aria-hidden="true">🏡　🌳　🏠</div></aside>
 <div class="map-shell"><div class="map-banner"><span class="banner-title">🗺️ 津島キャンパス周辺</span><span class="banner-bubble">大学の正門から <b>直線2km</b> の目安</span></div>
-<div id="map" class="map"><div id="tiles" class="tiles" aria-label="ベクター背景地図"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km・岡山駅まで表示</div><div class="rail-reference-key" aria-label="鉄道線の色分け"><b>鉄道路線</b><span><i class="rail-sample shinkansen"></i>新幹線（青緑・白破線）</span><span><i class="rail-sample local"></i>在来線（グレー）</span></div><div class="osm-credit">© OpenStreetMap contributors · © OpenMapTiles</div><div class="north">↑ 北</div></div></div>
+<div id="map" class="map"><div id="tiles" class="tiles" aria-label="ベクター背景地図"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km・岡山駅まで表示</div><div class="osm-credit">© OpenStreetMap contributors · © OpenMapTiles</div><div class="north">↑ 北</div></div></div>
 <aside class="key-panel"><div class="panel-title">✨ 生活施設の<br>アイコン凡例</div>
 <div class="key-row"><span>🛒</span><b>スーパー</b></div>
 <div class="key-row"><span>🏪</span><b>コンビニ</b></div>
@@ -310,53 +310,38 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
      l["source-layer"]==="transportation" &&
      /rail|train/.test(l.id.toLowerCase())) ||
      layers.find(l=>l.type==="line" && l["source-layer"]==="transportation");
-   // Directly restyle the rail line layers that the basemap already renders.
-   // This is independent of Overpass and does not rely on high-speed tagging.
-   let restyledRailLayers=0;
-   for(const layer of layers){
-     if(layer.type!=="line")continue;
-     const id=layer.id.toLowerCase();
-     const sl=(layer["source-layer"]||"").toLowerCase();
-     if(!/(rail|railway|train)/.test(id))continue;
-     if(/station|platform|label|subway|tram/.test(id))continue;
-     try{
-       vectorMap.setPaintProperty(layer.id,"line-color","#818e98");
-       vectorMap.setPaintProperty(layer.id,"line-width",2.6);
-       vectorMap.setPaintProperty(layer.id,"line-opacity",.96);
-       restyledRailLayers++;
-     }catch(err){console.warn("Rail restyle failed:",layer.id,err)}
-   }
-   document.body.dataset.restyledRailLayers=String(restyledRailLayers);
-   document.body.dataset.railSourceLayer=railBase?.["source-layer"]||"missing";
-   if(railBase && railBase.source){
-     const isRail=["any",["==",["get","class"],"rail"],
-       ["==",["get","class"],"railway"],["==",["get","subclass"],"rail"]];
-     const isHighSpeed=["any",
+   // Direct overlay on the OpenFreeMap transportation vector layer:
+   // draw ALL conventional rail regardless of the provider's style layer IDs.
+   // The previous implementation searched the style layer name, so it could
+   // modify zero rail layers while reporting successful deployment.
+   const railwaySource=layers.find(l=>l["source-layer"]==="transportation"&&l.source);
+   const firstSymbol=layers.find(l=>l.type==="symbol")?.id;
+   if(railwaySource){
+     const railwayFilter=["any",
+       ["==",["get","class"],"rail"],
+       ["==",["get","class"],"railway"],
+       ["==",["get","subclass"],"rail"]];
+     const highSpeedFilter=["any",
        ["==",["get","highspeed"],"yes"],
        ["==",["get","high_speed"],"yes"],
        ["in","新幹線",["coalesce",["get","name"],""]],
        ["in","Shinkansen",["coalesce",["get","name:en"],""]]];
-     const firstSymbol=layers.find(l=>l.type==="symbol")?.id;
-     const railLayers=[
-       {id:"student-rail-halo",filter:isRail,color:"#ffffff",width:3.35},
-       {id:"student-rail-local",filter:isRail,color:"#92999e",width:1.7},
-       {id:"student-rail-highspeed",filter:["all",isRail,isHighSpeed],
-        color:"#167f8b",width:3.6},
-       {id:"student-rail-highspeed-dash",filter:["all",isRail,isHighSpeed],
-        color:"#ffffff",width:1.05,dash:[5,5]}
-     ];
-     let railCount=0;
-     for(const rail of railLayers){
-       try{
-         const paint={"line-color":rail.color,"line-width":rail.width,"line-opacity":.92};
-         if(rail.dash)paint["line-dasharray"]=rail.dash;
-         vectorMap.addLayer({id:rail.id,type:"line",source:railBase.source,
-           "source-layer":railBase["source-layer"],filter:rail.filter,
-           layout:{"line-cap":"butt","line-join":"round"},paint},firstSymbol);
-         railCount++;
-       }catch(err){console.warn("Rail layer skipped",rail.id,err)}
-     }
-     document.body.dataset.railStyleLayers=String(railCount);
+     const add=(id,filter,color,width,dash)=>{
+       const paint={"line-color":color,"line-width":width,"line-opacity":.98};
+       if(dash)paint["line-dasharray"]=dash;
+       vectorMap.addLayer({id,type:"line",source:railwaySource.source,
+         "source-layer":"transportation",filter,
+         layout:{"line-cap":"butt","line-join":"round"},paint},firstSymbol);
+     };
+     add("student-google-rail-white",railwayFilter,"#ffffff",5.0);
+     add("student-google-rail-gray",railwayFilter,"#929a9f",2.6);
+     add("student-google-rail-shinkansen",["all",railwayFilter,highSpeedFilter],
+       "#138796",4.1);
+     add("student-google-rail-shinkansen-dashes",["all",railwayFilter,highSpeedFilter],
+       "#ffffff",1.25,[4,4]);
+     document.body.dataset.railStyleLayers="4";
+   }else{
+     document.body.dataset.railStyleLayers="missing-transportation-source";
    }
    // Vector tiles may omit high-speed tags. Load the verified OSM track
    // geometry separately so that the Sanyo Shinkansen is not guessed from
