@@ -362,16 +362,36 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
            :feature.geometry?.type==="MultiLineString"?feature.geometry.coordinates:[];
          for(const line of lines){
            if(line.length<2)continue;
-           // Keep complete exact railway segments within a narrow corridor.
-           // Sampling source vertices prevents a separate invented line.
-           const samples=[line[0],line[Math.floor(line.length/2)],line[line.length-1]];
-           const nearby=samples.filter(p=>distanceToReference(p)<115).length;
-           if(nearby<2)continue;
-           const key=JSON.stringify(line);
-           if(seen.has(key))continue;
-           seen.add(key);
-           found.push({type:"Feature",properties:{},geometry:{
-             type:"LineString",coordinates:line}});
+           // Prevent adjacent JR tracks from inheriting Shinkansen styling:
+           // the old 115 m tolerance colored complete nearby railway ways.
+           // Keep only source-coordinate segments in the narrow main corridor.
+           // Split on divergence; never create geometry between two ways.
+           const taggedHighSpeed=props.highspeed==="yes" ||
+             props.high_speed==="yes" ||
+             /新幹線|shinkansen/i.test(String(props.name||"")+" "+String(props.ref||""));
+           const limit=taggedHighSpeed?75:42;
+           let run=[];
+           const emit=()=>{
+             if(run.length<2){run=[];return}
+             const key=JSON.stringify(run);
+             if(!seen.has(key)){
+               seen.add(key);
+               found.push({type:"Feature",properties:{},
+                 geometry:{type:"LineString",coordinates:run}});
+             }
+             run=[];
+           };
+           for(let i=0;i<line.length-1;i++){
+             const a=line[i],b=line[i+1];
+             const midpoint=[(a[0]+b[0])/2,(a[1]+b[1])/2];
+             const onCorridor=distanceToReference(a)<=limit &&
+               distanceToReference(b)<=limit &&
+               distanceToReference(midpoint)<=limit;
+             if(!onCorridor){emit();continue}
+             if(run.length===0)run.push(a);
+             run.push(b);
+           }
+           emit();
          }
        }
        if(!found.length){
