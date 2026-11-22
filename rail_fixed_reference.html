@@ -194,6 +194,14 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
  box-shadow:0 1px 3px #0002;padding:3px 5px;white-space:nowrap;
  font-size:10px;font-weight:800;line-height:1.15;z-index:8;
  pointer-events:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+/* Official campus-building labels: smaller title plus official block code;
+   fine dotted leader points to the approximate building cluster. */
+.map .faculty-area-label.faculty-building{display:flex;flex-direction:column;
+ align-items:center;gap:2px;max-width:190px;text-align:center;
+ padding:4px 6px;background:#fffef7;border-color:#7da99a;
+ font-size:10px;z-index:9}
+.map .faculty-area-label.faculty-building small{color:#6e776f;
+ font-weight:600;font-size:8px;line-height:1}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
@@ -572,26 +580,54 @@ document.body.dataset.townLabels=String(townCount);
 // Faculty-area labels based on Okayama University's Tsushima campus layout.
 // These are broad faculty areas, NOT exact building-center or doorway markers.
 // Humanities, Law and Economics share the same building group.
-const facultyAreas=[
- {name:"文学部・法学部・経済学部",lat:34.6907,lon:133.9178},
- {name:"理学部",lat:34.6915,lon:133.9212},
- {name:"工学部",lat:34.689982,lon:133.923414},
- {name:"教育学部",lat:34.6874,lon:133.9282},
- {name:"薬学部",lat:34.6856,lon:133.9141},
- {name:"農学部",lat:34.6848,lon:133.9169}
+// Campus faculty/building assignments checked against the university's
+// official Tsushima all-campus and north/west campus map PDFs.
+// Anchors are in the identified building clusters, not survey-grade
+// individual building centroids. Short leaders distinguish anchors from text.
+const facultyBuildings=[
+ {name:"文法経1号館（文学部）",code:"N3",lat:34.69082,lon:133.91712,dx:-89,dy:-42},
+ {name:"文法経2号館（法・経）",code:"N2",lat:34.69057,lon:133.91803,dx:-91,dy:21},
+ {name:"理学部本館",code:"N20",lat:34.69143,lon:133.92082,dx:28,dy:-33},
+ {name:"工学部棟",code:"N30–N49",lat:34.69040,lon:133.92385,dx:52,dy:-31},
+ {name:"教育学部本館",code:"N61",lat:34.68748,lon:133.92763,dx:77,dy:22},
+ {name:"薬学部1・2号館",code:"W7",lat:34.68572,lon:133.91398,dx:-72,dy:-22},
+ {name:"農学部I～III号館",code:"W4–W6",lat:34.68483,lon:133.91657,dx:-54,dy:26}
 ];
 let facultyCount=0;
-for(const b of facultyAreas){
- const p=locate(b);
- if(p.x<10||p.y<10||p.x>mapWidth()-10||p.y>mapHeight()-10)continue;
+const svgNS="http://www.w3.org/2000/svg";
+for(const b of facultyBuildings){
+ const a=locate(b),tx=a.x+b.dx,ty=a.y+b.dy;
+ if(a.x<5||a.y<5||a.x>mapWidth()-5||a.y>mapHeight()-5)continue;
+ const x=Math.max(68,Math.min(mapWidth()-68,tx));
+ const y=Math.max(20,Math.min(mapHeight()-20,ty));
+ const line=document.createElementNS(svgNS,"path");
+ // The leader uses the campus-map-derived area anchor, not a made-up rail/road point.
+ line.setAttribute("d","M"+a.x.toFixed(1)+","+a.y.toFixed(1)+
+   " L"+x.toFixed(1)+","+y.toFixed(1));
+ line.setAttribute("fill","none");
+ line.setAttribute("stroke","#718d83");
+ line.setAttribute("stroke-width","1.15");
+ line.setAttribute("stroke-dasharray","3 2");
+ line.setAttribute("stroke-linecap","round");
+ overlay.appendChild(line);
+ const dot=document.createElementNS(svgNS,"circle");
+ dot.setAttribute("cx",a.x.toFixed(1));dot.setAttribute("cy",a.y.toFixed(1));
+ dot.setAttribute("r","2.5");dot.setAttribute("fill","#497d6a");
+ dot.setAttribute("stroke","#fff");dot.setAttribute("stroke-width","1");
+ overlay.appendChild(dot);
  const label=document.createElement("div");
- label.className="faculty-area-label";
- label.textContent=b.name;label.title=b.name+"（岡山大学公式構内図に基づく学部エリアの目安）";
- label.style.left=p.x+"px";label.style.top=p.y+"px";
- label.setAttribute("aria-label",b.name+" エリア");
+ label.className="faculty-area-label faculty-building";
+ const name=document.createElement("span");name.textContent=b.name;
+ const code=document.createElement("small");code.textContent=b.code;
+ label.appendChild(name);label.appendChild(code);
+ label.title=b.name+"（岡山大学公式構内図 "+b.code+"／位置は建物群の目安）";
+ label.style.left=x+"px";label.style.top=y+"px";
+ label.setAttribute("aria-label",b.name+" "+b.code);
  pins.appendChild(label);facultyCount++;
 }
 document.body.dataset.facultyAreaLabels=String(facultyCount);
+document.body.dataset.facultySource="okayama-university-official-tsushima-map";
+
 
 vectorMap.once("idle",()=>{
  ready=vectorMap.areTilesLoaded();
