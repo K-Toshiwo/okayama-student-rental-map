@@ -181,6 +181,13 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
  padding:4px 7px;white-space:nowrap;font-family:inherit;font-size:12px;
  line-height:1.15;font-weight:800;z-index:15;pointer-events:none;
  box-shadow:0 1px 4px #1d35433d;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+/* Town names like Google Maps: dark text with a light halo, no chome. */
+.map .town-name-label{position:absolute;transform:translate(-50%,-50%);
+ pointer-events:none;z-index:4;white-space:nowrap;line-height:1.25;
+ font-family:inherit;font-size:12px;font-weight:700;color:#59646a;
+ text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff,1px -1px 0 #fff,
+ -1px 1px 0 #fff,0 0 4px #fffffff5;
+ print-color-adjust:exact;-webkit-print-color-adjust:exact}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
@@ -474,6 +481,45 @@ for(const s of textStations){
  pins.appendChild(label);labelCount++;
 }
 document.body.dataset.stationLabels=String(labelCount);
+// Town labels: source-positioned OpenStreetMap administrative-area centres
+// (Nominatim, checked against Okayama city's official town-name inventory).
+// Chome subdivisions are consolidated to ONE town-name label.
+const townLabels=[
+ ["津島南",34.6831801,133.9115772],["津島新野",34.6831022,133.9169459],
+ ["津島中",34.6869325,133.9199878],["津島福居",34.6902164,133.9144836],
+ ["津島東",34.6911050,133.9264982],["津島西坂",34.6862323,133.9064514],
+ ["津島京町",34.6830830,133.9011365],["津島本町",34.6884267,133.9085947],
+ ["津島笹が瀬",34.6871764,133.9018831],["津島桑の木町",34.6862659,133.9127300],
+ ["伊島北町",34.6807896,133.9044667],["学南町",34.6828955,133.9216337],
+ ["北方",34.6861395,133.9301257],["法界院",34.6936524,133.9344819],
+ ["半田町",34.6964348,133.9330295],["南方",34.6774182,133.9245240],
+ ["大和町",34.6795055,133.9264707],["中井町",34.6820235,133.9294057],
+ ["三野",34.6884145,133.9369027],["伊島町",34.6768177,133.9107332],
+ ["伊福町",34.6733145,133.9158377],["清心町",34.6737296,133.9185196],
+ ["絵図町",34.6758472,133.9193994],["いずみ町",34.6773647,133.9147645],
+ ["京山",34.6751025,133.9058677],["富町",34.6664411,133.9090139]
+];
+const occupied=[];
+for(const label of pins.querySelectorAll(".station-text-label")){
+ const cx=parseFloat(label.style.left),cy=parseFloat(label.style.top);
+ const w=Math.max(65,label.textContent.length*13+20);
+ occupied.push({x:cx,y:cy,w,h:26});
+}
+let townCount=0;
+for(const [name,lat,lon] of townLabels){
+ const p=locate({lat,lon});
+ if(p.x<40||p.y<25||p.x>mapWidth()-40||p.y>mapHeight()-25)continue;
+ const w=name.length*13+12,h=18;
+ if(occupied.some(o=>Math.abs(p.x-o.x)<(w+o.w)/2+8&&Math.abs(p.y-o.y)<(h+o.h)/2+8))continue;
+ const el=document.createElement("div");
+ el.className="town-name-label";el.textContent=name;
+ el.style.left=p.x+"px";el.style.top=p.y+"px";
+ el.title=name;el.setAttribute("aria-label","町名："+name);
+ pins.appendChild(el);
+ occupied.push({x:p.x,y:p.y,w,h});
+ townCount++;
+}
+document.body.dataset.townLabels=String(townCount);
 vectorMap.once("idle",()=>{
  ready=vectorMap.areTilesLoaded();
  if(ready){status.textContent=document.body.dataset.shinkansenOsmWays==="loading"
