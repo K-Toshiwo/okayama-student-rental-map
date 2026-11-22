@@ -306,8 +306,10 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
    // Railway appearance follows the supplied Google Maps reference:
    // muted gray conventional tracks, teal Shinkansen with white dashed core.
    const railBase=layers.find(l=>l.type==="line" &&
-     /^(transportation|railway)$/.test(l["source-layer"]||"") &&
-     /rail|train|transportation/.test(l.id.toLowerCase()));
+     l["source-layer"]==="transportation" &&
+     /rail|train/.test(l.id.toLowerCase())) ||
+     layers.find(l=>l.type==="line" && l["source-layer"]==="transportation");
+   document.body.dataset.railSourceLayer=railBase?.["source-layer"]||"missing";
    if(railBase && railBase.source){
      const isRail=["any",["==",["get","class"],"rail"],
        ["==",["get","class"],"railway"],["==",["get","subclass"],"rail"]];
@@ -344,13 +346,34 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
    // original vector map rather than draw an inaccurate substitute.
    const railQuery='[out:json][timeout:18];(way["railway"="rail"]["highspeed"="yes"](34.635,133.865,34.735,134.015);way["railway"="rail"]["name"~"新幹線"](34.635,133.865,34.735,134.015););out geom;';
    document.body.dataset.shinkansenOsmWays="loading";
-   const railController=new AbortController();
-   const railTimeout=setTimeout(()=>railController.abort(),12000);
-   fetch("https://overpass.kumi.systems/api/interpreter?data="+encodeURIComponent(railQuery),
-     {signal:railController.signal}).then(resp=>{
-       if(!resp.ok)throw Error("OSM railway geometry: "+resp.status);
-       return resp.json();
-     }).then(data=>{
+   // The old single-server request failed silently and left the map unchanged.
+   // Use two independent, public read-only Overpass endpoints with bounded timeouts.
+   // Validate the actual ways before declaring a result; never fabricate railway geometry.
+   async function fetchRailGeometry(){
+     const endpoints=[
+       "https://overpass.private.coffee/api/interpreter",
+       "https://overpass-api.de/api/interpreter"
+     ];
+     for(const endpoint of endpoints){
+       const controller=new AbortController();
+       const timer=setTimeout(()=>controller.abort(),8500);
+       try{
+         const response=await fetch(endpoint+"?data="+encodeURIComponent(railQuery),
+           {signal:controller.signal,cache:"no-store"});
+         if(!response.ok)throw Error("HTTP "+response.status);
+         const result=await response.json();
+         if(!Array.isArray(result.elements) || !result.elements.some(
+           item=>item.type==="way"&&Array.isArray(item.geometry)&&item.geometry.length>1))
+           throw Error("No matching high-speed rail geometry");
+         document.body.dataset.shinkansenSource=endpoint;
+         return result;
+       }catch(error){
+         console.warn("Railway geometry endpoint failed:",endpoint,error);
+       }finally{clearTimeout(timer)}
+     }
+     throw Error("All public OSM geometry endpoints unavailable");
+   }
+   fetchRailGeometry().then(data=>{
        const seen=new Set(),features=[];
        for(const way of data.elements||[]){
          if(way.type!=="way"||!Array.isArray(way.geometry)||seen.has(way.id))continue;
@@ -384,7 +407,7 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
        document.body.dataset.shinkansenOsmWays="unavailable";
        if(ready)status.textContent="在来線を表示中。新幹線の専用線路データは取得できませんでした（再読込で再試行可能）。";
        console.warn("OSM Shinkansen geometry unavailable; retaining vector railway",err);
-     }).finally(()=>clearTimeout(railTimeout));
+     });
   });
   vectorMap.on("error",event=>{
    if(!ready){status.textContent="ベクター地図の読み込みに問題があります。";
