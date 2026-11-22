@@ -202,7 +202,7 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 <div class="key-row"><span>🚉</span><b>駅</b></div>
 <div class="key-note">💡 同じ建物に複数店舗がある場所は、アイコンをまとめています。</div><div class="key-petal" aria-hidden="true">🌸</div></aside>
 </div>
-<div class="facility-guide"><div class="facility-guide-title">🛍️ 暮らしに役立つ！周辺の生活施設 <span>※店舗名・所在地は下記一覧で確認できます</span></div><div id="facility-items" class="facility-items"></div></div><div class="area-legend"><b>住まい探しのエリア目安：</b><span><i style="background:#4dc3bf"></i>津島周辺</span><span><i style="background:#ffb45d"></i>北方・法界院周辺</span><span><i style="background:#ac95e8"></i>岡山駅北側</span><span>※範囲は説明用の概略。賃貸物件の分布・家賃・行政区域を示すものではありません。</span></div>
+<div class="facility-guide"><div class="facility-guide-title">🛍️ 暮らしに役立つ！周辺の生活施設 <span>※店舗名・所在地は下記一覧で確認できます</span></div><div id="facility-items" class="facility-items"></div></div><div class="area-legend"><b>住まい探しのエリア目安：</b><span><i style="background:#4dc3bf"></i>津島周辺</span><span><i style="background:#ffb45d"></i>北方・法界院周辺</span><span><i style="background:#ac95e8"></i>岡山駅北側</span><span>🚄 新幹線：<b style="color:#4c9e76">緑系</b> ／ 🚃 在来線：<b style="color:#687077">グレー系</b></span><span>※範囲は説明用の概略。賃貸物件の分布・家賃・行政区域を示すものではありません。</span></div>
 <div class="footer" id="legend"><span>🎓 岡山大学正門</span><span>🚉 法界院駅・岡山駅</span><span>地図：© OpenStreetMap contributors / © OpenMapTiles</span></div>
 <div class="footnote">※現在は配布前の確認用原版です。色分けは住まい探しの説明用で、物件の分布・家賃・行政上の境界ではありません。施設の位置・掲載条件は配布前に再確認してください。 <span id="warning"></span></div>
 </article>
@@ -303,6 +303,51 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
     catch(err){console.warn("road width layer skipped:",layer.id,err)}
    }
    document.body.dataset.slimmedRoadLayers=String(changed);
+   // Rail visibility: subtly stronger charcoal local rail and green high-speed lines.
+   // Derive geometry exclusively from the vector tile railway features; never
+   // approximate alignment using a manually drawn line.
+   const railBase=layers.find(l=>l.type==="line" &&
+      /^(transportation|railway)$/.test(l["source-layer"]||"") &&
+      /rail|train|transportation/.test(l.id.toLowerCase()));
+   if(railBase && railBase.source){
+     const source=railBase.source, sourceLayer=railBase["source-layer"];
+     const isRail=["any",["==",["get","class"],"rail"],
+       ["==",["get","class"],"railway"],
+       ["==",["get","subclass"],"rail"]];
+     const isHighSpeed=["any",
+       ["==",["get","highspeed"],"yes"],
+       ["==",["get","high_speed"],"yes"],
+       ["==",["get","service"],"high_speed"],
+       ["==",["get","subclass"],"high_speed"],
+       ["==",["get","subclass"],"highspeed"],
+       ["in","新幹線",["coalesce",["get","name"],""]],
+       ["in","Shinkansen",["coalesce",["get","name:en"],""]]];
+     const firstSymbol=layers.find(l=>l.type==="symbol")?.id;
+     const railLayers=[
+       {id:"student-rail-outline",color:"#ffffff",width:2.75,filter:isRail},
+       {id:"student-rail-local",color:"#687077",width:1.5,filter:isRail},
+       {id:"student-rail-highspeed-outline",color:"#ffffff",width:3.0,
+        filter:["all",isRail,isHighSpeed]},
+       {id:"student-rail-highspeed",color:"#4c9e76",width:1.8,
+        filter:["all",isRail,isHighSpeed]}
+     ];
+     let railCount=0;
+     for(const rail of railLayers){
+       if(vectorMap.getLayer(rail.id))continue;
+       try{
+         vectorMap.addLayer({id:rail.id,type:"line",source,
+           "source-layer":sourceLayer,filter:rail.filter,
+           layout:{"line-cap":"round","line-join":"round"},
+           paint:{"line-color":rail.color,"line-width":rail.width,
+             "line-opacity":0.83}},firstSymbol);
+         railCount++;
+       }catch(e){console.warn("Rail style skipped:",rail.id,e)}
+     }
+     document.body.dataset.railStyleLayers=String(railCount);
+   }else{
+     document.body.dataset.railStyleLayers="0";
+     console.warn("Rail source layer not detected; original railway drawing retained.");
+   }
   });
   vectorMap.on("error",event=>{
    if(!ready){status.textContent="ベクター地図の読み込みに問題があります。";
