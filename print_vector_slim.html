@@ -385,8 +385,9 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
          const lines=feature.geometry?.type==="LineString"
            ?[feature.geometry.coordinates]
            :feature.geometry?.type==="MultiLineString"?feature.geometry.coordinates:[];
-         for(const line of lines){
+         for(const [lineIndex,line] of lines.entries()){
            if(line.length<2)continue;
+           const sourceKey=String(feature.id??JSON.stringify(line))+"|"+lineIndex;
            for(let i=1;i<line.length;i++){
              const a=line[i-1],b=line[i],middle=[(a[0]+b[0])/2,(a[1]+b[1])/2];
              const q=pointOnRoute(middle);
@@ -398,7 +399,7 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
              seen.add(key);
              // Tagged high-speed lines have priority; otherwise use only
              // the nearest exact source segment, not multiple adjacent rails.
-             candidates.push({a,b,along:q.along,score:q.distance-(tagged?35:0)});
+             candidates.push({a,b,along:q.along,score:q.distance-(tagged?35:0),sourceKey});
            }
          }
        }
@@ -408,8 +409,12 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
          const old=byBucket.get(bucket);
          if(!old||cand.score<old.score)byBucket.set(bucket,cand);
        }
-       const selected=new Set([...byBucket.values()]);
-       for(const cand of selected){
+       // Retain full connected source ways for the winning track in each
+       // interval, rather than painting one isolated short segment.
+       const winnerByBucket=new Map([...byBucket].map(([k,v])=>[k,v.sourceKey]));
+       for(const cand of candidates){
+         const bucket=Math.floor(cand.along/bucketSize);
+         if(winnerByBucket.get(bucket)!==cand.sourceKey)continue;
          found.push({type:"Feature",properties:{},
            geometry:{type:"LineString",coordinates:[cand.a,cand.b]}});
        }
