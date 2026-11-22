@@ -275,24 +275,14 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
  // The dataset has real measured geometry and an explicit line name; no route is guessed.
  let shinkansenLoad=Promise.resolve(false);
  async function loadShinkansenGeometry(vmap,styleLayers){
-   const url="https://cdn.jsdelivr.net/gh/antfu/mlit-json@8e19627dc5db492ea4a3d9fd8501d5ccb862ef28/data/sections.json";
+   const url="./data/sanyo_shinkansen_okayama.geojson";
    try{
-     const response=await fetch(url,{cache:"force-cache"});
-     if(!response.ok)throw new Error("鉄道データ HTTP "+response.status);
-     const sections=await response.json();
-     if(!Array.isArray(sections))throw new Error("鉄道データ形式が不正です");
-     const bbox={west:133.86,east:133.98,south:34.63,north:34.73};
-     const inside=coords=>coords.some(p=>Array.isArray(p)&&Number.isFinite(p[0])&&Number.isFinite(p[1])&&p[0]>=bbox.west&&p[0]<=bbox.east&&p[1]>=bbox.south&&p[1]<=bbox.north);
-     const features=[];
-     for(const item of sections){
-       if(item.line!=="山陽新幹線"||!Array.isArray(item.coordinates))continue;
-       const isMulti=Array.isArray(item.coordinates[0]?.[0]);
-       const paths=isMulti?item.coordinates:[item.coordinates];
-       for(const points of paths){
-         if(points.length<2||!inside(points))continue;
-         features.push({type:"Feature",properties:{line:"山陽新幹線",source:"MLIT N02 2024"},geometry:{type:"LineString",coordinates:points}});
-       }
-     }
+     const response=await fetch(url,{cache:"no-store"});
+     if(!response.ok)throw new Error("新幹線の線形データ HTTP "+response.status);
+     const geojson=await response.json();
+     if(geojson.type!=="FeatureCollection"||!Array.isArray(geojson.features))
+       throw new Error("新幹線のGeoJSON形式が不正です");
+     const features=geojson.features.filter(f=>f.type==="Feature"&&f.properties?.name==="山陽新幹線"&&f.geometry?.type==="LineString"&&Array.isArray(f.geometry.coordinates)&&f.geometry.coordinates.length>=2);
      if(!features.length)throw new Error("対象範囲の山陽新幹線線形が見つかりません");
      const firstSymbol=styleLayers.find(l=>l.type==="symbol");
      if(!vmap.getSource("studentmap_shinkansen_mlit"))
@@ -304,7 +294,7 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
      for(const item of lines){
        if(!vmap.getLayer(item.id))vmap.addLayer({id:item.id,type:"line",source:"studentmap_shinkansen_mlit",layout:{"line-cap":"round","line-join":"round"},paint:item.paint},firstSymbol?.id);
      }
-     document.body.dataset.shinkansenSource="MLIT_N02_2024";
+     document.body.dataset.shinkansenSource="LOCAL_MLIT_N02_2024";
      document.body.dataset.shinkansenFeatureCount=String(features.length);
      return true;
    }catch(err){
