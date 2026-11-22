@@ -188,6 +188,12 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
  text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff,1px -1px 0 #fff,
  -1px 1px 0 #fff,0 0 4px #fffffff5;
  print-color-adjust:exact;-webkit-print-color-adjust:exact}
+/* Faculty labels: distinguish approximate areas from exact station markers. */
+.map .faculty-area-label{position:absolute;transform:translate(-50%,-50%);
+ background:#fffdf4;color:#284e43;border:1px solid #94b5a9;border-radius:3px;
+ box-shadow:0 1px 3px #0002;padding:3px 5px;white-space:nowrap;
+ font-size:10px;font-weight:800;line-height:1.15;z-index:8;
+ pointer-events:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
@@ -548,6 +554,9 @@ for(const label of pins.querySelectorAll(".station-text-label")){
 let townCount=0;
 for(const [name,lat,lon] of townLabels){
  const p=locate({lat,lon});
+ // Move only the Tsushimanaka caption northeast (on-screen x+ / y-).
+ // Town boundaries and original source coordinates remain unchanged.
+ if(name==="津島中"){p.x+=68;p.y-=44;}
  if(p.x<40||p.y<25||p.x>mapWidth()-40||p.y>mapHeight()-25)continue;
  const w=name.length*13+12,h=18;
  if(occupied.some(o=>Math.abs(p.x-o.x)<(w+o.w)/2+8&&Math.abs(p.y-o.y)<(h+o.h)/2+8))continue;
@@ -560,6 +569,30 @@ for(const [name,lat,lon] of townLabels){
  townCount++;
 }
 document.body.dataset.townLabels=String(townCount);
+// Faculty-area labels based on Okayama University's Tsushima campus layout.
+// These are broad faculty areas, NOT exact building-center or doorway markers.
+// Humanities, Law and Economics share the same building group.
+const facultyAreas=[
+ {name:"文学部・法学部・経済学部",lat:34.6907,lon:133.9178},
+ {name:"理学部",lat:34.6915,lon:133.9212},
+ {name:"工学部",lat:34.689982,lon:133.923414},
+ {name:"教育学部",lat:34.6874,lon:133.9282},
+ {name:"薬学部",lat:34.6856,lon:133.9141},
+ {name:"農学部",lat:34.6848,lon:133.9169}
+];
+let facultyCount=0;
+for(const b of facultyAreas){
+ const p=locate(b);
+ if(p.x<10||p.y<10||p.x>mapWidth()-10||p.y>mapHeight()-10)continue;
+ const label=document.createElement("div");
+ label.className="faculty-area-label";
+ label.textContent=b.name;label.title=b.name+"（岡山大学公式構内図に基づく学部エリアの目安）";
+ label.style.left=p.x+"px";label.style.top=p.y+"px";
+ label.setAttribute("aria-label",b.name+" エリア");
+ pins.appendChild(label);facultyCount++;
+}
+document.body.dataset.facultyAreaLabels=String(facultyCount);
+
 vectorMap.once("idle",()=>{
  ready=vectorMap.areTilesLoaded();
  if(ready){status.textContent=document.body.dataset.shinkansenOsmWays==="loading"
