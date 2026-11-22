@@ -193,7 +193,7 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 <div class="advice-card advice-purple"><b>🚉 岡山駅北側</b><p>岡山駅へのアクセスも<br>あわせて検討！</p><small>通学手段・所要時間を確認</small></div>
 <div class="advice-note">📌 エリアは比較のための目安です。実際のお部屋探しでは通学経路を確認しましょう。</div><div class="side-houses" aria-hidden="true">🏡　🌳　🏠</div></aside>
 <div class="map-shell"><div class="map-banner"><span class="banner-title">🗺️ 津島キャンパス周辺</span><span class="banner-bubble">大学の正門から <b>直線2km</b> の目安</span></div>
-<div id="map" class="map"><div id="tiles" class="tiles" aria-label="ベクター背景地図"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km・岡山駅まで表示</div><div class="osm-credit">© OpenStreetMap contributors · © OpenMapTiles</div><div class="north">↑ 北</div></div></div>
+<div id="map" class="map"><div id="tiles" class="tiles" aria-label="ベクター背景地図"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km・岡山駅まで表示</div><div class="osm-credit">© OpenStreetMap contributors · © OpenMapTiles · 鉄道：国土数値情報2024</div><div class="north">↑ 北</div></div></div>
 <aside class="key-panel"><div class="panel-title">✨ 生活施設の<br>アイコン凡例</div>
 <div class="key-row"><span>🛒</span><b>スーパー</b></div>
 <div class="key-row"><span>🏪</span><b>コンビニ</b></div>
@@ -304,149 +304,44 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
     catch(err){console.warn("road width layer skipped:",layer.id,err)}
    }
    document.body.dataset.slimmedRoadLayers=String(changed);
-   // Exact overlay: ONLY geometries read from the same source tiles that draw
-   // the original railway. The former hand-traced line is never rendered.
-   // Reference coordinates below are used solely for choosing source segments.
-   const referenceCorridor=[
-    [133.901639,34.658885],[133.906481,34.660044],
-    [133.910840,34.661731],[133.914230,34.663136],
-    [133.917377,34.665104],[133.919702,34.667247],
-    [133.920555,34.669637],[133.921359,34.672272],
-    [133.922005,34.675013],[133.923107,34.676945],
-    [133.924805,34.678316],[133.927274,34.679826],
-    [133.929857,34.680259],[133.935006,34.680656],
-    [133.944222,34.681359],[133.954208,34.682162],
-    [133.964093,34.683070],[133.975043,34.683843]
-   ];
-   const sourceRail=layers.find(layer=>layer["source-layer"]==="transportation"&&layer.source);
-   const firstSymbol=layers.find(layer=>layer.type==="symbol")?.id;
-   if(sourceRail){
-     const railwayFilter=["any",["==",["get","class"],"rail"],
-       ["==",["get","class"],"railway"],["==",["get","subclass"],"rail"]];
-     for(const [id,color,width] of [
-       ["student-railway-halo-fixed","#ffffff",4.2],
-       ["student-railway-gray-fixed","#969da3",2.25]]){
-       vectorMap.addLayer({id,type:"line",source:sourceRail.source,
-         "source-layer":"transportation",filter:railwayFilter,
-         layout:{"line-cap":"round","line-join":"round"},
-         paint:{"line-color":color,"line-width":width,"line-opacity":.95}},firstSymbol);
-     }
-     // The source features are exact basemap vectors. Geometry is not traced,
-     // offset, warped, interpolated or redrawn between arbitrary waypoints.
-     const railMeters=(p,q)=>{
-       const x=(p[0]-q[0])*111000*Math.cos(34.68*Math.PI/180);
-       const y=(p[1]-q[1])*111000;
-       return [x,y];
-     };
-     const distanceToSegment=(p,a,b)=>{
-       const [px,py]=railMeters(p,a),[bx,by]=railMeters(b,a);
-       const dot=bx*bx+by*by;
-       const t=dot?Math.max(0,Math.min(1,(px*bx+py*by)/dot)):0;
-       return Math.hypot(px-t*bx,py-t*by);
-     };
-     const distanceToReference=(p)=>{
-       let d=Infinity;
-       for(let i=1;i<referenceCorridor.length;i++)
-         d=Math.min(d,distanceToSegment(p,referenceCorridor[i-1],referenceCorridor[i]));
-       return d;
-     };
-     function renderExactRailway(){
-       const raw=vectorMap.querySourceFeatures(sourceRail.source,{sourceLayer:"transportation"});
-       const found=[],seen=new Set();
-       // At most one rail alignment is selected per short stretch of the
-       // reference route. The old implementation painted *every* railway
-       // within 42m, including JR tracks alongside the Shinkansen.
-       const routeLength=[0];
-       for(let i=1;i<referenceCorridor.length;i++){
-         const [dx,dy]=railMeters(referenceCorridor[i],referenceCorridor[i-1]);
-         routeLength[i]=routeLength[i-1]+Math.hypot(dx,dy);
+   // MLIT N02 2024 official railway geometry, saved in this GitHub repo.
+   // Selection is by official route/operator attributes ONLY: no guessed
+   // path, no nearby-track selection, no live mapping-service dependency.
+   document.body.dataset.railwaySource="N02-2024";
+   document.body.dataset.railwayDataStatus="loading";
+   fetch("./data/rail_n02_2024_okayama.geojson",{cache:"no-store"})
+     .then(response=>{if(!response.ok)throw Error("rail GeoJSON HTTP "+response.status);return response.json()})
+     .then(data=>{
+       if(data.type!=="FeatureCollection"||!Array.isArray(data.features))throw Error("Rail data malformed");
+       const shinkansen=data.features.filter(f=>f.properties?.kind==="shinkansen"&&f.properties?.route==="山陽新幹線"&&f.properties?.operator_type==="1");
+       const other=data.features.filter(f=>f.properties?.kind==="local");
+       if(shinkansen.length!==1||other.length<6)throw Error("Rail classifications invalid");
+       // Keep official coordinates intact; no transforms, offsets or proximity guesses.
+       vectorMap.addSource("official-n02-local",{type:"geojson",data:{type:"FeatureCollection",features:other}});
+       vectorMap.addSource("official-n02-shinkansen",{type:"geojson",data:{type:"FeatureCollection",features:shinkansen}});
+       const firstSymbol=vectorMap.getStyle().layers.find(l=>l.type==="symbol")?.id;
+       function addRail(id,source,color,width,dash){
+         const paint={"line-color":color,"line-width":width,"line-opacity":.98};
+         if(dash)paint["line-dasharray"]=dash;
+         vectorMap.addLayer({id,type:"line",source,
+           layout:{"line-cap":"butt","line-join":"round"},paint},firstSymbol);
        }
-       const pointOnRoute=p=>{
-         let best={distance:Infinity,along:0};
-         for(let i=1;i<referenceCorridor.length;i++){
-           const start=referenceCorridor[i-1],end=referenceCorridor[i];
-           const [px,py]=railMeters(p,start),[bx,by]=railMeters(end,start);
-           const len2=bx*bx+by*by;
-           const t=len2?Math.max(0,Math.min(1,(px*bx+py*by)/len2)):0;
-           const distance=Math.hypot(px-t*bx,py-t*by);
-           if(distance<best.distance)best={
-             distance,along:routeLength[i-1]+Math.sqrt(len2)*t};
-         }
-         return best;
-       };
-       const candidates=[];
-       for(const feature of raw){
-         const props=feature.properties||{};
-         if(!(props.class==="rail"||props.class==="railway"||props.subclass==="rail"))continue;
-         if(props.service && /yard|siding|spur/.test(props.service))continue;
-         const tagged=/新幹線|shinkansen/i.test(
-           String(props.name||"")+" "+String(props.ref||"")) ||
-           props.highspeed==="yes"||props.high_speed==="yes";
-         const lines=feature.geometry?.type==="LineString"
-           ?[feature.geometry.coordinates]
-           :feature.geometry?.type==="MultiLineString"?feature.geometry.coordinates:[];
-         for(const [lineIndex,line] of lines.entries()){
-           if(line.length<2)continue;
-           const sourceKey=String(feature.id??JSON.stringify(line))+"|"+lineIndex;
-           for(let i=1;i<line.length;i++){
-             const a=line[i-1],b=line[i],middle=[(a[0]+b[0])/2,(a[1]+b[1])/2];
-             const q=pointOnRoute(middle);
-             if(q.distance>(tagged?55:42))continue;
-             const aa=pointOnRoute(a),bb=pointOnRoute(b);
-             if(Math.max(aa.distance,bb.distance)>(tagged?70:53))continue;
-             const key=JSON.stringify([a,b]);
-             if(seen.has(key))continue;
-             seen.add(key);
-             // Tagged high-speed lines have priority; otherwise use only
-             // the nearest exact source segment, not multiple adjacent rails.
-             candidates.push({a,b,along:q.along,score:q.distance-(tagged?35:0),sourceKey});
-           }
-         }
-       }
-       const bucketSize=65,byBucket=new Map();
-       for(const cand of candidates){
-         const bucket=Math.floor(cand.along/bucketSize);
-         const old=byBucket.get(bucket);
-         if(!old||cand.score<old.score)byBucket.set(bucket,cand);
-       }
-       // Retain full connected source ways for the winning track in each
-       // interval, rather than painting one isolated short segment.
-       const winnerByBucket=new Map([...byBucket].map(([k,v])=>[k,v.sourceKey]));
-       for(const cand of candidates){
-         const bucket=Math.floor(cand.along/bucketSize);
-         if(winnerByBucket.get(bucket)!==cand.sourceKey)continue;
-         found.push({type:"Feature",properties:{},
-           geometry:{type:"LineString",coordinates:[cand.a,cand.b]}});
-       }
-       document.body.dataset.railCandidateCount=String(candidates.length);
-       document.body.dataset.railSelectedCount=String(found.length);
-       if(!found.length){
-         document.body.dataset.shinkansenOsmWays="no-matching-original-rail";
-         console.warn("No source rail geometry matched; no guessed Shinkansen line drawn");
-         return;
-       }
-       const data={type:"FeatureCollection",features:found};
-       const key="student-original-rail-exact";
-       if(vectorMap.getSource(key))vectorMap.getSource(key).setData(data);
-       else{
-         vectorMap.addSource(key,{type:"geojson",data});
-         for(const spec of [
-           ["student-exact-white-halo","#ffffff",5.5,null],
-           ["student-exact-teal-track","#138796",3.6,null],
-           ["student-exact-white-dashes","#ffffff",1.1,[4,4]]]){
-           const paint={"line-color":spec[1],"line-width":spec[2],"line-opacity":.97};
-           if(spec[3])paint["line-dasharray"]=spec[3];
-           vectorMap.addLayer({id:spec[0],type:"line",source:key,
-             layout:{"line-cap":"butt","line-join":"round"},paint},firstSymbol);
-         }
-       }
-       document.body.dataset.shinkansenOsmWays="original-rail-"+found.length;
-     }
-     vectorMap.once("idle",renderExactRailway);
-     document.body.dataset.railStyleLayers="original-vector";
-   }else{
-     document.body.dataset.shinkansenOsmWays="rail-source-missing";
-   }
+       // Draw the railways without changing roads, facilities, areas or map extent.
+       addRail("mlit-local-rail-halo","official-n02-local","#ffffff",4.5);
+       addRail("mlit-local-rail-gray","official-n02-local","#939ba2",2.3);
+       addRail("mlit-sanyo-shinkansen-halo","official-n02-shinkansen","#ffffff",5.3);
+       addRail("mlit-sanyo-shinkansen-teal","official-n02-shinkansen","#138796",3.7);
+       addRail("mlit-sanyo-shinkansen-dashes","official-n02-shinkansen","#ffffff",1.15,[4,4]);
+       document.body.dataset.railwayDataStatus="loaded";
+       document.body.dataset.railwayRouteCount=String(data.features.length);
+       if(ready)status.textContent="背景地図・鉄道データ描画完了（国土数値情報2024）。施設："+facilityRows.length+"件。";
+     }).catch(error=>{
+       document.body.dataset.railwayDataStatus="failed";
+       document.getElementById("warning").textContent="鉄道データ未取得";
+       console.error("Official MLIT railway data loading failed:",error);
+       if(ready)status.textContent="鉄道データ未取得：印刷前に読み込み状況を確認してください。";
+     });
+
   });
   vectorMap.on("error",event=>{
    if(!ready){status.textContent="ベクター地図の読み込みに問題があります。";
