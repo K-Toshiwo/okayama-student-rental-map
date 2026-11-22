@@ -135,7 +135,7 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 <div class="advice-card advice-purple"><b>🚉 岡山駅北側</b><p>岡山駅へのアクセスも<br>あわせて検討！</p><small>通学手段・所要時間を確認</small></div>
 <div class="advice-note">📌 エリアは比較のための目安です。実際のお部屋探しでは通学経路を確認しましょう。</div><div class="side-houses" aria-hidden="true">🏡　🌳　🏠</div></aside>
 <div class="map-shell"><div class="map-banner"><span class="banner-title">🗺️ 津島キャンパス周辺</span><span class="banner-bubble">大学の正門から <b>直線2km</b> の目安</span></div>
-<div id="map" class="map"><div id="tiles" class="tiles"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km</div><div class="osm-credit">© OpenStreetMap contributors</div><div class="north">↑ 北</div></div></div>
+<div id="map" class="map"><div id="tiles" class="tiles"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km・岡山駅まで表示</div><div class="osm-credit">© OpenStreetMap contributors</div><div class="north">↑ 北</div></div></div>
 <aside class="key-panel"><div class="panel-title">✨ 生活施設の<br>アイコン凡例</div>
 <div class="key-row"><span>🛒</span><b>スーパー</b></div>
 <div class="key-row"><span>🏪</span><b>コンビニ</b></div>
@@ -196,8 +196,19 @@ try{await loadFacilities()}catch(err){status.textContent="施設台帳の読み�
 
 const all=Array.from({length:72},(_,i)=>dest(i*5));all.push(station);
 const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(x=>x.y),x0=Math.min(...xx),x1=Math.max(...xx),y0=Math.min(...yy),y1=Math.max(...yy);
-zoom=Math.log2(Math.min((mapWidth()-90)/(x1-x0),(mapHeight()-70)/(y1-y0)));
-const mid=inv({x:(x0+x1)/2,y:(y0+y1)/2},0);center=mid;
+// Fit the complete 2 km radius PLUS Okayama Station into the visible center,
+ // not behind the left/right explanation cards or the header/bottom facility band.
+ // All units below are A3 millimetres, converted to live CSS pixels.
+ const box={left:77,right:313,top:49,bottom:215},paper={width:390,height:277};
+ const widthFactor=mapWidth()/paper.width,heightFactor=mapHeight()/paper.height;
+ const safeLeft=box.left*widthFactor,safeRight=box.right*widthFactor;
+ const safeTop=box.top*heightFactor,safeBottom=box.bottom*heightFactor;
+ const marginX=8*widthFactor,marginY=8*heightFactor;
+ zoom=Math.log2(Math.min((safeRight-safeLeft-2*marginX)/(x1-x0),(safeBottom-safeTop-2*marginY)/(y1-y0)));
+ // Place the geographic bounding-box midpoint at the clear area's midpoint.
+ const targetX=(safeLeft+safeRight)/2,targetY=(safeTop+safeBottom)/2;
+ center=inv({x:(x0+x1)/2-(targetX-mapWidth()/2)/2**zoom,
+             y:(y0+y1)/2-(targetY-mapHeight()/2)/2**zoom},0);
 const z=Math.max(10,Math.min(17,Math.floor(zoom))),scale=2**(zoom-z),c=proj(center,zoom),l=c.x-mapWidth()/2,t=c.y-mapHeight()/2,lz=l/scale,tz=t/scale;
 const jobs=[];let total=0,loaded=0,failed=0;
 for(let x=Math.floor(lz/256);x<=Math.floor((lz+mapWidth()/scale)/256);x++)for(let y=Math.floor(tz/256);y<=Math.floor((tz+mapHeight()/scale)/256);y++){
