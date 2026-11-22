@@ -304,113 +304,50 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
     catch(err){console.warn("road width layer skipped:",layer.id,err)}
    }
    document.body.dataset.slimmedRoadLayers=String(changed);
-   // Railway appearance follows the supplied Google Maps reference:
-   // muted gray conventional tracks, teal Shinkansen with white dashed core.
-   const railBase=layers.find(l=>l.type==="line" &&
-     l["source-layer"]==="transportation" &&
-     /rail|train/.test(l.id.toLowerCase())) ||
-     layers.find(l=>l.type==="line" && l["source-layer"]==="transportation");
-   // Direct overlay on the OpenFreeMap transportation vector layer:
-   // draw ALL conventional rail regardless of the provider's style layer IDs.
-   // The previous implementation searched the style layer name, so it could
-   // modify zero rail layers while reporting successful deployment.
-   const railwaySource=layers.find(l=>l["source-layer"]==="transportation"&&l.source);
-   const firstSymbol=layers.find(l=>l.type==="symbol")?.id;
-   if(railwaySource){
-     const railwayFilter=["any",
-       ["==",["get","class"],"rail"],
-       ["==",["get","class"],"railway"],
-       ["==",["get","subclass"],"rail"]];
-     const highSpeedFilter=["any",
-       ["==",["get","highspeed"],"yes"],
-       ["==",["get","high_speed"],"yes"],
-       ["in","新幹線",["coalesce",["get","name"],""]],
-       ["in","Shinkansen",["coalesce",["get","name:en"],""]]];
-     const add=(id,filter,color,width,dash)=>{
-       const paint={"line-color":color,"line-width":width,"line-opacity":.98};
-       if(dash)paint["line-dasharray"]=dash;
-       vectorMap.addLayer({id,type:"line",source:railwaySource.source,
+   // Static rail geometry, traced from the Google Maps reference image
+   // supplied by the user. No runtime Overpass calls or high-speed tags.
+   // The tracing is approximate: it is a graphic guide, not survey geometry.
+   const googleRailCoordinates=[
+    [133.901639,34.658885],[133.906481,34.660044],
+    [133.910840,34.661731],[133.914230,34.663136],
+    [133.917377,34.665104],[133.919702,34.667247],
+    [133.921155,34.669637],[133.922559,34.672272],
+    [133.924205,34.675013],[133.925707,34.676945],
+    [133.927305,34.678316],[133.929774,34.679826],
+    [133.931857,34.680459],[133.936506,34.681056],
+    [133.945222,34.681759],[133.954908,34.682462],
+    [133.964593,34.683270],[133.975343,34.684043]
+   ];
+   const sourceRail=layers.find(layer=>layer["source-layer"]==="transportation"&&layer.source);
+   const firstSymbol=layers.find(layer=>layer.type==="symbol")?.id;
+   if(sourceRail){
+     const railwayFilter=["any",["==",["get","class"],"rail"],
+       ["==",["get","class"],"railway"],["==",["get","subclass"],"rail"]];
+     const addRail=(id,filter,color,width)=>{
+       vectorMap.addLayer({id,type:"line",source:sourceRail.source,
          "source-layer":"transportation",filter,
-         layout:{"line-cap":"butt","line-join":"round"},paint},firstSymbol);
+         layout:{"line-cap":"round","line-join":"round"},
+         paint:{"line-color":color,"line-width":width,"line-opacity":.95}},firstSymbol);
      };
-     add("student-google-rail-white",railwayFilter,"#ffffff",5.0);
-     add("student-google-rail-gray",railwayFilter,"#929a9f",2.6);
-     add("student-google-rail-shinkansen",["all",railwayFilter,highSpeedFilter],
-       "#138796",4.1);
-     add("student-google-rail-shinkansen-dashes",["all",railwayFilter,highSpeedFilter],
-       "#ffffff",1.25,[4,4]);
-     document.body.dataset.railStyleLayers="4";
-   }else{
-     document.body.dataset.railStyleLayers="missing-transportation-source";
+     addRail("student-railway-halo-fixed",railwayFilter,"#ffffff",4.2);
+     addRail("student-railway-gray-fixed",railwayFilter,"#969da3",2.25);
    }
-   // Vector tiles may omit high-speed tags. Load the verified OSM track
-   // geometry separately so that the Sanyo Shinkansen is not guessed from
-   // proximity to another railway. If the service is offline, keep the
-   // original vector map rather than draw an inaccurate substitute.
-   const railQuery='[out:json][timeout:18];(way["railway"="rail"]["highspeed"="yes"](34.635,133.865,34.735,134.015);way["railway"="rail"]["name"~"新幹線"](34.635,133.865,34.735,134.015););out geom;';
-   document.body.dataset.shinkansenOsmWays="loading";
-   // The old single-server request failed silently and left the map unchanged.
-   // Use two independent, public read-only Overpass endpoints with bounded timeouts.
-   // Validate the actual ways before declaring a result; never fabricate railway geometry.
-   async function fetchRailGeometry(){
-     const endpoints=[
-       "https://overpass.private.coffee/api/interpreter",
-       "https://overpass-api.de/api/interpreter"
-     ];
-     for(const endpoint of endpoints){
-       const controller=new AbortController();
-       const timer=setTimeout(()=>controller.abort(),8500);
-       try{
-         const response=await fetch(endpoint+"?data="+encodeURIComponent(railQuery),
-           {signal:controller.signal,cache:"no-store"});
-         if(!response.ok)throw Error("HTTP "+response.status);
-         const result=await response.json();
-         if(!Array.isArray(result.elements) || !result.elements.some(
-           item=>item.type==="way"&&Array.isArray(item.geometry)&&item.geometry.length>1))
-           throw Error("No matching high-speed rail geometry");
-         document.body.dataset.shinkansenSource=endpoint;
-         return result;
-       }catch(error){
-         console.warn("Railway geometry endpoint failed:",endpoint,error);
-       }finally{clearTimeout(timer)}
-     }
-     throw Error("All public OSM geometry endpoints unavailable");
-   }
-   fetchRailGeometry().then(data=>{
-       const seen=new Set(),features=[];
-       for(const way of data.elements||[]){
-         if(way.type!=="way"||!Array.isArray(way.geometry)||seen.has(way.id))continue;
-         seen.add(way.id);
-         if(way.geometry.length<2)continue;
-         features.push({type:"Feature",properties:{id:way.id},
-           geometry:{type:"LineString",coordinates:way.geometry.map(p=>[p.lon,p.lat])}});
-       }
-       if(!features.length)throw Error("No tagged high-speed railway track");
-       if(!vectorMap.getSource("student-shinkansen-osm")){
-         vectorMap.addSource("student-shinkansen-osm",{type:"geojson",
-           data:{type:"FeatureCollection",features}});
-         const firstSymbol=vectorMap.getStyle().layers.find(l=>l.type==="symbol")?.id;
-         vectorMap.addLayer({id:"student-shinkansen-halo",type:"line",
-           source:"student-shinkansen-osm",
-           layout:{"line-cap":"butt","line-join":"round"},
-           paint:{"line-color":"#ffffff","line-width":5.5,"line-opacity":.95}},firstSymbol);
-         vectorMap.addLayer({id:"student-shinkansen-track",type:"line",
-           source:"student-shinkansen-osm",
-           layout:{"line-cap":"butt","line-join":"round"},
-           paint:{"line-color":"#167f8b","line-width":3.7,"line-opacity":.96}},firstSymbol);
-         vectorMap.addLayer({id:"student-shinkansen-center-dashes",type:"line",
-           source:"student-shinkansen-osm",
-           layout:{"line-cap":"butt","line-join":"round"},
-           paint:{"line-color":"#ffffff","line-width":1.05,
-             "line-dasharray":[5,5]}},firstSymbol);
-         document.body.dataset.shinkansenOsmWays=String(features.length);
-         if(ready)status.textContent="ベクター地図・新幹線線路データ描画完了。施設台帳："+facilityRows.length+"件。A3縦で印刷可能です。";
-       }
-     }).catch(err=>{
-       document.body.dataset.shinkansenOsmWays="unavailable";
-       if(ready)status.textContent="在来線を表示中。新幹線の専用線路データは取得できませんでした（再読込で再試行可能）。";
-       console.warn("OSM Shinkansen geometry unavailable; retaining vector railway",err);
-     });
+   vectorMap.addSource("student-shinkansen-fixed",{type:"geojson",data:{
+     type:"Feature",properties:{name:"山陽新幹線・参考画像に基づく概略線"},
+     geometry:{type:"LineString",coordinates:googleRailCoordinates}
+   }});
+   const addFixed=(id,color,width,dash)=>{
+     const paint={"line-color":color,"line-width":width,"line-opacity":.97};
+     if(dash)paint["line-dasharray"]=dash;
+     vectorMap.addLayer({id,type:"line",source:"student-shinkansen-fixed",
+       layout:{"line-cap":"butt","line-join":"round"},paint},firstSymbol);
+   };
+   addFixed("student-shinkansen-white-outer","#ffffff",5.8);
+   addFixed("student-shinkansen-teal-fixed","#138796",3.7);
+   addFixed("student-shinkansen-white-dashed-fixed","#ffffff",1.05,[4,4]);
+   document.body.dataset.shinkansenOsmWays="fixed";
+   document.body.dataset.railStyleLayers=sourceRail?"5":"3";
+
   });
   vectorMap.on("error",event=>{
    if(!ready){status.textContent="ベクター地図の読み込みに問題があります。";
@@ -478,7 +415,7 @@ vectorMap.once("idle",()=>{
    ?"背景地図の描画完了。新幹線の線路データを確認中…"
    :document.body.dataset.shinkansenOsmWays==="unavailable"
    ?"在来線を表示中。新幹線の専用線路データは取得できませんでした。"
-   :"ベクター地図の描画完了。施設台帳："+facilityRows.length+"件。A3縦で印刷可能です。";
+   :"線路固定表示・背景地図の描画完了。施設台帳："+facilityRows.length+"件。A3縦で印刷可能です。";
    button.disabled=false;button.textContent="A3縦のPDFを作成";
  }else{status.textContent="ベクター地図の取得が完了していません。";document.getElementById("warning").textContent="未取得地図あり";}
 });
