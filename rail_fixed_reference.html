@@ -270,7 +270,7 @@ async function initialize(){
 try{await loadFacilities()}catch(err){status.textContent="施設台帳の読み込みに失敗："+err.message;document.getElementById("warning").textContent="施設台帳未取得";return}
 // The map has fixed A3 CSS dimensions; browser viewport dimensions are not used for tile layout.
 
-const all=Array.from({length:72},(_,i)=>dest(i*5));all.push(station);
+const all=Array.from({length:72},(_,i)=>dest(i*5));all.push(stationLabels[0]);
 const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(x=>x.y),x0=Math.min(...xx),x1=Math.max(...xx),y0=Math.min(...yy),y1=Math.max(...yy);
 // Fit the complete 2 km radius PLUS Okayama Station into the visible center,
  // not behind the left/right explanation cards or the header/bottom facility band.
