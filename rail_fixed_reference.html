@@ -343,7 +343,9 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
        }
        vectorMap.setLayoutProperty(roadShield.id,"icon-image",
          ["concat","student-route-blue-",["to-string",["get","ref_length"]]]);
-       vectorMap.setLayoutProperty(roadShield.id,"text-size",11);
+       // Entire road-number shield at 60% of its previous displayed size.
+       vectorMap.setLayoutProperty(roadShield.id,"icon-size",0.6);
+       vectorMap.setLayoutProperty(roadShield.id,"text-size",6.6);
        vectorMap.setPaintProperty(roadShield.id,"text-color","#ffffff");
        vectorMap.setPaintProperty(roadShield.id,"text-halo-width",0);
        document.body.dataset.roadShieldStyle="blue-google-like";
