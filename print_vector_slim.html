@@ -310,6 +310,40 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
     catch(err){console.warn("road width layer skipped:",layer.id,err)}
    }
    document.body.dataset.slimmedRoadLayers=String(changed);
+   // Restyle the existing OpenFreeMap road-number shield layer in place.
+   // This retains the provider's real road references and label locations,
+   // replacing only its icon artwork with Google-like blue route badges.
+   try{
+     const roadShield=layers.find(l=>l.id==="highway-shield-non-us");
+     if(roadShield){
+       for(let count=1;count<=6;count++){
+         const w=Math.max(27,16+count*7),h=27,scale=2;
+         const cv=document.createElement("canvas");cv.width=w*scale;cv.height=h*scale;
+         const ctx=cv.getContext("2d");
+         ctx.scale(scale,scale);
+         ctx.fillStyle="#fff";ctx.strokeStyle="#fff";ctx.lineWidth=2;
+         ctx.beginPath();ctx.moveTo(6,1);ctx.lineTo(w-6,1);
+         ctx.quadraticCurveTo(w-1,1,w-1,6);ctx.lineTo(w-1,h-8);
+         ctx.quadraticCurveTo(w-1,h-5,w-5,h-3);
+         ctx.lineTo(w/2,h-1);ctx.lineTo(5,h-3);
+         ctx.quadraticCurveTo(1,h-5,1,h-8);ctx.lineTo(1,6);
+         ctx.quadraticCurveTo(1,1,6,1);ctx.closePath();ctx.fill();
+         ctx.save();ctx.translate(w/2,h/2);ctx.scale(.91,.87);ctx.translate(-w/2,-h/2);
+         ctx.fillStyle="#3269ad";ctx.fill();ctx.restore();
+         const image=ctx.getImageData(0,0,cv.width,cv.height);
+         const id="student-route-blue-"+count;
+         if(!vectorMap.hasImage(id))vectorMap.addImage(id,image,{pixelRatio:scale});
+       }
+       vectorMap.setLayoutProperty(roadShield.id,"icon-image",
+         ["concat","student-route-blue-",["to-string",["get","ref_length"]]]);
+       vectorMap.setLayoutProperty(roadShield.id,"text-size",11);
+       vectorMap.setPaintProperty(roadShield.id,"text-color","#ffffff");
+       vectorMap.setPaintProperty(roadShield.id,"text-halo-width",0);
+       document.body.dataset.roadShieldStyle="blue-google-like";
+     }
+   }catch(err){console.warn("Road shields unchanged:",err);
+     document.body.dataset.roadShieldStyle="default";}
+
    // MLIT N02 2024 official railway geometry, saved in this GitHub repo.
    // Selection is by official route/operator attributes ONLY: no guessed
    // path, no nearby-track selection, no live mapping-service dependency.
