@@ -175,6 +175,17 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 }
 .tiles{position:absolute;inset:0;width:100%;height:100%;z-index:0}.tiles .maplibregl-map{width:100%;height:100%}.overlay{z-index:1}.map #pins{position:absolute;inset:0;z-index:3;pointer-events:none}.map .mapnote,.map .north,.map .osm-credit{z-index:4}
 @media print{.maplibregl-canvas{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+/* Station names: all five locations use the same plain white rectangular text box. */
+.pin.icon-pin.landmark-pin.station-name-landmark{
+ width:auto;min-width:0;max-width:none;height:auto;min-height:0;
+ padding:4px 7px;background:#fff;color:#263846;border:1px solid #8697a0;
+ border-radius:3px;box-shadow:0 1px 3px #0004;
+ font-size:11px;font-weight:800;letter-spacing:0;line-height:1.3;
+ white-space:nowrap;display:flex;align-items:center;justify-content:center;
+ z-index:6;
+}
+@media print{.pin.icon-pin.landmark-pin.station-name-landmark{
+ print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
@@ -209,7 +220,14 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 </article>
 <script>
 "use strict";
-const gate={lat:34.6873737,lon:133.9197156,name:"岡山大学 正門",type:"gate"},hokai={lat:34.684851,lon:133.927547,name:"法界院駅",type:"station"},station={lat:34.666369,lon:133.918588,name:"岡山駅",type:"station"};
+const gate={lat:34.6873737,lon:133.9197156,name:"岡山大学 正門",type:"gate"};
+const stationLabels=[
+ {lat:34.666369,lon:133.918588,name:"岡山駅",type:"station"},
+ {lat:34.684851,lon:133.927547,name:"法界院駅",type:"station"},
+ {lat:34.6789583,lon:133.9377222,name:"西川原・就実駅",type:"station"},
+ {lat:34.6678056,lon:133.9004333,name:"備前三門駅",type:"station"},
+ {lat:34.704965,lon:133.944929,name:"備前原駅",type:"station"}
+];
 const facilityStyle={"スーパー":{icon:"🛒",cls:"shop"},"コンビニ":{icon:"🏪",cls:"conv"},"郵便局":{icon:"📮",cls:"post"},"調剤薬局":{icon:"💊",cls:"pharm"},"ドラッグストア":{icon:"💊",cls:"pharm"},"病院・クリニック":{icon:"🏥",cls:"medical"},"銀行・ATM":{icon:"🏦",cls:"bank"},"コインランドリー":{icon:"🧺",cls:"laundry"},"自転車店":{icon:"🚲",cls:"bike"},"100円ショップ":{icon:"🛍️",cls:"shop"},"クリーニング店":{icon:"👕",cls:"laundry"}};
 let facilityRows=[], facilitiesReady=false;
 function parseCSV(text){const lines=text.replace(/^\uFEFF/,"").trim().split(/\r?\n/),headers=lines.shift().split(",");return lines.filter(Boolean).map(line=>{const cols=line.split(",");return Object.fromEntries(headers.map((k,i)=>[k,cols[i]??""]))})}
@@ -379,7 +397,7 @@ overlay.appendChild(halo);overlay.appendChild(path);
 const areaSwitch=document.getElementById("show-areas");
 const areaLegend=document.querySelector(".area-legend");
 areaSwitch.addEventListener("change",()=>{for(const el of areaElements)el.style.display=areaSwitch.checked?"":"none";areaLegend.style.display=areaSwitch.checked?"":"none";});
-const plotted=[{...gate,icon:"🎓",cls:"gate"},{...hokai,icon:"🚉",cls:"station"},{...station,icon:"🚉",cls:"station"}];
+const plotted=[{...gate,icon:"🎓",cls:"gate"},...stationLabels.map(s=>({...s,icon:"",cls:"station"}))];
 for(const f of facilityRows){
  if(!f.latitude||!f.longitude)continue;
  const lat=Number(f.latitude),lon=Number(f.longitude);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;
@@ -397,11 +415,11 @@ for(const p of plotted){
 }
 for(const group of groups){
  const el=document.createElement("div"),p=group.places[0],multi=group.places.length>1;
- el.className="pin icon-pin "+(multi?"mixed":p.cls)+(group.landmark?" landmark-pin":" facility-pin");
+ el.className="pin icon-pin "+(multi?"mixed":p.cls)+(group.landmark?" landmark-pin":" facility-pin")+(p.cls==="station"?" station-name-landmark":"");
  el.style.left=group.x+"px";el.style.top=group.y+"px";
  if(multi){const unique=[...new Set(group.places.map(k=>k.icon))];el.textContent=unique.slice(0,2).join("");
  const more=document.createElement("small");more.textContent="("+group.places.length+")";el.appendChild(more);
- }else{el.textContent=p.icon}
+ }else{el.textContent=p.cls==="station"?p.name:p.icon}
  // Keep exact-coordinate markers but make their category recognizable on paper.
  if(!group.landmark&&!multi){
   const shortNames={"スーパー":"スーパー","コンビニ":"コンビニ","郵便局":"郵便局","調剤薬局":"薬局","ドラッグストア":"ドラッグ","病院・クリニック":"病院","100円ショップ":"100均","クリーニング店":"洗濯"};
