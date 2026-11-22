@@ -202,6 +202,20 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
  font-size:10px;z-index:9}
 .map .faculty-area-label.faculty-building small{color:#6e776f;
  font-weight:600;font-size:8px;line-height:1}
+
+/* PDF/printing reliability: a decoded PNG replaces the WebGL base map ONLY
+   while Chrome prepares print preview; facility labels and SVG stay live. */
+.map .print-map-image{display:none;position:absolute;inset:0;
+ width:100%;height:100%;max-width:none;object-fit:fill;pointer-events:none}
+@media print{
+ html,body{margin:0!important;padding:0!important}
+ body.printing-map-snapshot .maplibregl-canvas{visibility:hidden!important}
+ body.printing-map-snapshot .map .print-map-image{display:block!important;
+  visibility:visible!important;print-color-adjust:exact;
+  -webkit-print-color-adjust:exact}
+ .page{break-inside:avoid;page-break-inside:avoid;break-after:avoid;
+  page-break-after:avoid}
+}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
@@ -640,6 +654,57 @@ vectorMap.once("idle",()=>{
  }else{status.textContent="ベクター地図の取得が完了していません。";document.getElementById("warning").textContent="未取得地図あり";}
 });
 }
-button.onclick=()=>{if(!ready)return;window.print()};
+// Print Chrome's map as a normal image instead of asking Chromium's print
+// renderer to re-rasterize a live WebGL map canvas. Map labels/overlays remain
+// independent DOM/SVG elements and retain their print styles.
+let printRaster=null;
+let printBusy=false;
+function removePrintRaster(){
+ if(printRaster){printRaster.remove();printRaster=null;}
+ document.body.classList.remove("printing-map-snapshot");
+}
+window.addEventListener("afterprint",removePrintRaster);
+async function printStudentMap(){
+ if(!ready||printBusy)return;
+ printBusy=true;
+ button.disabled=true;button.textContent="印刷用画像を準備中…";
+ const previousStatus=status.textContent;
+ try{
+   // Preserve the native map canvas until the captured image has decoded.
+   const glCanvas=vectorMap.getCanvas();
+   if(!glCanvas||!glCanvas.width||!glCanvas.height)throw Error("地図Canvasが未描画です");
+   const data=glCanvas.toDataURL("image/png");
+   if(!data||data.length<1000)throw Error("印刷用画像を取得できません");
+   const img=document.createElement("img");
+   img.className="print-map-image";
+   img.alt="岡山大学周辺 背景地図（印刷用）";
+   img.src=data;
+   const host=glCanvas.parentElement;
+   if(!host)throw Error("地図Canvasの配置先が不明です");
+   host.appendChild(img);
+   printRaster=img;
+   if(typeof img.decode==="function")await img.decode();
+   else if(!img.complete)await new Promise((resolve,reject)=>{
+     img.onload=resolve;img.onerror=reject;
+   });
+   document.body.classList.add("printing-map-snapshot");
+   // Give Chrome one paint with the raster layer before generating preview.
+   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+   status.textContent="印刷用の地図画像を準備しました。";
+   window.print();
+ }catch(error){
+   console.warn("Map print snapshot unavailable; falling back to native print",error);
+   removePrintRaster();
+   status.textContent="画像印刷の準備に失敗。通常印刷へ切り替えます。";
+   window.print();
+ }finally{
+   printBusy=false;
+   button.disabled=false;button.textContent="A3縦のPDFを作成";
+   // Keep the image until the print preview closes; afterprint cleans it.
+   if(!document.body.classList.contains("printing-map-snapshot"))
+     status.textContent=previousStatus;
+ }
+}
+button.onclick=printStudentMap;
 initialize();
 </script></body></html>
