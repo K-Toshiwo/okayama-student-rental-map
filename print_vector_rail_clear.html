@@ -343,11 +343,11 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
     // OpenMapTiles transportation features carry class="rail". Draw a high-contrast
     // halo + charcoal rail + discreet white sleeper marks directly on that exact
     // geometry. Other line types (roads, waterways) never match this source filter.
-    const transportLayer=styleLayers.find(l=>l.source==="openmaptiles"&&l["source-layer"]==="transportation");
+    const transportLayer=styleLayers.find(l=>l.type==="line"&&l["source-layer"]==="transportation"&&typeof l.source==="string");
     if(transportLayer){
       const source=transportLayer.source;
-      const railFilter=["all",["==",["get","class"],"rail"],["match",["geometry-type"],["LineString","MultiLineString"],true,false]];
-      const common={type:"line",source,"source-layer":"transportation",filter:railFilter,
+      const railFilter=["==",["get","class"],"rail"];
+      const common={type:"line",source,"source-layer":transportLayer["source-layer"],filter:railFilter,
         layout:{"line-cap":"round","line-join":"round"}};
       const railSymbology=[
         {id:"studentmap_rail_white_halo",paint:{"line-color":"#ffffff","line-width":9.2,"line-opacity":.99}},
