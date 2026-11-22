@@ -314,10 +314,12 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
      .then(data=>{
        if(data.type!=="FeatureCollection"||!Array.isArray(data.features))throw Error("Rail data malformed");
        const shinkansen=data.features.filter(f=>f.properties?.kind==="shinkansen"&&f.properties?.route==="山陽新幹線"&&f.properties?.operator_type==="1");
-       const other=data.features.filter(f=>f.properties?.kind==="local");
-       if(shinkansen.length!==1||other.length<6)throw Error("Rail classifications invalid");
-       // Keep official coordinates intact; no transforms, offsets or proximity guesses.
-       vectorMap.addSource("official-n02-local",{type:"geojson",data:{type:"FeatureCollection",features:other}});
+       const jrLocal=data.features.filter(f=>f.properties?.kind==="local"&&f.properties?.operator==="西日本旅客鉄道");
+       const streetcar=data.features.filter(f=>f.properties?.kind==="local"&&f.properties?.operator!=="西日本旅客鉄道");
+       if(shinkansen.length!==1||jrLocal.length!==5||streetcar.length!==2)throw Error("Rail classifications invalid");
+       // No changes to government railway geometry or Shinkansen styling.
+       vectorMap.addSource("official-n02-local",{type:"geojson",data:{type:"FeatureCollection",features:jrLocal}});
+       vectorMap.addSource("official-n02-tram",{type:"geojson",data:{type:"FeatureCollection",features:streetcar}});
        vectorMap.addSource("official-n02-shinkansen",{type:"geojson",data:{type:"FeatureCollection",features:shinkansen}});
        const firstSymbol=vectorMap.getStyle().layers.find(l=>l.type==="symbol")?.id;
        function addRail(id,source,color,width,dash){
@@ -327,8 +329,12 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
            layout:{"line-cap":"butt","line-join":"round"},paint},firstSymbol);
        }
        // Draw the railways without changing roads, facilities, areas or map extent.
-       addRail("mlit-local-rail-halo","official-n02-local","#ffffff",4.5);
-       addRail("mlit-local-rail-gray","official-n02-local","#939ba2",2.3);
+       // JR conventional lines: a clearer medium gray, but less prominent
+       // than the green Shinkansen. City trams remain subdued.
+       addRail("mlit-local-rail-halo","official-n02-local","#ffffff",5.2);
+       addRail("mlit-local-rail-gray","official-n02-local","#89939a",3.1);
+       addRail("mlit-local-tram-halo","official-n02-tram","#ffffff",3.3);
+       addRail("mlit-local-tram-gray","official-n02-tram","#a5acb0",1.75);
        addRail("mlit-sanyo-shinkansen-halo","official-n02-shinkansen","#ffffff",5.3);
        addRail("mlit-sanyo-shinkansen-teal","official-n02-shinkansen","#138796",3.7);
        addRail("mlit-sanyo-shinkansen-dashes","official-n02-shinkansen","#ffffff",1.15,[4,4]);
