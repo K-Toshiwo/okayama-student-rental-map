@@ -350,9 +350,9 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
       const common={type:"line",source,"source-layer":transportLayer["source-layer"],filter:railFilter,
         layout:{"line-cap":"round","line-join":"round"}};
       const railSymbology=[
-        {id:"studentmap_rail_white_halo",paint:{"line-color":"#ffffff","line-width":9.2,"line-opacity":.99}},
-        {id:"studentmap_rail_dark_track",paint:{"line-color":"#374351","line-width":5.25,"line-opacity":1}},
-        {id:"studentmap_rail_sleeper_marks",paint:{"line-color":"#ffffff","line-width":2.1,"line-opacity":1,"line-dasharray":[.42,1.45]}}
+        {id:"studentmap_rail_white_halo",paint:{"line-color":"#ffffff","line-width":7.4,"line-opacity":.99}},
+        {id:"studentmap_rail_dark_track",paint:{"line-color":"#596571","line-width":4.2,"line-opacity":1}},
+        {id:"studentmap_rail_sleeper_marks",paint:{"line-color":"#ffffff","line-width":1.6,"line-opacity":1,"line-dasharray":[.42,1.45]}}
       ];
       // Put rails above the cartographic linework yet underneath place-name labels.
       // Prefer inserting immediately before the first symbol; MapLibre inserts each
