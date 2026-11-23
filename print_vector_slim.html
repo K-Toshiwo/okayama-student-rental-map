@@ -489,6 +489,16 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 .map .retail-all-pin.drugstore{background:#f5eafff0;border-color:#a47aba}
 .map .retail-all-pin:focus-visible{outline:2px solid #194d78;outline-offset:2px}
 .toolbar #retail-map-status{font-size:12px;font-weight:700;color:#315e53}
+
+/* Campus gate: 60% of previously rendered 43px landmark icon.
+   Station markers are hidden; existing white rectangular station names stay. */
+.map .pin.icon-pin.gate.landmark-pin{
+ width:25.8px!important;height:25.8px!important;
+ min-width:0!important;min-height:0!important;
+ font-size:14.4px!important;border-width:1.8px!important;
+ padding:0!important;
+}
+.map .pin.icon-pin.station{display:none!important}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><label>🏪 アイコン <select id="convenience-marker-size" aria-label="コンビニアイコンの大きさ"><option value="14">小 14px</option><option value="18" selected>中 18px</option><option value="22">大 22px</option></select></label><span id="convenience-map-status" aria-live="polite">🏪 コンビニ確認中</span><span id="retail-map-status" aria-live="polite">🛒💊 スーパー・ドラッグ確認中</span><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
@@ -604,6 +614,22 @@ const projected=all.map(x=>proj(x,0)),xx=projected.map(x=>x.x),yy=projected.map(
   // Railways, rivers, boundaries, and coordinates are intentionally not edited.
   vectorMap.on("style.load",()=>{
    const layers=vectorMap.getStyle()?.layers||[];
+   // Hide provider-drawn railway station pictograms, not station names.
+   // Our independent rectangular textStations labels remain visible.
+   let hiddenStationIconLayers=0;
+   for(const layer of layers){
+    if(layer.type!=="symbol")continue;
+    const id=layer.id.toLowerCase();
+    if(!/(railway.*station|station.*railway|train.*station|station.*train|transit.*station|station.*transit|rail.*stop)/.test(id))continue;
+    try{
+     const icon=vectorMap.getLayoutProperty(layer.id,"icon-image");
+     if(icon!==undefined&&icon!==null){
+      vectorMap.setPaintProperty(layer.id,"icon-opacity",0);
+      hiddenStationIconLayers++;
+     }
+    }catch(e){console.warn("Station icon layer unchanged",layer.id,e)}
+   }
+   document.body.dataset.hiddenBaseStationIcons=String(hiddenStationIconLayers);
    let changed=0;
    for(const layer of layers){
     if(layer.type!=="line")continue;
@@ -786,7 +812,8 @@ const groups=[];
 for(const p of plotted){
  const q=locate(p);
  if(q.x<0||q.y<0||q.x>mapWidth()||q.y>mapHeight())continue;
- if(p.cls==="gate"||p.cls==="station"){groups.push({x:q.x,y:q.y,places:[p],landmark:true});continue;}
+ if(p.cls==="station")continue; // Station text labels are kept; no separate station icon.
+ if(p.cls==="gate"){groups.push({x:q.x,y:q.y,places:[p],landmark:true});continue;}
  const existing=groups.find(g=>!g.landmark&&Math.hypot(g.x-q.x,g.y-q.y)<30);
  if(existing){existing.places.push(p)}else{groups.push({x:q.x,y:q.y,places:[p],landmark:false})}
 }
