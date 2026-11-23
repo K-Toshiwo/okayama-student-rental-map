@@ -499,8 +499,21 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
  padding:0!important;
 }
 .map .pin.icon-pin.station{display:none!important}
+
+/* Whole-map bus stop overlay: small icons, individual surveyed OSM positions. */
+.map .bus-all-pin{
+ position:absolute;transform:translate(-50%,-50%);z-index:6;
+ display:grid;place-items:center;width:13px;height:13px;
+ font-size:9px;line-height:1;color:#fff;font-weight:900;
+ border:1px solid #fff;border-radius:50%;background:#3277ab;
+ box-shadow:0 0 0 1px #27618d88;pointer-events:auto;
+ cursor:help;-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.map .bus-all-pin:focus-visible{outline:2px solid #122e5b;outline-offset:2px}
+.toolbar #bus-map-status{font-size:12px;font-weight:700;color:#315d84}
+@media print{.map .bus-all-pin{box-shadow:0 0 0 .5px #27618d88}}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
-<div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><label>🏪 アイコン <select id="convenience-marker-size" aria-label="コンビニアイコンの大きさ"><option value="14">小 14px</option><option value="18" selected>中 18px</option><option value="22">大 22px</option></select></label><span id="convenience-map-status" aria-live="polite">🏪 コンビニ確認中</span><span id="retail-map-status" aria-live="polite">🛒💊 スーパー・ドラッグ確認中</span><span>地図が完全に表示されてからPDF保存してください。</span></div>
+<div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><label>🏪 アイコン <select id="convenience-marker-size" aria-label="コンビニアイコンの大きさ"><option value="14">小 14px</option><option value="18" selected>中 18px</option><option value="22">大 22px</option></select></label><span id="convenience-map-status" aria-live="polite">🏪 コンビニ確認中</span><span id="retail-map-status" aria-live="polite">🛒💊 スーパー・ドラッグ確認中</span><label><input id="show-bus-stops" type="checkbox" checked> 🚌 バス停を表示</label><span id="bus-map-status" aria-live="polite">🚌 バス停読み込み中</span><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
 <div class="heading native-banner-heading" aria-label="岡山大学 おへや探し生活 MAP">
  <div class="native-banner-sky" aria-hidden="true"><i class="banner-cloud cloud-a"></i><i class="banner-cloud cloud-b"></i><i class="banner-cloud cloud-c"></i></div>
@@ -1021,6 +1034,62 @@ async function loadRetailSnapshot(){
  }
 }
 loadRetailSnapshot();
+
+
+/* Full viewport bus-stop inventory, frozen in this repository.
+   Individual stops remain separate, including platforms across the street. */
+const busSwitch=document.getElementById("show-bus-stops");
+const busStatus=document.getElementById("bus-map-status");
+let busStops=[];
+function drawBusStops(){
+ pins.querySelectorAll(".bus-all-pin").forEach(el=>el.remove());
+ let visible=0,nearby=0;
+ const occupied=[];
+ for(const point of busStops){
+  const xy=locate(point);
+  if(xy.x<0||xy.y<0||xy.x>mapWidth()||xy.y>mapHeight())continue;
+  visible++;
+  if(occupied.some(pt=>Math.hypot(pt.x-xy.x,pt.y-xy.y)<13))nearby++;
+  occupied.push(xy);
+  if(!busSwitch.checked)continue;
+  const el=document.createElement("div");
+  el.className="bus-all-pin";
+  el.style.left=xy.x.toFixed(2)+"px";el.style.top=xy.y.toFixed(2)+"px";
+  el.textContent="B";el.title="バス停："+point.name;
+  el.setAttribute("aria-label","バス停："+point.name);
+  el.tabIndex=0;
+  pins.appendChild(el);
+ }
+ document.body.dataset.busStopCount=String(visible);
+ document.body.dataset.busStopNearOverlap=String(nearby);
+ document.body.dataset.busStopVisibility=busSwitch.checked?"shown":"hidden";
+ busStatus.textContent="🚌 バス停 "+visible+"地点／近接 "+nearby+"地点"+
+   (busSwitch.checked?"":"（非表示）");
+}
+busSwitch.addEventListener("change",drawBusStops);
+async function loadBusStopsSnapshot(){
+ try{
+  const response=await fetch("./data/bus_stops_osm_20261123.geojson",{cache:"no-store"});
+  if(!response.ok)throw Error("Bus stop HTTP "+response.status);
+  const geo=await response.json();
+  if(geo.type!=="FeatureCollection"||!Array.isArray(geo.features)||geo.features.length<170)
+   throw Error("Invalid bus stop snapshot");
+  busStops=geo.features.filter(f=>f.geometry?.type==="Point"&&
+   f.properties?.highway==="bus_stop"&&
+   Array.isArray(f.geometry.coordinates))
+   .map(f=>({lon:Number(f.geometry.coordinates[0]),lat:Number(f.geometry.coordinates[1]),
+     name:f.properties?.name||"名称未登録"}))
+   .filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lon));
+  document.body.dataset.busStopDataSource="github-osm-20261123";
+  document.body.dataset.busStopFetchStatus="loaded";
+  drawBusStops();
+ }catch(error){
+  document.body.dataset.busStopFetchStatus="failed";
+  busStatus.textContent="🚌 バス停データ取得失敗";
+  console.warn("Bus stop snapshot unavailable",error);
+ }
+}
+loadBusStopsSnapshot();
 
 // All station labels are separate from facility clustering and map-fit variables.
 // Preserve the original station constant to avoid the previous blank-map error.
