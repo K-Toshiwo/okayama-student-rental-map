@@ -1,0 +1,2084 @@
+{
+ "type": "FeatureCollection",
+ "source": "OpenStreetMap / Nominatim",
+ "retrieved_date": "2026-11-23",
+ "bbox": [
+  133.85,
+  34.65,
+  133.99,
+  34.714
+ ],
+ "note": "OSM registered stores available via quadrant and brand search, not a complete census of operating stores.",
+ "features": [
+  {
+   "type": "Feature",
+   "id": "node/9911130643",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.911041,
+     34.6511478
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6950396889",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8854009,
+     34.6512042
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/707298464",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9169949,
+     34.6516197
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9911130661",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8944826,
+     34.6517734
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6950398786",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8843314,
+     34.651901
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2165371657",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9048764,
+     34.651951
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7936724101",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9207404,
+     34.6519623
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2464906104",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9121387,
+     34.6519965
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1321565591",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9245292,
+     34.6522028
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13018878681",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9183408,
+     34.6526299
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/586991243",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9381458,
+     34.6526614
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12558762825",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9297518,
+     34.6534183
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13989646901",
+   "properties": {
+    "name": "Фреш магазин Кимура",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9107946,
+     34.6539487
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3073196571",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9000112,
+     34.654337
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1315112736",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9699432,
+     34.6544607
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9911090612",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.926464,
+     34.6545995
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6646796674",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9233068,
+     34.6548905
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13081396375",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9280537,
+     34.6561065
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2162724352",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9086874,
+     34.6563428
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2162732140",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9151058,
+     34.6565115
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4439932313",
+   "properties": {
+    "name": "デイリーヤマザキ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9427478,
+     34.656544
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/686992492",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9140259,
+     34.6565621
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/707298468",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9232031,
+     34.6566102
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6646796679",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9231812,
+     34.6566154
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6637693226",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9383953,
+     34.656877
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6646800197",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9261006,
+     34.6583567
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/682584095",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8816375,
+     34.6585282
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6444600710",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9195391,
+     34.6587448
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1317832050",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9854839,
+     34.6587838
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/14213913829",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.983946,
+     34.6589309
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1315344180",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9893611,
+     34.6589447
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12581599890",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8888826,
+     34.6591485
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/14028248384",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9133668,
+     34.6593946
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5570069233",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8698847,
+     34.6594974
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7039845904",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.920486,
+     34.6595789
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12558484072",
+   "properties": {
+    "name": "デイリーヤマザキ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9276773,
+     34.6597073
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9520662877",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8915378,
+     34.659963
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6446998777",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9189263,
+     34.6602573
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1316834511",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9307624,
+     34.6603648
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12597676280",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9297584,
+     34.6604247
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6861948796",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8952343,
+     34.6604614
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13046963032",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9258758,
+     34.660683
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4859896355",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9201889,
+     34.6613505
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1318049886",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.925934,
+     34.662259
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6979812893",
+   "properties": {
+    "name": "ポプラ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9225586,
+     34.6624067
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9522836940",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.899487,
+     34.662528
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6978943654",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9216112,
+     34.6627663
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6649722208",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9259548,
+     34.6630322
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/689890406",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9020558,
+     34.663068
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/683638330",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9416348,
+     34.6632814
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6037966246",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9193098,
+     34.6633466
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4860689429",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9201494,
+     34.6635715
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13431720207",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9181968,
+     34.6637744
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13098284574",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9245881,
+     34.664121
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13431720214",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9174309,
+     34.6642169
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6856382422",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9117185,
+     34.6643199
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/633666982",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.898186,
+     34.6643681
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13044967977",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.898189,
+     34.6643868
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13014872623",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9111065,
+     34.6647745
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2196530569",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9202796,
+     34.6652369
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6280333239",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9221624,
+     34.6652619
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6516438591",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9296132,
+     34.6653404
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4439932312",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9205768,
+     34.6658194
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7026277073",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9233647,
+     34.6658317
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/669452883",
+   "properties": {
+    "name": "ら・むーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9249633,
+     34.66594
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6937568823",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9175355,
+     34.6660512
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6937568811",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.918367,
+     34.6661025
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1346106263",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9462235,
+     34.6667808
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1317873932",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8781793,
+     34.6668859
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7012937955",
+   "properties": {
+    "name": "ヤマザキショップ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9150223,
+     34.6671161
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6876182932",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9170111,
+     34.6679611
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1319366843",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9067596,
+     34.6684231
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13073422372",
+   "properties": {
+    "name": "生活彩家",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9148225,
+     34.6685684
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1346609952",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9185539,
+     34.6685687
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12587421620",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9260333,
+     34.6692529
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6886047776",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9221194,
+     34.669283
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3111841377",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9306173,
+     34.6695704
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6637767675",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9400908,
+     34.6701665
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3079589932",
+   "properties": {
+    "name": "ポプラ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9130847,
+     34.6707036
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13070116274",
+   "properties": {
+    "name": "ローソン・ポプラ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9130784,
+     34.6707607
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1314285647",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9386003,
+     34.6709044
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13098284586",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9469153,
+     34.6709359
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6637767674",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9371282,
+     34.6710413
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1130576419",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9576944,
+     34.6721195
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3136265155",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9265201,
+     34.6730389
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/777609720",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.944294,
+     34.6731752
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3089088352",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9112821,
+     34.6731837
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/754141991",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9189827,
+     34.6734131
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3136265156",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.926685,
+     34.6738332
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/336020533",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9581258,
+     34.6752786
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/336020489",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9630813,
+     34.6753404
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12995227230",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9547781,
+     34.675349
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3430498476",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9740594,
+     34.6753694
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12292807263",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.921013,
+     34.6754358
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/799156438",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8771671,
+     34.6766565
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/436640389",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9351927,
+     34.6778084
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9914171530",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9827172,
+     34.678087
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3079499048",
+   "properties": {
+    "name": "ポプラ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9125694,
+     34.6781829
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3098230713",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9212919,
+     34.6783126
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3098229164",
+   "properties": {
+    "name": "ら・む〜マート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9213697,
+     34.6785733
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1119796466",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8890388,
+     34.678951
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1423828881",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9591129,
+     34.6791394
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/617108630",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8551896,
+     34.6797452
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3518386383",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9013936,
+     34.6798377
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/225711695",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9832717,
+     34.6800447
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12995227231",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9490598,
+     34.6801359
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3075282866",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9099274,
+     34.6808584
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3723654739",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8792635,
+     34.6812756
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13103954683",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8614894,
+     34.6814191
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7896428093",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9320073,
+     34.6822025
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13096103196",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9556461,
+     34.682989
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4474695137",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9046747,
+     34.6830347
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4797835884",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9195741,
+     34.6831328
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4797835883",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.919555,
+     34.6838419
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2591256892",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9054534,
+     34.6840553
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4798712286",
+   "properties": {
+    "name": "ら・むーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9196516,
+     34.6840943
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/1968031333",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9032224,
+     34.6842475
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1463917867",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9656679,
+     34.6843176
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9914171535",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9880262,
+     34.6844393
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/889993100",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9288089,
+     34.6857823
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1463917869",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9829486,
+     34.6858695
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9914171536",
+   "properties": {
+    "name": "デイリーヤマザキ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9882824,
+     34.686302
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1467225191",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8646361,
+     34.6863394
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4797835867",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9201565,
+     34.6873125
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1324950721",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.945941,
+     34.6882926
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12541202260",
+   "properties": {
+    "name": "ファミリーマート",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9751008,
+     34.6886354
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/553653352",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9311998,
+     34.6886472
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1012331551",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8766234,
+     34.6887163
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1357113991",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9552447,
+     34.6888343
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1012331550",
+   "properties": {
+    "name": "デイリーヤマザキ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8776668,
+     34.6892934
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4582249337",
+   "properties": {
+    "name": "ピオーネショップ",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9243406,
+     34.6893213
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/553653353",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.932914,
+     34.6899811
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1066287285",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9885601,
+     34.6977349
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/379561799",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9040311,
+     34.7043484
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12558484079",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8994732,
+     34.7084528
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/553653354",
+   "properties": {
+    "name": "ローソン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9485273,
+     34.7091899
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/1968031312",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9060352,
+     34.7100346
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/453947234",
+   "properties": {
+    "name": "セブン-イレブン",
+    "shop": "convenience"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9060431,
+     34.7100412
+    ]
+   }
+  }
+ ]
+}
