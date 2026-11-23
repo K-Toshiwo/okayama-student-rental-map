@@ -1,0 +1,1982 @@
+{
+ "type": "FeatureCollection",
+ "source": "OpenStreetMap / Nominatim",
+ "retrieved_date": "2026-11-23",
+ "bbox": [
+  133.85,
+  34.65,
+  133.99,
+  34.714
+ ],
+ "note": "OSM mapped supermarket and chain/general drugstore locations obtained by quadrant and brand queries; does not guarantee complete store coverage or current operations.",
+ "features": [
+  {
+   "type": "Feature",
+   "id": "way/846811021",
+   "properties": {
+    "name": "ハローズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8531154,
+     34.6500314
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13084200918",
+   "properties": {
+    "name": "A-プライス",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.900823,
+     34.6500486
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13120763921",
+   "properties": {
+    "name": "岡山正宗骨里香",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.924265,
+     34.6521507
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12558469250",
+   "properties": {
+    "name": "業務スーパー",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9665416,
+     34.6522386
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13062759443",
+   "properties": {
+    "name": "ら・む～マート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9044505,
+     34.6522726
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12558469251",
+   "properties": {
+    "name": "エブリイ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9666888,
+     34.652291
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13018878675",
+   "properties": {
+    "name": "フレッシュ マルシェ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9211626,
+     34.6529868
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12591977644",
+   "properties": {
+    "name": "コストトレーダーマート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8875003,
+     34.6530632
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1314154434",
+   "properties": {
+    "name": "天満屋ハピーズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9657234,
+     34.6532538
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1315242927",
+   "properties": {
+    "name": "フレスタ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9394828,
+     34.6535075
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4140518705",
+   "properties": {
+    "name": "新鮮市場きむら",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9108503,
+     34.6539925
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2162724748",
+   "properties": {
+    "name": "profoods",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9115727,
+     34.6544226
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1314154435",
+   "properties": {
+    "name": "ハローズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9685918,
+     34.6546354
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13459434054",
+   "properties": {
+    "name": "ハローズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8702674,
+     34.6554751
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1315242926",
+   "properties": {
+    "name": "パークス",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9428487,
+     34.6558129
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13417245484",
+   "properties": {
+    "name": "セノオ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9751513,
+     34.656664
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13062628177",
+   "properties": {
+    "name": "ら・む～マート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9303365,
+     34.6581907
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/425909592",
+   "properties": {
+    "name": "ラ・ムー",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8833506,
+     34.6582137
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13829894197",
+   "properties": {
+    "name": "ストアー ミヤケ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9391058,
+     34.6584622
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13018878691",
+   "properties": {
+    "name": "自然食品さしすせそ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.927298,
+     34.6585193
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13949198961",
+   "properties": {
+    "name": "つよし商店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9297904,
+     34.6594166
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3084218559",
+   "properties": {
+    "name": "天満屋ハピーズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8805179,
+     34.6597378
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6434117924",
+   "properties": {
+    "name": "IKOCCA エブリイ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8856105,
+     34.6600345
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6168094690",
+   "properties": {
+    "name": "イオンスタイル",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9181524,
+     34.6614211
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12557963282",
+   "properties": {
+    "name": "紀ノ国屋",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9287855,
+     34.6618188
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9913613281",
+   "properties": {
+    "name": "マルナカ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9015126,
+     34.6620987
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12587421614",
+   "properties": {
+    "name": "わたなべ生鮮館 柳川いちば",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9283195,
+     34.6639241
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/633666979",
+   "properties": {
+    "name": "ニシナ フードバスケット",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8992761,
+     34.663929
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1347604363",
+   "properties": {
+    "name": "天満屋ハピーズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9124511,
+     34.6640786
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12557968502",
+   "properties": {
+    "name": "明治屋ストアー",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9197798,
+     34.6646706
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13014872622",
+   "properties": {
+    "name": "ら・む〜マート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9111781,
+     34.6647505
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12495360659",
+   "properties": {
+    "name": "ユアーズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9175105,
+     34.6648042
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4860689352",
+   "properties": {
+    "name": "ら・むーマート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9201212,
+     34.6652564
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6965214485",
+   "properties": {
+    "name": "Mori no Marche",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9269342,
+     34.6652658
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12188455218",
+   "properties": {
+    "name": "成城石井",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9171612,
+     34.6658651
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6942416907",
+   "properties": {
+    "name": "天満屋ハピーズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9218903,
+     34.6660576
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6283731707",
+   "properties": {
+    "name": "Ha Noi Mart",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9218358,
+     34.6662448
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/10119134643",
+   "properties": {
+    "name": "たばこ店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.894615,
+     34.666566
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/10160967347",
+   "properties": {
+    "name": "クリーニング店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.89865,
+     34.6665785
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6897778465",
+   "properties": {
+    "name": "韓国食品販売　江本屋",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9219448,
+     34.6668083
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12578435235",
+   "properties": {
+    "name": "岡ビル",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9230633,
+     34.6669431
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6896130069",
+   "properties": {
+    "name": "SACHAN QUAN",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9219605,
+     34.6678083
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13059456224",
+   "properties": {
+    "name": "COTAN",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9183492,
+     34.6695223
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4939457422",
+   "properties": {
+    "name": "パサージュ 奉還町",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9101142,
+     34.6699558
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3430996225",
+   "properties": {
+    "name": "天満屋ハピータウン",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9472624,
+     34.6717859
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1057232555",
+   "properties": {
+    "name": "ディオ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9606195,
+     34.6721587
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12229014583",
+   "properties": {
+    "name": "コープ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9260846,
+     34.6728419
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3136265158",
+   "properties": {
+    "name": "新鮮なさかなとやさいのお店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9261031,
+     34.6735042
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/336054241",
+   "properties": {
+    "name": "マルナカ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9605896,
+     34.6735912
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13075323124",
+   "properties": {
+    "name": "ら･む〜マート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9120402,
+     34.674756
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13077895965",
+   "properties": {
+    "name": "PARKS",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9135018,
+     34.6748692
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3199358534",
+   "properties": {
+    "name": "コープ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9449472,
+     34.6769421
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2310532354",
+   "properties": {
+    "name": "業務スーパー",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9840751,
+     34.6776587
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/799156443",
+   "properties": {
+    "name": "マルナカ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8762796,
+     34.6776942
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13430149525",
+   "properties": {
+    "name": "まねきエコ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.921257,
+     34.6779647
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3722023934",
+   "properties": {
+    "name": "ザ・ビッグ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8791905,
+     34.6779862
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13103954696",
+   "properties": {
+    "name": "ラ・ムー",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.85336,
+     34.6781931
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9914171532",
+   "properties": {
+    "name": "ティオ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9787531,
+     34.6782039
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2310532351",
+   "properties": {
+    "name": "ハローズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9867719,
+     34.678615
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12480291860",
+   "properties": {
+    "name": "エコイート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.894243,
+     34.6787186
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3518386379",
+   "properties": {
+    "name": "Happy Mart",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8999978,
+     34.6790623
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3204479276",
+   "properties": {
+    "name": "天満屋ハピータウン",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9286854,
+     34.6796478
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13724869917",
+   "properties": {
+    "name": "有限会社太田食料品店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9536281,
+     34.6806999
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3202997796",
+   "properties": {
+    "name": "アースファミリー",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.928485,
+     34.6808251
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/487407488",
+   "properties": {
+    "name": "マルナカ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9286422,
+     34.6818555
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5570068624",
+   "properties": {
+    "name": "フレスタ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.911943,
+     34.6825727
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5885962888",
+   "properties": {
+    "name": "ラ・ムー",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9330901,
+     34.6841086
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4474692129",
+   "properties": {
+    "name": "ら・む〜マート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9012249,
+     34.6846571
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/336258151",
+   "properties": {
+    "name": "マルナカ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9702454,
+     34.6848325
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5884568785",
+   "properties": {
+    "name": "コタン 岡大前店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9199439,
+     34.6850895
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/336261021",
+   "properties": {
+    "name": "リョービ・プラッツ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9742108,
+     34.6855485
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13149776538",
+   "properties": {
+    "name": "岡山赤穂線",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9454382,
+     34.6863136
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1358086164",
+   "properties": {
+    "name": "マルナカ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9478066,
+     34.686818
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/11063604906",
+   "properties": {
+    "name": "天満屋ハビーズ 津島店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9117412,
+     34.6870721
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12181057141",
+   "properties": {
+    "name": "天満屋ハピーズ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.957605,
+     34.6916957
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/303426639",
+   "properties": {
+    "name": "ディオ",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9040223,
+     34.6942639
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/303213153",
+   "properties": {
+    "name": "グランドマート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9023464,
+     34.6944156
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5706378661",
+   "properties": {
+    "name": "グランドマート・理大店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9265545,
+     34.6960267
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5706288600",
+   "properties": {
+    "name": "グランドマート・理大東店",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9280511,
+     34.6969485
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2097629808",
+   "properties": {
+    "name": "グランドマート",
+    "category": "スーパー",
+    "osm_shop_type": "supermarket"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8777246,
+     34.7062357
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5733477273",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9369902,
+     34.6506543
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12570617764",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9087093,
+     34.6510162
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1427271697",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9662206,
+     34.6518394
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13366742138",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8864338,
+     34.6529627
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4937648029",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8701046,
+     34.6533671
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1314154436",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.970238,
+     34.6547901
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12560590240",
+   "properties": {
+    "name": "ウエルシア薬局",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.971212,
+     34.6550188
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13073466382",
+   "properties": {
+    "name": "ウエルシア薬局",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9126,
+     34.6572931
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12751824554",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9181724,
+     34.6581386
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1317832049",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9858764,
+     34.6587069
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6861948805",
+   "properties": {
+    "name": "ラブ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8905418,
+     34.6589247
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/14028155227",
+   "properties": {
+    "name": "くすりのおかだ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9124294,
+     34.6590525
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6434117923",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8852605,
+     34.6600212
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7995173137",
+   "properties": {
+    "name": "ダイコクドラッグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9292048,
+     34.6628994
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9522836941",
+   "properties": {
+    "name": "くすりのレディ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8982731,
+     34.6630044
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/689890405",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9051933,
+     34.6642459
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/633666978",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8997025,
+     34.6644686
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12495360646",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9172499,
+     34.6645175
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7050889891",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.92303,
+     34.6648875
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6304954362",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9204189,
+     34.665798
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6937568813",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.918587,
+     34.6665304
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/502566114",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9145936,
+     34.6689112
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12174448095",
+   "properties": {
+    "name": "ウエルシア薬局",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9428014,
+     34.6691288
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12459020894",
+   "properties": {
+    "name": "スーパードラッグひまわり",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.941718,
+     34.6706231
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3079588210",
+   "properties": {
+    "name": "コスモス薬局",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9121002,
+     34.6710586
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6637767670",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9477325,
+     34.6715577
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3433900396",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9672332,
+     34.6725082
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12459020889",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9437189,
+     34.6740555
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2310532348",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9689761,
+     34.675316
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2310532349",
+   "properties": {
+    "name": "スーパードラッグひまわり",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9837763,
+     34.6776587
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/840446158",
+   "properties": {
+    "name": "コスモス",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8529398,
+     34.6778439
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/845326430",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8724528,
+     34.6785486
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1315297122",
+   "properties": {
+    "name": "コスモス",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9505478,
+     34.682828
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13096116203",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9545154,
+     34.6828967
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5885971385",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.932928,
+     34.6832737
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/752085329",
+   "properties": {
+    "name": "くすりのラブ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9280998,
+     34.6839417
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/1320369512",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9297587,
+     34.6875388
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12541202259",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9750477,
+     34.687635
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12560590224",
+   "properties": {
+    "name": "マツモトキヨシ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.954615,
+     34.6889318
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/303426683",
+   "properties": {
+    "name": "ザグザグ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9034579,
+     34.695319
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "way/753195408",
+   "properties": {
+    "name": "スーパードラッグひまわり",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9036019,
+     34.6992695
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12570593325",
+   "properties": {
+    "name": "コスモス",
+    "category": "ドラッグストア",
+    "osm_shop_type": "chemist"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9040124,
+     34.7019728
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12558484080",
+   "properties": {
+    "name": "くすりのラブ",
+    "category": "ドラッグストア",
+    "osm_shop_type": "pharmacy"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9007518,
+     34.7101345
+    ]
+   }
+  }
+ ]
+}
