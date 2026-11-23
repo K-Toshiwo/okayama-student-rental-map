@@ -1,0 +1,3359 @@
+{
+ "type": "FeatureCollection",
+ "source": "OpenStreetMap / Nominatim",
+ "retrieved_date": "2026-11-23",
+ "bbox": [
+  133.85,
+  34.65,
+  133.99,
+  34.714
+ ],
+ "note": "OSM-indexed bus stops queried by small geographic tiles. Locations may include opposite-side stop platforms separately; not necessarily a complete or operational bus-stop inventory.",
+ "features": [
+  {
+   "type": "Feature",
+   "id": "node/4017564194",
+   "properties": {
+    "name": "清輝橋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9254776,
+     34.6507148
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415118904",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9595542,
+     34.6507213
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564402",
+   "properties": {
+    "name": "清輝橋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9252353,
+     34.6507758
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415118903",
+   "properties": {
+    "name": "嶽",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9634611,
+     34.6513577
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564491",
+   "properties": {
+    "name": "清輝橋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9250961,
+     34.6514849
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106246",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9503567,
+     34.6515626
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13096209623",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9208256,
+     34.6517141
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564099",
+   "properties": {
+    "name": "大学病院",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9208224,
+     34.651772
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415118902",
+   "properties": {
+    "name": "嶽",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9640474,
+     34.6517908
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564401",
+   "properties": {
+    "name": "清輝橋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9256568,
+     34.6518719
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564098",
+   "properties": {
+    "name": "大学病院入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9217517,
+     34.6522496
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13096209622",
+   "properties": {
+    "name": "北長瀬駅",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8853875,
+     34.6526683
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/5106997613",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8855477,
+     34.6527237
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3991609003",
+   "properties": {
+    "name": "水道局前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9175407,
+     34.6537416
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415118901",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9693805,
+     34.6538885
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3073197895",
+   "properties": {
+    "name": "備前野田",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9014734,
+     34.6544182
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564193",
+   "properties": {
+    "name": "東中央町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9260419,
+     34.6549388
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106247",
+   "properties": {
+    "name": "護国神社前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9500467,
+     34.6549788
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415033000",
+   "properties": {
+    "name": "曹源寺",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9722612,
+     34.6552213
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106248",
+   "properties": {
+    "name": "護国神社前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9501491,
+     34.6553876
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6872444348",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9039824,
+     34.6554201
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3991608999",
+   "properties": {
+    "name": "市役所前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9186653,
+     34.6554702
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106411",
+   "properties": {
+    "name": "曹源寺",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9736971,
+     34.6557115
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106251",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9404713,
+     34.6561433
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015853989",
+   "properties": {
+    "name": "大雲寺前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9254018,
+     34.6561948
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564400",
+   "properties": {
+    "name": "千日前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.927998,
+     34.6562114
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106250",
+   "properties": {
+    "name": "東山",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9435898,
+     34.6563306
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106252",
+   "properties": {
+    "name": "山陽学園 中学・高校前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9396938,
+     34.6563343
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564490",
+   "properties": {
+    "name": "千日前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.92954,
+     34.6564074
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015853889",
+   "properties": {
+    "name": "大雲寺前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9248585,
+     34.6564458
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015853790",
+   "properties": {
+    "name": "市役所入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9210254,
+     34.6564467
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015846002",
+   "properties": {
+    "name": "大学病院筋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9220368,
+     34.6564472
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106249",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9461048,
+     34.6570563
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564399",
+   "properties": {
+    "name": "新京橋西詰",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9305001,
+     34.6571961
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015853689",
+   "properties": {
+    "name": "山陽新聞社・TSC前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9194944,
+     34.6575654
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4018828329",
+   "properties": {
+    "name": "大雲寺前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9264923,
+     34.6575901
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015853990",
+   "properties": {
+    "name": "大雲寺前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9261611,
+     34.6575954
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564398",
+   "properties": {
+    "name": "新京橋西詰",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9303625,
+     34.6576862
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106253",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9389299,
+     34.6577746
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3991609000",
+   "properties": {
+    "name": "新西大寺町筋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9264879,
+     34.6590896
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3999026157",
+   "properties": {
+    "name": "大安寺南町1丁目",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8907072,
+     34.6593799
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564397",
+   "properties": {
+    "name": "西大寺町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9306079,
+     34.6596517
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564097",
+   "properties": {
+    "name": "西大寺町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9303577,
+     34.6598468
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3998988659",
+   "properties": {
+    "name": "高柳西町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8951606,
+     34.6600321
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4020801490",
+   "properties": {
+    "name": "柳町1丁目",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9208512,
+     34.6601833
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4020801301",
+   "properties": {
+    "name": "田町2丁目",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9252407,
+     34.6604054
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106255",
+   "properties": {
+    "name": "県庁前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9340046,
+     34.6604595
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13415106254",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9405253,
+     34.660659
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017587390",
+   "properties": {
+    "name": "県庁南",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9345392,
+     34.6607661
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564094",
+   "properties": {
+    "name": "県庁前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9345602,
+     34.6607776
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3998989558",
+   "properties": {
+    "name": "高柳東町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8985841,
+     34.6613214
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015946190",
+   "properties": {
+    "name": "天満屋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9284846,
+     34.6613372
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4020801302",
+   "properties": {
+    "name": "源吉兆庵本社前・イオンモール岡山前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9193233,
+     34.6613977
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015899791",
+   "properties": {
+    "name": "天満屋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9282768,
+     34.6614494
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015890389",
+   "properties": {
+    "name": "表町バスセンター",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9303033,
+     34.6614762
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015890391",
+   "properties": {
+    "name": "表町バスセンター",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9301417,
+     34.6615259
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015899894",
+   "properties": {
+    "name": "天満屋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9284968,
+     34.6615744
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928619",
+   "properties": {
+    "name": "朝日高前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9420543,
+     34.6616935
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564093",
+   "properties": {
+    "name": "内山下",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9305423,
+     34.6618588
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3991608995",
+   "properties": {
+    "name": "イオンモール岡山前・源吉兆庵本社前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9189418,
+     34.6619107
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928620",
+   "properties": {
+    "name": "朝日高前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9422568,
+     34.6620029
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015899898",
+   "properties": {
+    "name": "天満屋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9282918,
+     34.6620353
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2478365183",
+   "properties": {
+    "name": "県庁前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9344823,
+     34.6622667
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015899899",
+   "properties": {
+    "name": "天満屋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9284131,
+     34.662299
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564395",
+   "properties": {
+    "name": "中銀前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9310672,
+     34.6623594
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564396",
+   "properties": {
+    "name": "中銀本店前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9309991,
+     34.6623632
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4020801300",
+   "properties": {
+    "name": "農業会館前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9249529,
+     34.6625409
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564394",
+   "properties": {
+    "name": "中銀前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9303053,
+     34.6626118
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4020801299",
+   "properties": {
+    "name": "両備前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9211069,
+     34.6626157
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3998989559",
+   "properties": {
+    "name": "下伊福2丁目",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9035595,
+     34.6631988
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3991608994",
+   "properties": {
+    "name": "NTT岡山前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9264179,
+     34.6632082
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4015853792",
+   "properties": {
+    "name": "NTT岡山前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9260638,
+     34.6632333
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6960024879",
+   "properties": {
+    "name": "錦町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9192227,
+     34.6635379
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928618",
+   "properties": {
+    "name": "国富",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9444582,
+     34.6640067
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3998989466",
+   "properties": {
+    "name": "若草保育園前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9088434,
+     34.664416
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6856382698",
+   "properties": {
+    "name": "昭和町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9130349,
+     34.6644546
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4020801297",
+   "properties": {
+    "name": "岡山髙島屋前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9192586,
+     34.6645795
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2514522115",
+   "properties": {
+    "name": "岡山駅東口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.918419,
+     34.6646369
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2514522120",
+   "properties": {
+    "name": "岡山駅東口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9181057,
+     34.6647272
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4000036457",
+   "properties": {
+    "name": "駅元町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9158581,
+     34.6648655
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564393",
+   "properties": {
+    "name": "城下",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9305046,
+     34.6650926
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2514522119",
+   "properties": {
+    "name": "岡山駅東口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9187823,
+     34.6651701
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2514522123",
+   "properties": {
+    "name": "岡山駅東口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9184023,
+     34.6651849
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2514522124",
+   "properties": {
+    "name": "岡山駅東口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9185073,
+     34.6653403
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564090",
+   "properties": {
+    "name": "西川緑道公園前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9222154,
+     34.6653925
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3660338605",
+   "properties": {
+    "name": "岡山駅前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9209984,
+     34.6653949
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564191",
+   "properties": {
+    "name": "柳川",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9276924,
+     34.6654547
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017587389",
+   "properties": {
+    "name": "表町入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9289914,
+     34.6654548
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564091",
+   "properties": {
+    "name": "柳川西",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9248542,
+     34.6654718
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2514522127",
+   "properties": {
+    "name": "岡山駅東口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9187371,
+     34.665677
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4000061757",
+   "properties": {
+    "name": "岡山駅前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9211575,
+     34.6657052
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4000061857",
+   "properties": {
+    "name": "西川緑道公園前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9216784,
+     34.6657081
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3991609002",
+   "properties": {
+    "name": "柳川西",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9238413,
+     34.6657737
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564190",
+   "properties": {
+    "name": "柳川",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9274954,
+     34.6658455
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4017564192",
+   "properties": {
+    "name": "表町入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9289774,
+     34.6658472
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2494956735",
+   "properties": {
+    "name": "岡山駅西口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9165325,
+     34.6667342
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7041126596",
+   "properties": {
+    "name": "岡ビル前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9227393,
+     34.6668553
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7038596723",
+   "properties": {
+    "name": "柳川",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9260737,
+     34.6668922
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3112051386",
+   "properties": {
+    "name": "美術館前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.930419,
+     34.6669315
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4000036459",
+   "properties": {
+    "name": "岡山駅西口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9172827,
+     34.6670682
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4000036659",
+   "properties": {
+    "name": "岡山駅西口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9173797,
+     34.6671454
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928615",
+   "properties": {
+    "name": "国富東",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9472477,
+     34.6673555
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6896130093",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9197218,
+     34.6674296
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6897346762",
+   "properties": {
+    "name": "原東・東郵便局前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.950223,
+     34.6685285
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7034680121",
+   "properties": {
+    "name": "県民局入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9264282,
+     34.6686002
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6986308979",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9173226,
+     34.6687848
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6897346763",
+   "properties": {
+    "name": "原東・東郵便局前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9511045,
+     34.669053
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7617754309",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.933667,
+     34.6695113
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12164820561",
+   "properties": {
+    "name": "原尾島",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9487599,
+     34.6701236
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928614",
+   "properties": {
+    "name": "原尾島住宅前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9547056,
+     34.6703446
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2474261337",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9304297,
+     34.6703582
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2474261356",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9301714,
+     34.6704561
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7020987589",
+   "properties": {
+    "name": "済生会病院前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9180095,
+     34.6706082
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928613",
+   "properties": {
+    "name": "原尾島住宅前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9547807,
+     34.6706193
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7024287162",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.922684,
+     34.6706556
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2510078987",
+   "properties": {
+    "name": "岡工口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9130162,
+     34.6708287
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2510079036",
+   "properties": {
+    "name": "済生会病院前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9171335,
+     34.6709212
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2510079051",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9121937,
+     34.670965
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2510079098",
+   "properties": {
+    "name": "伊福町1丁目",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9146561,
+     34.6710313
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12164727150",
+   "properties": {
+    "name": "岡山中央警察署前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9383663,
+     34.6710824
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2510079088",
+   "properties": {
+    "name": "済生会病院前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9171079,
+     34.6711172
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12164727148",
+   "properties": {
+    "name": "浜（岡山プラザホテル前）",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9362137,
+     34.6711288
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3114753111",
+   "properties": {
+    "name": "就実高校・中学校前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9290757,
+     34.671162
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12164727149",
+   "properties": {
+    "name": "岡山中央警察署前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9395887,
+     34.6712374
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3098630042",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9182838,
+     34.6717368
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2511326594",
+   "properties": {
+    "name": "岡工前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9115686,
+     34.6717568
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2500710902",
+   "properties": {
+    "name": "岡工前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9113804,
+     34.6719234
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3136264801",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9261776,
+     34.6720883
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928611",
+   "properties": {
+    "name": "二本松",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9590454,
+     34.673016
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928608",
+   "properties": {
+    "name": "岡電高屋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9610825,
+     34.6730954
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928612",
+   "properties": {
+    "name": "二本松",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9587235,
+     34.6731594
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928607",
+   "properties": {
+    "name": "高屋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9645734,
+     34.6733248
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928609",
+   "properties": {
+    "name": "二本松東",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9619248,
+     34.6733369
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928605",
+   "properties": {
+    "name": "高屋東",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9675346,
+     34.6734814
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928606",
+   "properties": {
+    "name": "高屋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9660285,
+     34.6735465
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928604",
+   "properties": {
+    "name": "高屋東",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9675185,
+     34.673616
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928603",
+   "properties": {
+    "name": "兼基西",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9702396,
+     34.6736281
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928602",
+   "properties": {
+    "name": "兼基西",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9703523,
+     34.673756
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3098630126",
+   "properties": {
+    "name": "清心町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9198669,
+     34.6739688
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928601",
+   "properties": {
+    "name": "兼基",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9735575,
+     34.6741454
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2472645448",
+   "properties": {
+    "name": "南方交番前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9264465,
+     34.6745777
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2475823377",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9200047,
+     34.6746182
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928600",
+   "properties": {
+    "name": "兼基",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9743568,
+     34.6746549
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928599",
+   "properties": {
+    "name": "兼基東",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9760774,
+     34.6751612
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3079589933",
+   "properties": {
+    "name": "京山入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9123776,
+     34.6752724
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3081550007",
+   "properties": {
+    "name": "矢坂大橋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.881941,
+     34.6761814
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3202999319",
+   "properties": {
+    "name": "東川原",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9441132,
+     34.6766047
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3202997799",
+   "properties": {
+    "name": "コープ東川原店前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9441139,
+     34.6766703
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928596",
+   "properties": {
+    "name": "乙多見西",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9795777,
+     34.6766876
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3202997801",
+   "properties": {
+    "name": "コープ東川原店前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.944355,
+     34.6768399
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3098229199",
+   "properties": {
+    "name": "スポーツセンター前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9212736,
+     34.6770726
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928595",
+   "properties": {
+    "name": "乙多見",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9817101,
+     34.677378
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3141767609",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9278083,
+     34.677608
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928594",
+   "properties": {
+    "name": "乙多見",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.982555,
+     34.6778633
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2475823466",
+   "properties": {
+    "name": "スポーツセンター前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.920922,
+     34.6783463
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928593",
+   "properties": {
+    "name": "長岡団地",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9843158,
+     34.6783926
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3198427185",
+   "properties": {
+    "name": "ジョイフル東川原店前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9439165,
+     34.6784749
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3089088349",
+   "properties": {
+    "name": "機動隊前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9129852,
+     34.678512
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3722024427",
+   "properties": {
+    "name": "楢津南",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8813506,
+     34.6786343
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928592",
+   "properties": {
+    "name": "長岡団地",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9847973,
+     34.6787709
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3081216717",
+   "properties": {
+    "name": "平津橋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8870106,
+     34.6788459
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2498116853",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8961197,
+     34.6794434
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3141768204",
+   "properties": {
+    "name": "大和町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9283502,
+     34.6795778
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3202999323",
+   "properties": {
+    "name": "西川原",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9427377,
+     34.679645
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928591",
+   "properties": {
+    "name": "長岡西",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.987505,
+     34.6796698
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3141768206",
+   "properties": {
+    "name": "大和町",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9281523,
+     34.6797188
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3098230717",
+   "properties": {
+    "name": "岡山放送前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9210043,
+     34.6798258
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3198427563",
+   "properties": {
+    "name": "西川原",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9426491,
+     34.6799699
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3722024422",
+   "properties": {
+    "name": "平津",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8856019,
+     34.6800514
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3518387147",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9006041,
+     34.6800802
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3216752878",
+   "properties": {
+    "name": "岡山中央病院前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9043245,
+     34.6804559
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3202999232",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.939767,
+     34.680739
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3215633455",
+   "properties": {
+    "name": "伊島町2丁目",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.907278,
+     34.6807502
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/9933928589",
+   "properties": {
+    "name": "長岡",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9898868,
+     34.6808333
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6860031097",
+   "properties": {
+    "name": "伊島町2丁目",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9081559,
+     34.6810576
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13452530330",
+   "properties": {
+    "name": "Bizen-Ichinomiya Replacement Bus Stop (to Okayama)",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8617687,
+     34.6810992
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4617917097",
+   "properties": {
+    "name": "津島新道",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9107664,
+     34.6811027
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13452496993",
+   "properties": {
+    "name": "Bizen-Ichinomiya Replacement Bus Stop (to Soja)",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8611833,
+     34.6811754
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6904759977",
+   "properties": {
+    "name": "津島新道",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.90987,
+     34.6812788
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3074476874",
+   "properties": {
+    "name": "武道館口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9140648,
+     34.6813455
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3074476502",
+   "properties": {
+    "name": "新野",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9163806,
+     34.6814753
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3724696907",
+   "properties": {
+    "name": "平津小学校前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8794099,
+     34.6815328
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3074999700",
+   "properties": {
+    "name": "岡山大学筋",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9192125,
+     34.681626
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4617917099",
+   "properties": {
+    "name": "西坂入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9082764,
+     34.6816285
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3079136059",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9083192,
+     34.6816877
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3074476589",
+   "properties": {
+    "name": "新野",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.91718,
+     34.6817223
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4617917100",
+   "properties": {
+    "name": "西坂入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9083665,
+     34.6817515
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4617917102",
+   "properties": {
+    "name": "明誠学院前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9051499,
+     34.6830241
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3079136080",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9051164,
+     34.6831294
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/12522326226",
+   "properties": {
+    "name": "新屋敷団地",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9579905,
+     34.683327
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4617917103",
+   "properties": {
+    "name": "岡山商大前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9020023,
+     34.6844544
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3075520852",
+   "properties": {
+    "name": "岡山商大前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9008256,
+     34.6844943
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4797835880",
+   "properties": {
+    "name": "岡大入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9197003,
+     34.6847665
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3149267734",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9015158,
+     34.6847796
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/14025294793",
+   "properties": {
+    "name": "法界院駅前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9284033,
+     34.685379
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13015006937",
+   "properties": {
+    "name": "東岡山駅前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9854063,
+     34.6858316
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13015006933",
+   "properties": {
+    "name": "中島",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9445271,
+     34.6859053
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13015006931",
+   "properties": {
+    "name": "中島",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9442887,
+     34.6860398
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/13015006936",
+   "properties": {
+    "name": "東岡山駅前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9860972,
+     34.6860482
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4797835848",
+   "properties": {
+    "name": "岡大西門",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9196239,
+     34.6871595
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4798712287",
+   "properties": {
+    "name": "岡大西門",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9199966,
+     34.6876044
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/14025256318",
+   "properties": {
+    "name": "福居入口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9174846,
+     34.687641
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4798712288",
+   "properties": {
+    "name": "岡大西門のりば",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9198766,
+     34.6876929
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/14025599903",
+   "properties": {
+    "name": "保育所前",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9264724,
+     34.6877262
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4797835891",
+   "properties": {
+    "name": "岡大東門",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.923322,
+     34.6877551
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4617917105",
+   "properties": {
+    "name": "笹ケ瀬",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8999868,
+     34.6894928
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/4617917106",
+   "properties": {
+    "name": "笹ケ瀬",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9002561,
+     34.690636
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3074326635",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9012468,
+     34.6934305
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3077864616",
+   "properties": {
+    "name": "津波井",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9050481,
+     34.6950001
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3077864619",
+   "properties": {
+    "name": "津波井",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.905663,
+     34.6952349
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3078970049",
+   "properties": {
+    "name": "東原口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9077504,
+     34.6953462
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3077864623",
+   "properties": {
+    "name": "青葉台",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9101659,
+     34.6958782
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3077864621",
+   "properties": {
+    "name": "青葉台",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9099153,
+     34.6958956
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3077864200",
+   "properties": {
+    "name": "津高台団地西",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9127415,
+     34.6964815
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3078970164",
+   "properties": {
+    "name": "津高台団地西",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9138029,
+     34.6967565
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3078970225",
+   "properties": {
+    "name": "津高台団地南",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9153152,
+     34.6975076
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6856711761",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9032501,
+     34.7002359
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6805265866",
+   "properties": {
+    "name": "岡山インター",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.8999416,
+     34.7022443
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/10767445606",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9144119,
+     34.7028299
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/6856711770",
+   "properties": {
+    "name": "小幸田口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9040085,
+     34.70329
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/3828795502",
+   "properties": {
+    "name": "大岩口",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9013503,
+     34.7037087
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/2526388655",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9010677,
+     34.7099157
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "node/7074229786",
+   "properties": {
+    "name": "名称未登録",
+    "highway": "bus_stop"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     133.9015968,
+     34.7099408
+    ]
+   }
+  }
+ ]
+}
