@@ -527,6 +527,78 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 .map .small-service-pin.post{border-color:#c36a70;background:#ffe6e4}
 .map .small-service-pin.hundred{border-color:#937ac3;background:#f3edff}
 .map .small-service-pin:focus-visible{outline:2px solid #194d78;outline-offset:2px}
+
+/* A3 portrait layout correction: header explanatory strip visible, less map occlusion.
+   The map's geographic fit recalculates from the new 394mm map viewport. */
+.page .map-shell .map{
+ position:absolute!important;left:0!important;top:6mm!important;
+ width:277mm!important;height:394mm!important;max-height:none!important;
+}
+.page .map-shell .map-banner{
+ top:43mm!important;left:57mm!important;right:4mm!important;
+ height:8mm!important;padding:0 2mm!important;font-size:8pt!important;
+ z-index:13!important;white-space:nowrap!important;
+}
+.page .map-shell .map-banner .banner-title{font-size:8pt!important;padding:.5mm 1.3mm!important}
+.page .map-shell .map-banner .banner-bubble{font-size:7pt!important;padding:.5mm 1.5mm!important}
+.page .map-shell .map-banner .banner-bubble b{font-size:8pt!important}
+.page .map .mapnote{
+ top:37mm!important;left:3mm!important;z-index:10!important;
+ font-size:7pt!important;padding:.7mm 1.5mm!important;
+}
+.page .advice-panel{
+ top:339mm!important;height:25mm!important;max-height:25mm!important;
+ padding:1mm!important;
+ grid-template-rows:5mm 14mm 3mm!important;
+ column-gap:1mm!important;
+}
+.page .advice-panel .panel-title{
+ padding:0 1.5mm!important;margin:0!important;font-size:8.2pt!important;
+ line-height:1.1!important;display:flex;align-items:center;
+}
+.page .advice-panel .panel-title br{display:none}
+.page .advice-card{
+ padding:.5mm .9mm!important;margin:0!important;
+ border-radius:2.3mm!important;line-height:1.08!important;
+ min-height:0!important;
+}
+.page .advice-card b{font-size:6.6pt!important;padding:.2mm .6mm!important}
+.page .advice-card p{font-size:6.1pt!important;margin:.4mm 0!important;line-height:1.12!important}
+.page .advice-card p br{display:none}
+.page .advice-card small{font-size:5.4pt!important;line-height:1.13!important}
+.page .advice-note{
+ font-size:5.3pt!important;line-height:1.1!important;
+ padding:0 1mm!important;overflow:hidden!important;white-space:nowrap!important;
+}
+.page .key-panel{
+ top:339mm!important;height:25mm!important;max-height:25mm!important;
+ padding:1mm!important;gap:.5mm 1mm!important;
+ grid-template-rows:5mm 7mm 7mm 3mm!important;
+}
+.page .key-panel .panel-title{
+ padding:0 1.5mm!important;margin:0!important;
+ font-size:8.2pt!important;line-height:1.1!important;
+ display:flex;align-items:center;
+}
+.page .key-panel .panel-title br{display:none}
+.page .key-row{
+ padding:0 .5mm!important;gap:.6mm!important;
+ display:flex!important;flex-direction:row!important;align-items:center!important;
+ justify-content:center!important;text-align:center!important;
+ border-radius:1.4mm!important;min-height:0!important;
+}
+.page .key-row span{font-size:10pt!important;min-width:0!important;line-height:1!important}
+.page .key-row b{font-size:6.1pt!important;line-height:1.05!important}
+.page .key-note{
+ padding:0 .9mm!important;margin:0!important;
+ font-size:5.3pt!important;line-height:1.1!important;
+ white-space:nowrap!important;overflow:hidden!important;
+}
+@media print{
+ .page .map-shell .map{top:6mm!important;height:394mm!important}
+ .page .advice-panel,.page .key-panel{top:339mm!important;height:25mm!important}
+ .page .map-shell .map-banner{top:43mm!important}
+}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><label>🏪 アイコン <select id="convenience-marker-size" aria-label="コンビニアイコンの大きさ"><option value="14">小 14px</option><option value="18" selected>中 18px</option><option value="22">大 22px</option></select></label><span id="convenience-map-status" aria-live="polite">🏪 コンビニ確認中</span><span id="retail-map-status" aria-live="polite">🛒💊 スーパー・ドラッグ確認中</span><label><input id="show-bus-stops" type="checkbox" checked> 🚌 バス停を表示</label><span id="bus-map-status" aria-live="polite">🚌 バス停読み込み中</span><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
@@ -549,7 +621,7 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 <div class="advice-card advice-pink"><b>🌸 津島周辺</b><p>大学の近くを中心に<br>お部屋探し！</p><small>通学ルートや買い物施設をチェック</small></div>
 <div class="advice-card advice-orange"><b>🚲 北方・法界院周辺</b><p>駅の利用も考えて<br>エリアを比較！</p><small>大学までの道のりも確認</small></div>
 <div class="advice-card advice-purple"><b>🚉 岡山駅北側</b><p>岡山駅へのアクセスも<br>あわせて検討！</p><small>通学手段・所要時間を確認</small></div>
-<div class="advice-note">📌 エリアは比較のための目安です。実際のお部屋探しでは通学経路を確認しましょう。</div><div class="side-houses" aria-hidden="true">🏡　🌳　🏠</div></aside>
+<div class="advice-note">📌 エリアは目安です。通学経路は現地で確認しましょう。</div><div class="side-houses" aria-hidden="true">🏡　🌳　🏠</div></aside>
 <div class="map-shell"><div class="map-banner"><span class="banner-title">🗺️ 津島キャンパス周辺</span><span class="banner-bubble">大学の正門から <b>直線2km</b> の目安</span></div>
 <div id="map" class="map"><div id="tiles" class="tiles" aria-label="ベクター背景地図"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km・岡山駅まで表示</div><div class="osm-credit">© OpenStreetMap contributors · © OpenMapTiles · 鉄道：国土数値情報2024</div><div class="north">↑ 北</div></div></div>
 <aside class="key-panel"><div class="panel-title">✨ 生活施設の<br>アイコン凡例</div>
@@ -559,7 +631,7 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 <div class="key-row"><span>💊</span><b>ドラッグストア</b></div>
 <div class="key-row"><span>🛍️</span><b>100円ショップ</b></div>
 <div class="key-row"><span>🚉</span><b>駅</b></div>
-<div class="key-note">💡 同じ建物に複数店舗がある場所は、アイコンをまとめています。</div><div class="key-petal" aria-hidden="true">🌸</div></aside>
+<div class="key-note">💡 同じ建物の店舗アイコンは重なる場合があります。</div><div class="key-petal" aria-hidden="true">🌸</div></aside>
 </div>
 <div class="facility-guide"><div class="facility-guide-title">🛍️ 暮らしに役立つ！周辺の生活施設 <span>※店舗名・所在地は下記一覧で確認できます</span></div><div id="facility-items" class="facility-items"></div></div><div class="area-legend"><b>住まい探しのエリア目安：</b><span><i style="background:#4dc3bf"></i>津島周辺</span><span><i style="background:#ffb45d"></i>北方・法界院周辺</span><span><i style="background:#ac95e8"></i>岡山駅北側</span><span>🚄 新幹線：<b style="color:#167f8b">青緑＋白破線</b> ／ 🚃 在来線：<b style="color:#3b434b">黒＋白破線</b></span><span>※範囲は説明用の概略。賃貸物件の分布・家賃・行政区域を示すものではありません。</span></div>
 <div class="footer" id="legend"><span>🎓 岡山大学正門</span><span>🚉 法界院駅・岡山駅</span><span>地図：© OpenStreetMap contributors / © OpenMapTiles</span></div>
