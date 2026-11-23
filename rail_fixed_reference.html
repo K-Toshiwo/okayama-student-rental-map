@@ -282,10 +282,138 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 }
 @media print{.heading.banner-image-heading img.banner-fullbleed{
  print-color-adjust:exact!important;-webkit-print-color-adjust:exact!important}}
+
+/* Native, editable, resolution-independent reconstruction of user reference.
+   Only the header changes: no full-banner raster image. */
+.heading.native-banner-heading{
+ position:absolute!important;top:0!important;left:0!important;right:0!important;
+ display:block!important;box-sizing:border-box!important;
+ width:100%!important;height:40mm!important;padding:0!important;margin:0!important;
+ overflow:hidden!important;isolation:isolate!important;z-index:12!important;
+ border:0!important;border-bottom:1mm solid #f5bc62!important;
+ box-shadow:0 1mm 2mm #497c7e26!important;
+ background:linear-gradient(180deg,#ace5fb 0%,#eaf9ff 61%,#f8fff4 100%)!important;
+}
+.heading.native-banner-heading .native-banner-sky{position:absolute;inset:0;z-index:0;pointer-events:none}
+.heading.native-banner-heading .banner-cloud{
+ position:absolute;border-radius:50%;background:#fffffff2;opacity:.86;
+ filter:drop-shadow(0 0 2mm #ffffff85);
+}
+.heading.native-banner-heading .cloud-a{width:45mm;height:11mm;left:58mm;top:0mm}
+.heading.native-banner-heading .cloud-b{width:51mm;height:10mm;left:160mm;top:1mm}
+.heading.native-banner-heading .cloud-c{width:27mm;height:9mm;left:206mm;top:1.5mm}
+.heading.native-banner-heading .student-art{
+ position:absolute!important;left:-1.8mm!important;right:auto!important;top:0!important;
+ bottom:auto!important;width:57mm!important;height:40mm!important;
+ display:block!important;z-index:5!important;
+}
+.heading.native-banner-heading .student-art img.student-couple-replacement{
+ width:100%!important;height:100%!important;object-fit:contain!important;
+ transform:scaleX(1) scale(1.10)!important;transform-origin:left bottom!important;
+ image-rendering:auto!important;display:block!important;
+}
+.heading.native-banner-heading .native-heading-copy{
+ position:absolute!important;left:54mm!important;right:43mm!important;top:6.6mm!important;
+ display:block!important;text-align:center!important;z-index:6!important;
+}
+.heading.native-banner-heading .native-heading-copy h1{
+ display:flex!important;justify-content:center!important;align-items:baseline!important;
+ gap:1.5mm!important;margin:0!important;padding:0!important;
+ white-space:nowrap!important;line-height:1.16!important;
+ letter-spacing:-.65pt!important;font-weight:1000!important;
+ font-family:"Hiragino Maru Gothic ProN","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif!important;
+ text-shadow:0 2px 1px #28414a33,2px 2px 0 #fff,-2px 2px 0 #fff,
+  2px -2px 0 #fff,-2px -2px 0 #fff,0 0 7px #fff!important;
+}
+.heading.native-banner-heading .native-heading-copy h1 span{
+ display:inline-block!important;white-space:nowrap!important;font-weight:1000!important;
+ -webkit-text-stroke:1.35px #fff!important;
+ filter:drop-shadow(1px 2px 0 #ffffffa8);
+}
+.heading.native-banner-heading .title-university{
+ font-size:29pt!important;color:#44241d!important;transform:rotate(-3deg)!important;
+}
+.heading.native-banner-heading .title-rent{
+ font-size:30pt!important;color:#df3b6e!important;transform:rotate(-1deg)!important;
+}
+.heading.native-banner-heading .title-map{
+ font-size:31pt!important;color:#1782b7!important;
+}
+.heading.native-banner-heading .native-ribbon{
+ position:relative!important;display:block!important;width:94%!important;
+ margin:1.5mm auto 0!important;padding:2mm 1mm!important;
+ background:linear-gradient(180deg,#ffea87 0%,#ffda59 100%)!important;
+ clip-path:polygon(0 11%,4% 7%,96% 0,100% 14%,97% 50%,100% 92%,4% 100%,0 88%,3% 50%)!important;
+ transform:rotate(-1deg)!important;filter:drop-shadow(0 1px 1px #d6b15888);
+}
+.heading.native-banner-heading .native-ribbon span{
+ display:block!important;white-space:nowrap!important;color:#442c19!important;
+ font-size:13.2pt!important;font-weight:1000!important;letter-spacing:.05pt!important;
+ font-family:"Hiragino Maru Gothic ProN","Yu Gothic",Meiryo,sans-serif!important;
+ text-shadow:.45px .45px 0 #fff9d7!important;
+}
+.heading.native-banner-heading .campus-vignette{
+ position:absolute!important;right:-1mm!important;top:0!important;
+ width:45mm!important;height:38mm!important;z-index:2!important;opacity:.96!important;
+}
+.heading.native-banner-heading .campus-vignette svg{
+ width:100%!important;height:100%!important;display:block!important;
+}
+.heading.native-banner-heading .native-campus-badge{
+ position:absolute!important;right:7mm!important;top:15mm!important;
+ width:44mm!important;height:18mm!important;z-index:7!important;
+ display:flex!important;flex-direction:column!important;justify-content:center!important;
+ align-items:center!important;padding:1.2mm 2mm!important;
+ border:1.15mm solid #166651!important;border-radius:50% 43% 48% 40%!important;
+ background:#ffffffed!important;color:#064d40!important;
+ text-align:center!important;font-family:"Yu Gothic",Meiryo,sans-serif!important;
+ font-size:11pt!important;line-height:1.28!important;font-weight:1000!important;
+ -webkit-text-stroke:.25px #ffffff!important;
+ box-shadow:1px 2px 0 #a9c7ab99!important;
+ transform:rotate(-3deg)!important;
+}
+.heading.native-banner-heading .native-campus-badge span{
+ display:block!important;font-size:11.5pt!important;font-weight:1000!important;
+}
+.heading.native-banner-heading .native-banner-cherry{
+ position:absolute!important;left:4mm!important;top:1.5mm!important;
+ font-size:18pt!important;z-index:6!important;opacity:.9!important;
+}
+.heading.native-banner-heading .native-accent{
+ position:absolute!important;z-index:6!important;color:#ffbe16!important;
+ font-size:19pt!important;text-shadow:-1px -1px #fff,1px 1px #fff!important;
+}
+.heading.native-banner-heading .left-accent{left:44mm!important;top:2mm!important}
+.heading.native-banner-heading .right-accent{right:44mm!important;top:1mm!important}
+.heading.native-banner-heading .native-banner-leaves{
+ position:absolute!important;z-index:3!important;bottom:0!important;left:0!important;right:0!important;
+ height:4.4mm!important;pointer-events:none!important;
+ background:radial-gradient(ellipse 15mm 7mm at 2% 135%,#9fda85 50%,transparent 53%),
+ radial-gradient(ellipse 13mm 7mm at 29% 130%,#b4db93 50%,transparent 53%),
+ radial-gradient(ellipse 17mm 8mm at 72% 125%,#a4d184 50%,transparent 53%),
+ radial-gradient(ellipse 15mm 7mm at 94% 120%,#a5d98c 50%,transparent 53%);
+}
+@media print{
+ .heading.native-banner-heading,.heading.native-banner-heading *{
+ -webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
-<div class="heading banner-image-heading" aria-label="岡山大学 おへや探し生活MAP。はじめての一人暮らしをわかりやすくサポート。津島キャンパス周辺ガイド"><img class="banner-fullbleed" src="./assets/okayama_student_header_banner.webp" alt="岡山大学 おへや探し生活MAP｜はじめての一人暮らしをわかりやすくサポート！｜津島キャンパス周辺ガイド" loading="eager" decoding="sync"></div>
+<div class="heading native-banner-heading" aria-label="岡山大学 おへや探し生活 MAP">
+ <div class="native-banner-sky" aria-hidden="true"><i class="banner-cloud cloud-a"></i><i class="banner-cloud cloud-b"></i><i class="banner-cloud cloud-c"></i></div>
+ <div class="native-banner-cherry" aria-hidden="true">🌸</div>
+ <div class="student-art" aria-hidden="true"><img class="student-couple-replacement" alt="" src="data:image/webp;base64,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"></div>
+ <div class="native-heading-copy">
+  <h1><span class="title-university">岡山大学</span><span class="title-rent">おへや探し生活</span><span class="title-map">MAP</span></h1>
+  <div class="native-ribbon"><span>はじめての一人暮らしをわかりやすくサポート！</span></div>
+ </div>
+ <div class="native-accent left-accent" aria-hidden="true">✦</div>
+ <div class="native-accent right-accent" aria-hidden="true">✦</div>
+ <div class="campus-vignette" aria-hidden="true"><svg viewBox="0 0 145 105" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 93 Q20 69 45 90 Q80 66 105 88 Q124 73 145 95" fill="#bde6a2" stroke="#9fc581" stroke-width="1.8"/><path d="M18 90 V51 L33 43 48 51 V90 M54 90 V23 L72 17 90 23 V90 M96 90 V48 L114 43 130 48 V90" fill="#f1ebd8" stroke="#718f88" stroke-width="2"/><path d="M60 21 V10 L72 3 84 10 V21" fill="#e2d1ba" stroke="#718f88" stroke-width="2"/><circle cx="72" cy="31" r="7" fill="#fffaf0" stroke="#718f88" stroke-width="2"/><path d="M72 26 V31 L76 33" stroke="#718f88" stroke-width="2"/><path d="M65 89 V65 Q72 58 79 65 V89" fill="#c5b19a" stroke="#718f88" stroke-width="1.5"/></g><g fill="#b5d9e1"><rect x="23" y="56" width="8" height="11" rx="1"/><rect x="35" y="56" width="8" height="11" rx="1"/><rect x="102" y="54" width="8" height="11" rx="1"/><rect x="115" y="54" width="8" height="11" rx="1"/><rect x="61" y="42" width="8" height="11" rx="1"/><rect x="76" y="42" width="8" height="11" rx="1"/></g><g fill="#91c975" stroke="#6ba75d" stroke-width="1.5"><circle cx="10" cy="75" r="12"/><circle cx="135" cy="72" r="14"/></g></svg></div>
+ <div class="native-campus-badge">津島キャンパス<span>周辺ガイド</span></div>
+ <div class="native-banner-leaves" aria-hidden="true"></div>
+</div>
 <div class="body-grid">
 <aside class="advice-panel"><div class="panel-title">🏡 エリアの<br>おすすめポイント</div>
 <div class="advice-card advice-pink"><b>🌸 津島周辺</b><p>大学の近くを中心に<br>お部屋探し！</p><small>通学ルートや買い物施設をチェック</small></div>
