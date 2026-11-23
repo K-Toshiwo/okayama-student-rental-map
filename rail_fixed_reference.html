@@ -849,6 +849,30 @@ paintConvenienceInventory(convenienceBaseline,"facility-ledger-fallback");
 document.body.dataset.convenienceFetchStatus="loading";
 setConvenienceStatus("🏪 全域のコンビニを取得中（暫定 "+convenienceBaseline.length+"件）");
 async function loadFullMapConvenienceStores(){
+ // Use GitHub-hosted, verified full-extent snapshot first; never depend on Overpass
+ // availability just to show more than the original two ledger stores.
+ try{
+  const response=await fetch("./data/convenience_osm_20261123.geojson",{cache:"no-store"});
+  if(!response.ok)throw Error("HTTP "+response.status);
+  const geo=await response.json();
+  if(geo.type!=="FeatureCollection"||!Array.isArray(geo.features)||geo.features.length<100)
+    throw Error("Snapshot incomplete");
+  const shops=geo.features.filter(f=>f.properties?.shop==="convenience"&&
+   f.geometry?.type==="Point"&&Array.isArray(f.geometry.coordinates))
+   .map(f=>({lon:Number(f.geometry.coordinates[0]),lat:Number(f.geometry.coordinates[1]),
+    name:f.properties.name||"コンビニ（店名未登録）",origin:"OSM"}))
+   .filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lon));
+  const extras=convenienceBaseline.filter(p=>!shops.some(q=>geoDistanceMeters(p,q)<35));
+  paintConvenienceInventory(shops.concat(extras),"github-osm-snapshot-20261123");
+  document.body.dataset.convenienceOSMCount=String(shops.length);
+  document.body.dataset.convenienceLegacyExtras=String(extras.length);
+  document.body.dataset.convenienceFetchStatus="loaded";
+  const result=redrawConvenienceMarkers();
+  setConvenienceStatus("🏪 全域 "+result.count+"件（OSM "+shops.length+
+   "＋既存 "+extras.length+"）／ 重なり "+result.overlap+"件");
+  return;
+ }catch(error){console.warn("Convenience snapshot unavailable, trying live source",error)}
+
  const tile0=proj(center,zoom);
  const nw=inv({x:tile0.x-mapWidth()/2,y:tile0.y-mapHeight()/2},zoom);
  const se=inv({x:tile0.x+mapWidth()/2,y:tile0.y+mapHeight()/2},zoom);
