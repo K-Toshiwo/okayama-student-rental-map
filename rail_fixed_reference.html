@@ -459,8 +459,25 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
  font-size:9px!important;white-space:nowrap!important;
  line-height:1.05!important;
 }
+
+/* All convenience stores within the *entire visible map*: deliberately no clustering.
+   Small individual markers expose true density for the print-layout experiment. */
+.map .conv-all-pin{
+ position:absolute;transform:translate(-50%,-50%);
+ width:var(--conv-pin-size,18px);height:var(--conv-pin-size,18px);
+ line-height:1;display:grid;place-items:center;z-index:8;
+ border:1px solid #b97826;border-radius:50%;background:#fff5d4ed;
+ box-shadow:0 0 0 1px #fff9,0 1px 2px #603a1955;
+ font-size:calc(var(--conv-pin-size,18px) * .69);
+ cursor:help;pointer-events:auto;white-space:nowrap;
+ -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.map .conv-all-pin:focus-visible{outline:2px solid #194d78;outline-offset:2px}
+.toolbar #convenience-marker-size{font-size:12px;padding:2px}
+.toolbar #convenience-map-status{font-size:12px;font-weight:700;color:#765113}
+@media print{.toolbar #convenience-map-status{display:none}}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
-<div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
+<div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><label>🏪 アイコン <select id="convenience-marker-size" aria-label="コンビニアイコンの大きさ"><option value="14">小 14px</option><option value="18" selected>中 18px</option><option value="22">大 22px</option></select></label><span id="convenience-map-status" aria-live="polite">🏪 コンビニ確認中</span><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
 <div class="heading native-banner-heading" aria-label="岡山大学 おへや探し生活 MAP">
  <div class="native-banner-sky" aria-hidden="true"><i class="banner-cloud cloud-a"></i><i class="banner-cloud cloud-b"></i><i class="banner-cloud cloud-c"></i></div>
@@ -745,6 +762,7 @@ const areaLegend=document.querySelector(".area-legend");
 areaSwitch.addEventListener("change",()=>{for(const el of areaElements)el.style.display=areaSwitch.checked?"":"none";areaLegend.style.display=areaSwitch.checked?"":"none";});
 const plotted=[{...gate,icon:"🎓",cls:"gate"}];
 for(const f of facilityRows){
+ if(f.category==="コンビニ")continue; // Independent full-extent layer, never clustered.
  if(!f.latitude||!f.longitude)continue;
  const lat=Number(f.latitude),lon=Number(f.longitude);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;
  const style=facilityStyle[f.category]||{icon:"📍",cls:"other"};
@@ -775,6 +793,112 @@ for(const group of groups){
  }
  const names=group.places.map(k=>k.name).join("／");el.title=names;el.setAttribute("aria-label",names);pins.appendChild(el);
 }
+
+/* Convenience-store full-map density preview (shop=convenience, OSM).
+   No display cap, marker clustering, or 2km filter. */
+const convenienceStatus=document.getElementById("convenience-map-status");
+const convenienceSize=document.getElementById("convenience-marker-size");
+const convenienceBaseline=facilityRows.filter(f=>f.category==="コンビニ"&&
+ Number.isFinite(Number(f.latitude))&&Number.isFinite(Number(f.longitude))&&
+ f.latitude!==""&&f.longitude!=="").map(f=>({
+ lat:Number(f.latitude),lon:Number(f.longitude),name:f.name,origin:"台帳"
+}));
+let allConvenienceStores=[];
+function redrawConvenienceMarkers(){
+ pins.querySelectorAll(".conv-all-pin").forEach(node=>node.remove());
+ const size=Number(convenienceSize.value)||18;
+ let count=0,overlap=0;
+ const occupiedPixels=[];
+ for(const shop of allConvenienceStores){
+  const xy=locate(shop);
+  if(xy.x<0||xy.x>mapWidth()||xy.y<0||xy.y>mapHeight())continue;
+  const node=document.createElement("div");
+  node.className="conv-all-pin";
+  node.style.left=xy.x.toFixed(2)+"px";node.style.top=xy.y.toFixed(2)+"px";
+  node.style.setProperty("--conv-pin-size",size+"px");
+  node.textContent="🏪";node.title=shop.name+(shop.origin==="台帳"?"（既存施設台帳）":"（OpenStreetMap）");
+  node.setAttribute("aria-label",shop.name);
+  node.tabIndex=0;
+  pins.appendChild(node);count++;
+  if(occupiedPixels.some(pt=>Math.hypot(pt.x-xy.x,pt.y-xy.y)<size))overlap++;
+  occupiedPixels.push(xy);
+ }
+ document.body.dataset.convenienceDisplayed=String(count);
+ document.body.dataset.convenienceOverlapEstimate=String(overlap);
+ return {count,overlap};
+}
+function setConvenienceStatus(s){convenienceStatus.textContent=s}
+function paintConvenienceInventory(shops,source){
+ allConvenienceStores=shops;
+ const result=redrawConvenienceMarkers();
+ document.body.dataset.convenienceMapSource=source;
+ document.body.dataset.convenienceInventoryCount=String(shops.length);
+ setConvenienceStatus("🏪 コンビニ "+result.count+"件 ／ 重なり目安 "+result.overlap+"件");
+}
+function geoDistanceMeters(a,b){
+ const dlat=(a.lat-b.lat)*111194.9;
+ const dlon=(a.lon-b.lon)*111194.9*Math.cos(a.lat*Math.PI/180);
+ return Math.hypot(dlat,dlon);
+}
+convenienceSize.addEventListener("change",()=>{
+ const result=redrawConvenienceMarkers();
+ if(document.body.dataset.convenienceFetchStatus==="loaded")
+  setConvenienceStatus("🏪 コンビニ "+result.count+"件 ／ 重なり目安 "+result.overlap+"件");
+});
+paintConvenienceInventory(convenienceBaseline,"facility-ledger-fallback");
+document.body.dataset.convenienceFetchStatus="loading";
+setConvenienceStatus("🏪 全域のコンビニを取得中（暫定 "+convenienceBaseline.length+"件）");
+async function loadFullMapConvenienceStores(){
+ const tile0=proj(center,zoom);
+ const nw=inv({x:tile0.x-mapWidth()/2,y:tile0.y-mapHeight()/2},zoom);
+ const se=inv({x:tile0.x+mapWidth()/2,y:tile0.y+mapHeight()/2},zoom);
+ const bounds=[se.lat,nw.lon,nw.lat,se.lon].map(x=>x.toFixed(6)).join(",");
+ // Queries one single dataset for the *full* visible extent, not only 2km radius.
+ const q='[out:json][timeout:35];nwr["shop"="convenience"]('+bounds+');out center tags;';
+ const endpoints=[
+  "https://overpass.kumi.systems/api/interpreter?data=",
+  "https://overpass-api.de/api/interpreter?data=",
+  "https://overpass.nchc.org.tw/api/interpreter?data="
+ ];
+ for(const endpoint of endpoints){
+  const ctl=new AbortController();
+  const timer=setTimeout(()=>ctl.abort(),26000);
+  try{
+   const r=await fetch(endpoint+encodeURIComponent(q),{signal:ctl.signal,cache:"no-store"});
+   if(!r.ok)throw Error("HTTP "+r.status);
+   const json=await r.json();
+   if(!Array.isArray(json.elements))throw Error("OSM response invalid");
+   const records=[],seen=new Set();
+   for(const el of json.elements){
+    const id=el.type+":"+el.id;
+    if(seen.has(id))continue;
+    const lat=el.lat??el.center?.lat,lon=el.lon??el.center?.lon;
+    if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;
+    if(lat<se.lat||lat>nw.lat||lon<nw.lon||lon>se.lon)continue;
+    seen.add(id);
+    records.push({lat,lon,name:el.tags?.["name:ja"]||el.tags?.name||
+      el.tags?.brand||"コンビニ（店名未登録）",origin:"OSM"});
+   }
+   // Retain verified legacy entries if they are missing from OSM, but avoid
+   // drawing a second marker when the same store is within 35 m.
+   const extras=convenienceBaseline.filter(p=>
+      !records.some(q=>geoDistanceMeters(p,q)<35));
+   paintConvenienceInventory(records.concat(extras),"osm-overpass-plus-legacy");
+   document.body.dataset.convenienceOSMCount=String(records.length);
+   document.body.dataset.convenienceLegacyExtras=String(extras.length);
+   document.body.dataset.convenienceFetchStatus="loaded";
+   const result=redrawConvenienceMarkers();
+   setConvenienceStatus("🏪 全域 "+result.count+"件（OSM "+records.length+
+     "＋既存 "+extras.length+"）／ 重なり "+result.overlap+"件");
+   return;
+  }catch(err){console.warn("Convenience source failed",endpoint,err)}
+  finally{clearTimeout(timer)}
+ }
+ document.body.dataset.convenienceFetchStatus="failed";
+ setConvenienceStatus("🏪 全件取得失敗：台帳 "+convenienceBaseline.length+"件のみ表示");
+}
+loadFullMapConvenienceStores();
+
 // All station labels are separate from facility clustering and map-fit variables.
 // Preserve the original station constant to avoid the previous blank-map error.
 const textStations=[
