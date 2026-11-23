@@ -622,7 +622,7 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 <div class="advice-card advice-orange"><b>🚲 北方・法界院周辺</b><p>駅の利用も考えて<br>エリアを比較！</p><small>大学までの道のりも確認</small></div>
 <div class="advice-card advice-purple"><b>🚉 岡山駅北側</b><p>岡山駅へのアクセスも<br>あわせて検討！</p><small>通学手段・所要時間を確認</small></div>
 <div class="advice-note">📌 エリアは目安です。通学経路は現地で確認しましょう。</div><div class="side-houses" aria-hidden="true">🏡　🌳　🏠</div></aside>
-<div class="map-shell"><div class="map-banner"><span class="banner-title">🗺️ 津島キャンパス周辺</span><span class="banner-bubble">大学の正門から <b>直線2km</b> の目安</span></div>
+<div class="map-shell">
 <div id="map" class="map"><div id="tiles" class="tiles" aria-label="ベクター背景地図"></div><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"></svg><div id="pins"></div><div class="mapnote">正門から直線2km・岡山駅まで表示</div><div class="osm-credit">© OpenStreetMap contributors · © OpenMapTiles · 鉄道：国土数値情報2024</div><div class="north">↑ 北</div></div></div>
 <aside class="key-panel"><div class="panel-title">✨ 生活施設の<br>アイコン凡例</div>
 <div class="key-row"><span>🛒</span><b>スーパー</b></div>
@@ -896,6 +896,20 @@ for(const a of areas){
 const halo=path.cloneNode(true);halo.setAttribute("stroke","#ffffff");halo.setAttribute("stroke-width","7");halo.setAttribute("stroke-dasharray","10 6");
 // Keep the 2km boundary above the advisory colored areas and below the facility icons.
 overlay.appendChild(halo);overlay.appendChild(path);
+// Keep the remaining 2 km caption immediately above the northernmost
+// point of the ACTUAL projected dotted circle, rather than at a fixed map corner.
+const circleNorth=Array.from({length:121},(_,i)=>locate(dest(i*3)))
+ .reduce((best,p)=>p.y<best.y?p:best);
+const radiusCaption=map.querySelector(".mapnote");
+if(radiusCaption){
+ const captionX=Math.max(115,Math.min(mapWidth()-115,circleNorth.x));
+ const captionY=Math.max(8,circleNorth.y-29);
+ radiusCaption.style.setProperty("left",captionX.toFixed(2)+"px","important");
+ radiusCaption.style.setProperty("top",captionY.toFixed(2)+"px","important");
+ radiusCaption.style.setProperty("right","auto","important");
+ radiusCaption.style.setProperty("transform","translateX(-50%)","important");
+ document.body.dataset.radiusCaptionAnchor="northmost-2km-boundary";
+}
 const areaSwitch=document.getElementById("show-areas");
 const areaLegend=document.querySelector(".area-legend");
 areaSwitch.addEventListener("change",()=>{for(const el of areaElements)el.style.display=areaSwitch.checked?"":"none";areaLegend.style.display=areaSwitch.checked?"":"none";});
