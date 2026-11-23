@@ -841,14 +841,16 @@ document.body.dataset.townLabels=String(townCount);
 // official Tsushima all-campus and north/west campus map PDFs.
 // Anchors are in the identified building clusters, not survey-grade
 // individual building centroids. Short leaders distinguish anchors from text.
+// Faculty anchors use actual named building centroids from OpenStreetMap
+// cross-checked with Okayama University official Tsushima campus floorplan.
 const facultyBuildings=[
- {name:"文法経1号館（文学部）",code:"N3",lat:34.69082,lon:133.91712,dx:-89,dy:-42},
- {name:"文法経2号館（法・経）",code:"N2",lat:34.69057,lon:133.91803,dx:-91,dy:21},
- {name:"理学部本館",code:"N20",lat:34.69143,lon:133.92082,dx:28,dy:-33},
- {name:"工学部棟",code:"N30–N49",lat:34.69040,lon:133.92385,dx:52,dy:-31},
- {name:"教育学部本館",code:"N61",lat:34.68748,lon:133.92763,dx:77,dy:22},
- {name:"薬学部1・2号館",code:"W7",lat:34.68572,lon:133.91398,dx:-72,dy:-22},
- {name:"農学部I～III号館",code:"W4–W6",lat:34.68483,lon:133.91657,dx:-54,dy:26}
+ {name:"文法経1号館（文学部）",code:"N3",lat:34.6891122,lon:133.9186473,dx:0,dy:20},
+ {name:"文法経2号館（法・経）",code:"N2",lat:34.6884644,lon:133.9183472,dx:0,dy:25},
+ {name:"理学部本館",code:"N20",lat:34.6884529,lon:133.9202329,dx:0,dy:2},
+ {name:"工学部1号館",code:"N30",lat:34.6896982,lon:133.9215604,dx:0,dy:20},
+ {name:"教育学部本館",code:"N61",lat:34.6887368,lon:133.9240554,dx:0,dy:22},
+ {name:"薬学部1・2号館",code:"W7",lat:34.6870598,lon:133.9175533,dx:0,dy:21},
+ {name:"農学部1号館",code:"W4",lat:34.6858771,lon:133.9189493,dx:0,dy:22}
 ];
 let facultyCount=0;
 const svgNS="http://www.w3.org/2000/svg";
@@ -877,13 +879,13 @@ for(const b of facultyBuildings){
  const name=document.createElement("span");name.textContent=b.name;
  const code=document.createElement("small");code.textContent=b.code;
  label.appendChild(name);label.appendChild(code);
- label.title=b.name+"（岡山大学公式構内図 "+b.code+"／位置は建物群の目安）";
+ label.title=b.name+"（公式構内図 "+b.code+"・地図上の建物位置を照合済み）";
  label.style.left=x+"px";label.style.top=y+"px";
  label.setAttribute("aria-label",b.name+" "+b.code);
  pins.appendChild(label);facultyCount++;
 }
 document.body.dataset.facultyAreaLabels=String(facultyCount);
-document.body.dataset.facultySource="okayama-university-official-tsushima-map";
+document.body.dataset.facultySource="official-tsushima-map-and-osm-building-centroids";
 
 
 vectorMap.once("idle",()=>{
