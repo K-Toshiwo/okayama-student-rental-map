@@ -303,15 +303,17 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 .heading.native-banner-heading .cloud-a{width:45mm;height:11mm;left:58mm;top:0mm}
 .heading.native-banner-heading .cloud-b{width:51mm;height:10mm;left:160mm;top:1mm}
 .heading.native-banner-heading .cloud-c{width:27mm;height:9mm;left:206mm;top:1.5mm}
+/* Enlarged portrait: align heads to top edge, crop at orange header baseline.
+   Image keeps its original 4:3 ratio; header overflow clips below the chest. */
 .heading.native-banner-heading .student-art{
- position:absolute!important;left:-1.8mm!important;right:auto!important;top:0!important;
- bottom:auto!important;width:57mm!important;height:40mm!important;
- display:block!important;z-index:5!important;
+ position:absolute!important;left:-7mm!important;right:auto!important;top:-1mm!important;
+ bottom:auto!important;width:77mm!important;height:57.75mm!important;
+ display:block!important;z-index:5!important;overflow:visible!important;
 }
 .heading.native-banner-heading .student-art img.student-couple-replacement{
- width:100%!important;height:100%!important;object-fit:contain!important;
- transform:scaleX(1) scale(1.10)!important;transform-origin:left bottom!important;
- image-rendering:auto!important;display:block!important;
+ display:block!important;width:77mm!important;height:57.75mm!important;
+ max-width:none!important;object-fit:contain!important;object-position:top left!important;
+ transform:none!important;image-rendering:auto!important;
 }
 .heading.native-banner-heading .native-heading-copy{
  position:absolute!important;left:54mm!important;right:43mm!important;top:6.6mm!important;
