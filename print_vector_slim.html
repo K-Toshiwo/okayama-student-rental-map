@@ -476,8 +476,21 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 .toolbar #convenience-marker-size{font-size:12px;padding:2px}
 .toolbar #convenience-map-status{font-size:12px;font-weight:700;color:#765113}
 @media print{.toolbar #convenience-map-status{display:none}}
+
+/* All-map supermarkets and drugstores: each store gets its own unclustered icon. */
+.map .retail-all-pin{
+ position:absolute;transform:translate(-50%,-50%);z-index:7;
+ width:18px;height:18px;display:grid;place-items:center;line-height:1;
+ border:1px solid #438475;border-radius:50%;background:#ebfff0f0;
+ box-shadow:0 0 0 1px #fff9,0 1px 2px #274d3c44;
+ font-size:12px;white-space:nowrap;pointer-events:auto;cursor:help;
+ -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.map .retail-all-pin.drugstore{background:#f5eafff0;border-color:#a47aba}
+.map .retail-all-pin:focus-visible{outline:2px solid #194d78;outline-offset:2px}
+.toolbar #retail-map-status{font-size:12px;font-weight:700;color:#315e53}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
-<div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><label>🏪 アイコン <select id="convenience-marker-size" aria-label="コンビニアイコンの大きさ"><option value="14">小 14px</option><option value="18" selected>中 18px</option><option value="22">大 22px</option></select></label><span id="convenience-map-status" aria-live="polite">🏪 コンビニ確認中</span><span>地図が完全に表示されてからPDF保存してください。</span></div>
+<div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><label>🏪 アイコン <select id="convenience-marker-size" aria-label="コンビニアイコンの大きさ"><option value="14">小 14px</option><option value="18" selected>中 18px</option><option value="22">大 22px</option></select></label><span id="convenience-map-status" aria-live="polite">🏪 コンビニ確認中</span><span id="retail-map-status" aria-live="polite">🛒💊 スーパー・ドラッグ確認中</span><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
 <div class="heading native-banner-heading" aria-label="岡山大学 おへや探し生活 MAP">
  <div class="native-banner-sky" aria-hidden="true"><i class="banner-cloud cloud-a"></i><i class="banner-cloud cloud-b"></i><i class="banner-cloud cloud-c"></i></div>
@@ -762,7 +775,7 @@ const areaLegend=document.querySelector(".area-legend");
 areaSwitch.addEventListener("change",()=>{for(const el of areaElements)el.style.display=areaSwitch.checked?"":"none";areaLegend.style.display=areaSwitch.checked?"":"none";});
 const plotted=[{...gate,icon:"🎓",cls:"gate"}];
 for(const f of facilityRows){
- if(f.category==="コンビニ")continue; // Independent full-extent layer, never clustered.
+ if(["コンビニ","スーパー","ドラッグストア"].includes(f.category))continue; // Full-extent individual layers, never clustered.
  if(!f.latitude||!f.longitude)continue;
  const lat=Number(f.latitude),lon=Number(f.longitude);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;
  const style=facilityStyle[f.category]||{icon:"📍",cls:"other"};
@@ -922,6 +935,65 @@ async function loadFullMapConvenienceStores(){
  setConvenienceStatus("🏪 全件取得失敗：台帳 "+convenienceBaseline.length+"件のみ表示");
 }
 loadFullMapConvenienceStores();
+
+
+/* Stable GitHub-hosted snapshot of mapped supermarkets/drugstores.
+   Draw each point individually; never impose a 2 km filter or 30 px clustering. */
+const retailStatus=document.getElementById("retail-map-status");
+const retailBaseline=facilityRows.filter(f=>
+ ["スーパー","ドラッグストア"].includes(f.category)&&
+ f.latitude!==""&&f.longitude!==""&&
+ Number.isFinite(Number(f.latitude))&&Number.isFinite(Number(f.longitude)))
+ .map(f=>({lat:Number(f.latitude),lon:Number(f.longitude),name:f.name,
+   category:f.category,origin:"台帳"}));
+function drawRetailInventory(shops,source){
+ pins.querySelectorAll(".retail-all-pin").forEach(x=>x.remove());
+ const tally={"スーパー":0,"ドラッグストア":0};
+ const valid=shops.filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lon));
+ for(const p of valid){
+  const xy=locate(p);
+  if(xy.x<0||xy.y<0||xy.x>mapWidth()||xy.y>mapHeight())continue;
+  const el=document.createElement("div");
+  el.className="retail-all-pin "+(p.category==="ドラッグストア"?"drugstore":"supermarket");
+  el.textContent=p.category==="ドラッグストア"?"💊":"🛒";
+  el.style.left=xy.x.toFixed(2)+"px";el.style.top=xy.y.toFixed(2)+"px";
+  el.title=p.name+"（"+p.category+"／"+(p.origin==="台帳"?"既存台帳":"OpenStreetMap")+"）";
+  el.setAttribute("aria-label",p.name+" "+p.category);el.tabIndex=0;
+  pins.appendChild(el);tally[p.category]++;
+ }
+ document.body.dataset.supermarketsDisplayed=String(tally["スーパー"]);
+ document.body.dataset.drugstoresDisplayed=String(tally["ドラッグストア"]);
+ document.body.dataset.retailMapSource=source;
+ retailStatus.textContent="🛒 スーパー "+tally["スーパー"]+"件 ／ 💊 ドラッグ "+tally["ドラッグストア"]+"件";
+ return tally;
+}
+drawRetailInventory(retailBaseline,"facility-ledger-fallback");
+async function loadRetailSnapshot(){
+ try{
+  const response=await fetch("./data/supermarkets_drugstores_osm_20261123.geojson",{cache:"no-store"});
+  if(!response.ok)throw Error("HTTP "+response.status);
+  const fc=await response.json();
+  if(fc.type!=="FeatureCollection"||!Array.isArray(fc.features)||fc.features.length<100)
+   throw Error("Retail snapshot missing or incomplete");
+  const shops=fc.features.filter(f=>f.geometry?.type==="Point"&&
+   ["スーパー","ドラッグストア"].includes(f.properties?.category))
+    .map(f=>({lat:Number(f.geometry.coordinates[1]),lon:Number(f.geometry.coordinates[0]),
+       name:f.properties.name||f.properties.category,
+       category:f.properties.category,origin:"OSM"}));
+  const fallbackExtra=retailBaseline.filter(b=>!shops.some(p=>
+   p.category===b.category&&geoDistanceMeters(b,p)<35));
+  const tally=drawRetailInventory(shops.concat(fallbackExtra),"github-retail-osm-snapshot-20261123");
+  document.body.dataset.retailOSMCount=String(shops.length);
+  document.body.dataset.retailLegacyExtras=String(fallbackExtra.length);
+  document.body.dataset.retailFetchStatus="loaded";
+  return tally;
+ }catch(e){
+  document.body.dataset.retailFetchStatus="failed";
+  console.warn("Retail snapshot unavailable; displaying existing facilities only",e);
+  retailStatus.textContent="🛒💊 店舗データ取得失敗（既存施設のみ）";
+ }
+}
+loadRetailSnapshot();
 
 // All station labels are separate from facility clustering and map-fit variables.
 // Preserve the original station constant to avoid the previous blank-map error.
