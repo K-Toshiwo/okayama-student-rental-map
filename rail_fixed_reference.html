@@ -453,6 +453,12 @@ background:#fffffff2;padding:.5mm 2mm;border-radius:2mm;white-space:normal;displ
 .heading.native-banner-heading .native-ribbon span{line-height:1.15!important}
 .heading.native-banner-heading .native-campus-badge,
 .heading.native-banner-heading .native-campus-badge span{line-height:1.2!important}
+/* Compact verified school labels reduce spillover outside university grounds. */
+.map .faculty-area-label.faculty-building{
+ max-width:80px!important;padding:2px 4px!important;
+ font-size:9px!important;white-space:nowrap!important;
+ line-height:1.05!important;
+}
 </style><link href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" rel="stylesheet"><script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js"></script></head><body>
 <div class="toolbar"><strong>岡山大学生向け賃貸マップ｜A3縦版</strong><button id="print" disabled>地図画像を読み込み中…</button><span id="status" aria-live="polite">背景地図を取得しています</span><label><input id="show-areas" type="checkbox" checked>エリア目安を表示</label><span>地図が完全に表示されてからPDF保存してください。</span></div>
 <article class="page">
@@ -844,13 +850,13 @@ document.body.dataset.townLabels=String(townCount);
 // Faculty anchors use actual named building centroids from OpenStreetMap
 // cross-checked with Okayama University official Tsushima campus floorplan.
 const facultyBuildings=[
- {name:"文法経1号館（文学部）",code:"N3",lat:34.6891122,lon:133.9186473,dx:0,dy:20},
- {name:"文法経2号館（法・経）",code:"N2",lat:34.6884644,lon:133.9183472,dx:0,dy:25},
- {name:"理学部本館",code:"N20",lat:34.6884529,lon:133.9202329,dx:0,dy:2},
- {name:"工学部1号館",code:"N30",lat:34.6896982,lon:133.9215604,dx:0,dy:20},
- {name:"教育学部本館",code:"N61",lat:34.6887368,lon:133.9240554,dx:0,dy:22},
- {name:"薬学部1・2号館",code:"W7",lat:34.6870598,lon:133.9175533,dx:0,dy:21},
- {name:"農学部1号館",code:"W4",lat:34.6858771,lon:133.9189493,dx:0,dy:22}
+ {name:"文法経1号館（文学部）",code:"N3",lat:34.6891122,lon:133.9186473,dx:-5,dy:-3,short:"文学部"},
+ {name:"文法経2号館（法・経）",code:"N2",lat:34.6884644,lon:133.9183472,dx:-7,dy:5,short:"法・経"},
+ {name:"理学部本館",code:"N20",lat:34.6884529,lon:133.9202329,dx:4,dy:7,short:"理学部"},
+ {name:"工学部1号館",code:"N30",lat:34.6896982,lon:133.9215604,dx:7,dy:-3,short:"工学部"},
+ {name:"教育学部本館",code:"N61",lat:34.6887368,lon:133.9240554,dx:6,dy:8,short:"教育学部"},
+ {name:"薬学部1・2号館",code:"W7",lat:34.6870598,lon:133.9175533,dx:-5,dy:6,short:"薬学部"},
+ {name:"農学部1号館",code:"W4",lat:34.6858771,lon:133.9189493,dx:5,dy:-4,short:"農学部"}
 ];
 let facultyCount=0;
 const svgNS="http://www.w3.org/2000/svg";
@@ -876,7 +882,7 @@ for(const b of facultyBuildings){
  overlay.appendChild(dot);
  const label=document.createElement("div");
  label.className="faculty-area-label faculty-building";
- const name=document.createElement("span");name.textContent=b.name;
+ const name=document.createElement("span");name.textContent=b.short||b.name;
  const code=document.createElement("small");code.textContent=b.code;
  label.appendChild(name);label.appendChild(code);
  label.title=b.name+"（公式構内図 "+b.code+"・地図上の建物位置を照合済み）";
